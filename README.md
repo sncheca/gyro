@@ -22,3 +22,7 @@ can use the max interface to do this. extras >> Min >> C++ Object Development Ki
 
 ## Adding source files
 As of now, I put the resonance_audio folder into the min_api/include directory. Then, in the cmakelists for each object, I link to there. This avoids having multiple copies of c++ files running around. When they pop up as source files, then they can be built into .o files and baked into new code!
+
+## Audio buffers
+Note that frames, as defined by Min, are basically just samples. So framecount() is the number of samples in each block. 
+Also, note that, although the documentation says that samples() is a vector, IT IS NOT! It is a double*
