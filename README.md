@@ -19,3 +19,6 @@ can use the max interface to do this. extras >> Min >> C++ Object Development Ki
 - make sure that the brick is checked under "Target Membership" in Xcode before compiling. 
 - note that the actual updates to the object come from the .xml file in the doc folder
 - this file is only created when you create the first instance of the object. If, within one Max session, you delete all instances and then make a new one, THIS DOES NOT COUNT. If you have an instance in a patch and then close and reopen the patch, THIS DOES NOT COUNT. The only thing that counts is opening a max patch (devoid of instances) and then instantiating the first one. Only then will the .xml file be updated. 
+
+## Adding source files
+As of now, I put the resonance_audio folder into the min_api/include directory. Then, in the cmakelists for each object, I link to there. This avoids having multiple copies of c++ files running around. When they pop up as source files, then they can be built into .o files and baked into new code!
