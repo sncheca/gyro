@@ -18,17 +18,17 @@ The easiest way to interface between the two existing ecosystems is to simply co
 using namespace c74::min;
 
 //convert audio_bundle object (Min) to AudioBuffer object (Resonance)
-void Min2Res(audio_bundle& bundle, vraudio::AudioBuffer* buffer){
+void Min2Res(audio_bundle& bundleIn, vraudio::AudioBuffer* bufferOut){
     //require that specs of the audio objects match
-    DCHECK_EQ(bundle.channel_count(), buffer->num_channels());
-    DCHECK_EQ(bundle.frame_count(), buffer->num_frames());
-    auto nChannels = bundle.channel_count();
-    auto nFrames = bundle.frame_count();
+    DCHECK_EQ(bundleIn.channel_count(), bufferOut->num_channels());
+    DCHECK_EQ(bundleIn.frame_count(), bufferOut->num_frames());
+    auto nChannels = bundleIn.channel_count();
+    auto nFrames = bundleIn.frame_count();
     
     //iterate through all channels
     for(auto c = 0; c < nChannels; ++c){
-        vraudio::AudioBuffer::Channel& r_channel = (*buffer)[c];   //at the advice of resonance, avoid double array subscript lookups because they are slow (see base/audioBuffer.h)
-        double* m_channel = bundle.samples(c);
+        vraudio::AudioBuffer::Channel& r_channel = (*bufferOut)[c];   //at the advice of resonance, avoid double array subscript lookups because they are slow (see base/audioBuffer.h)
+        double* m_channel = bundleIn.samples(c);
         //need some checking for running of the end / make sure blocks have the same length. In theory, all channels have same num frames are their host buffer... but can never be too careful.
         //iterate through samples of each channel
         for (auto i = 0; i < nFrames; ++i) {
@@ -39,17 +39,17 @@ void Min2Res(audio_bundle& bundle, vraudio::AudioBuffer* buffer){
 }
 
 //convert AudioBuffer object (Resonance) to audio_bundle object (Min)
-void Res2Min(const vraudio::AudioBuffer& buffer, audio_bundle* bundle){
+void Res2Min(const vraudio::AudioBuffer& bufferIn, audio_bundle* bundleOut){
     //require that specs of the audio objects match
-    DCHECK_EQ(buffer.num_channels(), bundle->channel_count());
-    DCHECK_EQ(buffer.num_frames(), bundle->frame_count());
-    auto nChannels = buffer.num_channels();
-    auto nFrames = buffer.num_frames();
+    DCHECK_EQ(bufferIn.num_channels(), bundleOut->channel_count());
+    DCHECK_EQ(bufferIn.num_frames(), bundleOut->frame_count());
+    auto nChannels = bufferIn.num_channels();
+    auto nFrames = bufferIn.num_frames();
     
     //iterate through all channels
     for(auto c = 0; c < nChannels; ++c){
-        double* m_channelOut = bundle->samples(c);
-        const vraudio::AudioBuffer::Channel& r_channelOut = buffer[c];
+        double* m_channelOut = bundleOut->samples(c);
+        const vraudio::AudioBuffer::Channel& r_channelOut = bufferIn[c];
         //iterate through samples of each channel
         for(auto i = 0; i < nFrames; ++i){
             m_channelOut[i] = r_channelOut[i];
