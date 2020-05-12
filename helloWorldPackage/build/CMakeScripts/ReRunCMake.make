@@ -12,6 +12,7 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHu
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/CMakeFiles/3.15.5/CMakeCXXCompiler.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/CMakeFiles/3.15.5/CMakeSystem.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/CMakeFiles/git-data/grabRef.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-api/CMakeFiles/git-data/grabRef.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/package-info.json.in))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/GetGitRevisionDescription.cmake))
@@ -61,7 +62,7 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/Darwin-Initialize.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/Darwin.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/UnixPaths.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /var/folders/vw/hbckgg_x2qv3fn8p9d2w2w4r0000gn/T/fwrite_temp_dCYHk.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /var/folders/vw/hbckgg_x2qv3fn8p9d2w2w4r0000gn/T/fwrite_temp_QZ7NW.cmake))
 
 /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/CMakeFiles/cmake.check_cache: $(TARGETS)
 	/usr/local/Cellar/cmake/3.15.5/bin/cmake -H/Users/sofia/Documents/GitHub/gyro/helloWorldPackage -B/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build
