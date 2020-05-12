@@ -20,15 +20,15 @@ limitations under the License.
 #include <cmath>
 #include <vector>
 
-#include "Eigen/Dense"
-#include "ambisonics/ambisonic_codec.h"
-#include "ambisonics/associated_legendre_polynomials_generator.h"
-#include "ambisonics/utils.h"
-#include "base/audio_buffer.h"
-#include "base/constants_and_types.h"
-#include "base/logging.h"
-#include "base/spherical_angle.h"
-#include "utils/pseudoinverse.h"
+#include "../../resonance_audio/Eigen/Dense"
+#include "../../resonance_audio/ambisonics/ambisonic_codec.h"
+#include "../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h"
+#include "../../resonance_audio/ambisonics/utils.h"
+#include "../../resonance_audio/base/audio_buffer.h"
+#include "../../resonance_audio/base/constants_and_types.h"
+#include "../../resonance_audio/base/logging.h"
+#include "../../resonance_audio/base/spherical_angle.h"
+#include "../../resonance_audio/utils/pseudoinverse.h"
 
 namespace vraudio {
 // An encoder/decoder for ambisonic sound fields. It supports variable ambisonic

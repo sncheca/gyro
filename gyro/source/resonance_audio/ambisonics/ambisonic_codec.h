@@ -19,8 +19,8 @@ limitations under the License.
 
 #include <vector>
 
-#include "base/audio_buffer.h"
-#include "base/spherical_angle.h"
+#include "../../resonance_audio/base/audio_buffer.h"
+#include "../../resonance_audio/base/spherical_angle.h"
 
 namespace vraudio {
 // An encoder/decoder for ambisonic sound fields. It supports variable ambisonic

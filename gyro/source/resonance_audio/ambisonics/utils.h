@@ -19,9 +19,9 @@ limitations under the License.
 
 #include <cmath>
 
-#include "base/constants_and_types.h"
-#include "base/logging.h"
-#include "base/misc_math.h"
+#include "../../resonance_audio/base/constants_and_types.h"
+#include "../../resonance_audio/base/logging.h"
+#include "../../resonance_audio/base/misc_math.h"
 
 namespace vraudio {
 
