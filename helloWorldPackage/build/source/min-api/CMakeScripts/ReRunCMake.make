@@ -5,12 +5,8 @@ empty:=
 space:= $(empty) $(empty)
 spaceplus:= $(empty)\ $(empty)
 
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/.git/modules/helloWorldPackage/source/min-api/HEAD))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/.git/modules/helloWorldPackage/source/min-api/refs/heads/master))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-api/CMakeFiles/git-data/grabRef.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/GetGitRevisionDescription.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/GetGitRevisionDescription.cmake.in))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/Info.plist.in))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/git-rev.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/max-package.cmake))
