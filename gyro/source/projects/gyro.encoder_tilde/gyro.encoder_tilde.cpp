@@ -25,19 +25,38 @@
 
 using namespace c74::min;
 
-
-class thru : public object<thru>, public vector_operator<> {
+class encoder : public object<encoder>, public vector_operator<> {
+private:
+    int kAmbisonicOrder; //TODO make these const
+    int kNumOuts;
+    std::vector< std::unique_ptr<outlet<>> >    m_outlets; //note that this must be called m_outputs!
 public:
-    MIN_DESCRIPTION	{ "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
-    MIN_TAGS		{ "audio, sampling" };
-    MIN_AUTHOR		{ "Cycling '74" };
-    MIN_RELATED		{ "index~, buffer~, wave~" };
+    MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
+    MIN_TAGS        { "audio, sampling" };
+    MIN_AUTHOR        { "Cycling '74" };
+    MIN_RELATED        { "index~, buffer~, wave~" };
 
-    inlet<>  in1	{ this, "(signal) Channel 1", "signal" };
-    outlet<> out1		{ this, "(signal) Channel 1", "signal" };
-    outlet<> out2        { this, "(signal) Channel 2", "signal" };
-    outlet<> out3        { this, "(signal) Channel 3", "signal" };
-    outlet<> out4        { this, "(signal) Channel 4", "signal" };
+    inlet<>  in1    { this, "(signal) Channel 1", "signal" };
+//    outlet<> out1		{ this, "(signal) Channel 1", "signal" };
+//    outlet<> out2        { this, "(signal) Channel 2", "signal" };
+//    outlet<> out3        { this, "(signal) Channel 3", "signal" };
+//    outlet<> out4        { this, "(signal) Channel 4", "signal" };
+    
+    /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
+    encoder(const atoms& args = {}) { //TODO turn this into a function
+        if (args.empty())
+            error("Argument required. Please include the ambisonic order.");
+//        auto inlet_count = args[0];
+        kAmbisonicOrder = args[0]; //TODO put these as a ctor
+        kNumOuts = (kAmbisonicOrder+1)*(kAmbisonicOrder+1);
+        auto outlet_count = kNumOuts;
+
+        for (auto i=0; i < outlet_count; ++i) {
+            //TODO the channel number should be in the assist message. String nonsense.
+            auto an_outlet = std::make_unique<outlet<>>(this, "(signal) Channel", "signal");
+            m_outlets.push_back( an_outlet );
+        }
+    }
 
     void operator()(audio_bundle input, audio_bundle output) {
  
@@ -61,4 +80,4 @@ public:
 };
 
 
-MIN_EXTERNAL(thru);
+MIN_EXTERNAL(encoder);
