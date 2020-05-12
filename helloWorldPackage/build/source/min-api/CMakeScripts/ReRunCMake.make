@@ -6,7 +6,7 @@ space:= $(empty) $(empty)
 spaceplus:= $(empty)\ $(empty)
 
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/.git/HEAD))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/.git/refs/heads/feature-submodule1))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/.git/refs/heads/feature-submodule2))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-api/CMakeFiles/git-data/grabRef.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-api/max-api/script/GetGitRevisionDescription.cmake))
