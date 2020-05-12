@@ -9,3 +9,9 @@ The min-devkit (and therefore all packages derived from it, including `gyro`), c
 Before you will be able to commit a package to your repo, you must `git add` it. Note that you must include the trailing slash, like this:
 
 `git add pathToNewPackage/`
+
+I use a strict "read-only" policy with the submodules. Making changes to submodules necessitates additional git workflows that are prone to user-error. Thus, I recommend making no changes to the actual submodules. 
+
+# Notes on .gitignore
+Note that in the `min-devkit` submodule, the `build/` directory and the `externals` directory (among others) are in the `.gitignore`. This is good etiquette because you shouldn't be relying on past builds, you should always be able to build from source.
+However, the `helloWorldPackage` and the `gyro` the `build/` and `externals/` directories are not ignored. This is a temporary measure so that you can see my progress more easily on the repo. 
