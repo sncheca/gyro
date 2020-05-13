@@ -146,10 +146,10 @@
 									"id" : "obj-1",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
-									"numoutlets" : 4,
-									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 320.0, 215.0, 92.0, 23.0 ],
-									"text" : "gyro.encoder~"
+									"numoutlets" : 9,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
+									"patching_rect" : [ 320.0, 215.0, 103.0, 23.0 ],
+									"text" : "gyro.encoder~ 2"
 								}
 
 							}
