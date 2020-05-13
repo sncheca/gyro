@@ -3,7 +3,7 @@
 ///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-//in this file, audio comes in, is converted twice, and goes out exactly the same as it came in
+//an ambisonic encoder that supports 1st, 2nd, and 3rd order ambisonics. 
 
 #include "c74_min.h"
 #include "../../resonance_audio/ambisonics/ambisonic_codec_impl.h"
@@ -27,9 +27,9 @@ using namespace c74::min;
 
 class encoder : public object<encoder>, public vector_operator<> {
 private:
-    const int kAmbisonicOrder; //TODO make these const
+    const int kAmbisonicOrder;
     const int kNumOuts;
-    std::vector< std::shared_ptr<outlet<>> >    m_outlets; //note that this must be called m_outputs!
+    std::vector< std::unique_ptr<outlet<>> >    m_inlets; //note that this must be called m_outputs!
 public:
     MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
     MIN_TAGS        { "audio, sampling" };
@@ -47,28 +47,27 @@ public:
         if (args.empty()){
             error("Argument required. Please include the ambisonic order.");
         } else if(int(args[0]) > 3 || int(args[0]) < 1){
-            error("This package currently supports currently supports only 1st, 2nd, and 3rd order ambisonics.");
+            error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
         auto outlet_count = kNumOuts;
 
         for (auto i=0; i < outlet_count; ++i) {
             //TODO the channel number should be in the assist message. String nonsense.
-            auto an_outlet = std::make_shared<outlet<>>(this, "(signal) Channel", "signal");
-            m_outlets.push_back( an_outlet );
+            auto an_outlet = std::make_unique<outlet<>>(this, "(signal) Channel", "signal");
+            m_inlets.push_back( std::move(an_outlet) );
         }
     }
 
     void operator()(audio_bundle input, audio_bundle output) {
  
         auto nFrames = input.frame_count();
-        vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);      // resonance-style mono audio buffer for input
-        vraudio::AudioBuffer r_outputAudioBuffer(4, nFrames);     // resonance-style audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer);                      // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);             // resonance-style mono audio buffer for input
+        vraudio::AudioBuffer r_outputAudioBuffer(kNumOuts, nFrames);     // resonance-style audio buffer for output
+        Min2Res(input, &r_inputAudioBuffer);                             // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
-        int AMBISONIC_ORDER = 1;
         //initialise the ambisonic codec object I'll be using
         vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(0,0);
-        std::unique_ptr<vraudio::MonoAmbisonicCodec<>> aci(new vraudio::MonoAmbisonicCodec<>(AMBISONIC_ORDER, {myAngle}));
+        std::unique_ptr<vraudio::MonoAmbisonicCodec<>> aci(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}));
         
         aci->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);
         ///for now just copy the input buffer to the output buffer. Eventually this will become ambisonic processing

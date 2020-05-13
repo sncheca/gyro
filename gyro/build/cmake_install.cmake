@@ -38,6 +38,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/min-lib/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.encoder_tilde/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.hello-world/cmake_install.cmake")
+  include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.thru_tilde/cmake_install.cmake")
 
 endif()

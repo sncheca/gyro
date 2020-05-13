@@ -33,6 +33,7 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHu
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/gyro/source/min-lib/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.hello-world/CMakeLists.txt))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/CMakeLists.txt))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/CMakeCInformation.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/CMakeCXXInformation.cmake))
@@ -62,7 +63,7 @@ TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/Darwin-Initialize.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/Darwin.cmake))
 TARGETS += $(subst $(space),$(spaceplus),$(wildcard /usr/local/Cellar/cmake/3.15.5/share/cmake/Modules/Platform/UnixPaths.cmake))
-TARGETS += $(subst $(space),$(spaceplus),$(wildcard /var/folders/vw/hbckgg_x2qv3fn8p9d2w2w4r0000gn/T/fwrite_temp_OYCi0.cmake))
+TARGETS += $(subst $(space),$(spaceplus),$(wildcard /var/folders/vw/hbckgg_x2qv3fn8p9d2w2w4r0000gn/T/fwrite_temp_CJt3R.cmake))
 
 /Users/sofia/Documents/GitHub/gyro/gyro/build/CMakeFiles/cmake.check_cache: $(TARGETS)
 	/usr/local/Cellar/cmake/3.15.5/bin/cmake -H/Users/sofia/Documents/GitHub/gyro/gyro -B/Users/sofia/Documents/GitHub/gyro/gyro/build

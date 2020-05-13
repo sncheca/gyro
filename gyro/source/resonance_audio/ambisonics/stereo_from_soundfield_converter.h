@@ -17,7 +17,7 @@ limitations under the License.
 #ifndef RESONANCE_AUDIO_AMBISONICS_STEREO_FROM_SOUNDFIELD_CONVERTER_H_
 #define RESONANCE_AUDIO_AMBISONICS_STEREO_FROM_SOUNDFIELD_CONVERTER_H_
 
-#include "base/audio_buffer.h"
+#include "../../resonance_audio/base/audio_buffer.h"
 
 namespace vraudio {
 

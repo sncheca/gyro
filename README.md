@@ -26,3 +26,10 @@ As of now, I put the resonance_audio folder into the min_api/include directory. 
 ## Audio buffers
 Note that frames, as defined by Min, are basically just samples. So framecount() is the number of samples in each block. 
 Also, note that, although the documentation says that samples() is a vector, IT IS NOT! It is a double*
+
+## Attributions
+This work was jointly funded by the [Yale Center for Collaborative Arts and Media](https://ccam.yale.edu/) and the [Yale Department of Music](https://yalemusic.yale.edu/). Special thanks to Professor Konrad Kaczmarek.  
+All `min-devkit`, `min-api`, and `min-lib` code is the property of Cycling74. All `resonance_audio` code is the property of Google. All other code is the property of Sofia Checa, but may be used freely for any purpose, provided that Cycling74, Google, and Sofia are properly attributed. 
+
+##Help and Contact
+Please feel free to reach out to __ with bugs, issues, questions, or anything else. 

@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "dsp/gain.h"
+#include "../../resonance_audio/dsp/gain.h"
 
-#include "base/constants_and_types.h"
-#include "base/simd_macros.h"
-#include "base/simd_utils.h"
+#include "../../resonance_audio/base/constants_and_types.h"
+#include "../../resonance_audio/base/simd_macros.h"
+#include "../../resonance_audio/base/simd_utils.h"
 
 namespace vraudio {
 

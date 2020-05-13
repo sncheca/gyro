@@ -19,6 +19,7 @@ using namespace c74::min;
 
 //convert audio_bundle object (Min) to AudioBuffer object (Resonance)
 void Min2Res(audio_bundle& bundleIn, vraudio::AudioBuffer* bufferOut){
+    DCHECK(bufferOut);
     //require that specs of the audio objects match
     DCHECK_EQ(bundleIn.channel_count(), bufferOut->num_channels());
     DCHECK_EQ(bundleIn.frame_count(), bufferOut->num_frames());

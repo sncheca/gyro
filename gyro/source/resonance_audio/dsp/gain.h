@@ -18,7 +18,7 @@ limitations under the License.
 #define RESONANCE_AUDIO_DSP_GAIN_H_
 
 #include <cstddef>
-#include "base/audio_buffer.h"
+#include "../../resonance_audio/base/audio_buffer.h"
 
 namespace vraudio {
 
