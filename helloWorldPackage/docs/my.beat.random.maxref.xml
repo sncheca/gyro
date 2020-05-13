@@ -33,8 +33,8 @@
 		</objarg>
 
 		<objarg name='special' optional='1' type='number'>
-			<digest>A special number whose purpose has yet to be discovered</digest>
-			<description>A special number whose purpose has yet to be discovered. </description>
+			<digest>A special argument</digest>
+			<description>A special argument. </description>
 		</objarg>
 
 	</objarglist>
@@ -49,17 +49,17 @@
 			<description>Toggle the state of the timer. </description>
 		</method>
 
+		<method name='float'>
+			<digest>message for special number </digest>
+			<description>message for special number </description>
+		</method>
+
 	</methodlist>
 
 
 	<!--ATTRIBUTES-->
 
 	<attributelist>
-
-		<attribute name='special number' get='1' set='1' type='float64' size='1' >
-			<digest>special number</digest>
-			<description>special number. </description>
-		</attribute>
 
 		<attribute name='max' get='1' set='1' type='float64' size='1' >
 			<digest>Upper-bound of generated random interval</digest>

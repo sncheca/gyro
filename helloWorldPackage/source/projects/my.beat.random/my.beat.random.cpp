@@ -33,7 +33,7 @@ public:
         }
     };
     
-    argument<number> special_arg { this, "special", "A special number whose purpose has yet to be discovered.",
+    argument<number> special_arg { this, "special", "A special argument.",
         MIN_ARGUMENT_FUNCTION {
             specialNumber = arg;
         }
@@ -79,19 +79,17 @@ public:
         category {"Range"}, order {2}
     };
     
-    attribute<number> specialNumber { this, "special number", 42.0, title {"Special Number"},
-           description {"special number."},
-           setter { MIN_FUNCTION {
-               UNUSED(this);   // silences compiler warning since we don't access class members
-    
-               double value = args[0];
-               if (value < 1.0)
-                   value = 1.0;
-               return {value};
-           }},
-           category {"Range"}, order {3} //no idea what this is
-       };
+    attribute<number> specialNumber { this, "max", 42, title {"special number attribute"},
+       description {"Upper-bound of generated random interval."},
+       setter { MIN_FUNCTION {
+           UNUSED(this);   // silences compiler warning since we don't access class members
 
+           double value = args[0];
+           if (value < 1.0)
+               value = 1.0;
+           return {value};
+       }},
+   };
 
     attribute<bool> on { this, "on", false, title {"On/Off"},
         description {"Activate the timer."},
@@ -103,7 +101,14 @@ public:
             return args;
         }}
     };
-
+    
+    message<> m_number { this, "number", "message for special number",
+        MIN_FUNCTION {
+            if (inlet == 1)
+                specialNumber = args[0];
+            return {};
+        }
+    };
 
     message<> toggle { this, "int", "Toggle the state of the timer.",
         MIN_FUNCTION {
