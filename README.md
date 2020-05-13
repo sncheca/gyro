@@ -18,10 +18,19 @@ can use the max interface to do this. extras >> Min >> C++ Object Development Ki
 ## Modifying an Object
 - make sure that the brick is checked under "Target Membership" in Xcode before compiling. 
 - note that the actual updates to the object come from the .xml file in the doc folder
-- this file is only created when you create the first instance of the object. If, within one Max session, you delete all instances and then make a new one, THIS DOES NOT COUNT. If you have an instance in a patch and then close and reopen the patch, THIS DOES NOT COUNT. The only thing that counts is opening a max patch (devoid of instances) and then instantiating the first one. Only then will the .xml file be updated. 
+- this file is only created when you create the first instance of the object. If, within one Max session, you delete all instances and then make a new one, THIS DOES NOT COUNT. If you have an instance in a patch and then close and reopen the patch, THIS DOES NOT COUNT. The only thing that counts is opening a max patch (devoid of instances) and then instantiating the first one. Only then will the .xml file be updated. Quitting and restarting Max seems to do the trick for this. 
 
-## Adding source files
-As of now, I put the resonance_audio folder into the min_api/include directory. Then, in the cmakelists for each object, I link to there. This avoids having multiple copies of c++ files running around. When they pop up as source files, then they can be built into .o files and baked into new code!
+
+## Adding include directories and source files from external libraries
+This section is for those not familiar with `cmake`.  
+
+The `resonance_audio/` folder is located in the `source/` directory. To include all the `.h` files from the Resonance (or the library of your choice), you can either  
+1. write out each relative path verbatim [quick, but not elegant]  
+2. [more elegant option] modify the `CMakeLists.txt` inside each object's project folder. This entails using `set()` to define a new include directory, adding this new directory to the list inside `include_directories()`, and then using this new variable in path names wherever needed in the CMakeLists.txt file. This approach allows you to use shorter, localized path names inside your source files and header files. 
+
+You will need to compile and link some `.cpp` files from Resonance in each object. Do this by adding each `.cpp` file to the list of `SOURCE_FILES` and then include these `SOURCE_FILES` inside the `add_library()` function.  
+
+See any of the CMakeLists.txt files (located in `gyro/gyro/source/projects/gyro.someDirectory/`) for examples on how to do this. 
 
 ## Audio buffers
 Note that frames, as defined by Min, are basically just samples. So framecount() is the number of samples in each block. 

@@ -17,7 +17,7 @@ limitations under the License.
 #ifndef RESONANCE_AUDIO_BASE_SPHERICAL_ANGLE_H_
 #define RESONANCE_AUDIO_BASE_SPHERICAL_ANGLE_H_
 
-#include "../../resonance_audio/base/misc_math.h"
+#include "base/misc_math.h"
 
 namespace vraudio {
 

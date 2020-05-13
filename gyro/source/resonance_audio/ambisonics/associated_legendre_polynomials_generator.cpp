@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h"
+#include "ambisonics/associated_legendre_polynomials_generator.h"
 
 #include <cmath>
 
-#include "../../resonance_audio/base/logging.h"
-#include "../../resonance_audio/base/misc_math.h"
+#include "base/logging.h"
+#include "base/misc_math.h"
 
 namespace vraudio {
 

@@ -14,10 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "../../resonance_audio/ambisonics/stereo_from_soundfield_converter.h"
+#include "ambisonics/stereo_from_soundfield_converter.h"
 
-#include "../../resonance_audio/base/constants_and_types.h"
-#include "../../resonance_audio/dsp/gain.h"
+#include "base/constants_and_types.h"
+#include "dsp/gain.h"
 
 namespace vraudio {
 

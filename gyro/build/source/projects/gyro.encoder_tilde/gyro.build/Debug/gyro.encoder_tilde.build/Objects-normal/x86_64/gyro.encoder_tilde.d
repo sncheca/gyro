@@ -281,7 +281,7 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/logging.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/constants_and_types.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/spherical_angle.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/../../resonance_audio/base/misc_math.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/misc_math.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/../Eigen/Dense \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/ambisonics/utils.h \

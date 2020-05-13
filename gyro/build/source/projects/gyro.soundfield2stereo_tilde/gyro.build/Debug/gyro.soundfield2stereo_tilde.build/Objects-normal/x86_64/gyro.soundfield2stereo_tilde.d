@@ -85,14 +85,13 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/min-api/script/../include/../../min-lib/include/c74_lib_sync.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/min-api/script/../include/../../min-lib/include/c74_lib_oscillator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/stereo_from_soundfield_converter.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/audio_buffer.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/integral_types.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/aligned_allocator.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/simd_utils.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/channel_view.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/logging.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/constants_and_types.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/audio_buffer.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/integral_types.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/aligned_allocator.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/simd_utils.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/channel_view.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/logging.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/base/constants_and_types.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../pita/audio_buffer_conversion.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../pita/../resonance_audio/base/audio_buffer.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/dsp/gain.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/dsp/../../resonance_audio/base/audio_buffer.h
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/../../resonance_audio/dsp/gain.h

@@ -6,21 +6,21 @@
 //an ambisonic encoder that supports 1st, 2nd, and 3rd order ambisonics. 
 
 #include "c74_min.h"
-#include "../../resonance_audio/ambisonics/ambisonic_codec_impl.h"
-#include "../../resonance_audio/ambisonics/ambisonic_codec.h"
-#include "../../pita/audio_buffer_conversion.h"
+#include "ambisonics/ambisonic_codec_impl.h"
+#include "ambisonics/ambisonic_codec.h"
+#include "audio_buffer_conversion.h"
 
 //things that are included in the above res files
 //#include <cmath>
 //#include <vector>
 //#include "../Eigen/Dense" //not needed
 //#include "ambisonics/ambisonic_codec.h" //no .cpp file
-#include "../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h" //yes needed
+#include "ambisonics/associated_legendre_polynomials_generator.h" //yes needed
 //#include "../../resonance_audio/ambisonics/utils.h" //no .cpp file
 //#include "base/audio_buffer.h" //already in pita
 //#include "base/constants_and_types.h" //in audio_buffer
 //#include "base/logging.h" //in audio_buffer
-#include "../../resonance_audio/base/spherical_angle.h" //yes needed
+#include "base/spherical_angle.h" //yes needed
 //#include "utils/pseudoinverse.h" //no .cpp file
 
 using namespace c74::min;
@@ -66,7 +66,7 @@ public:
         Min2Res(input, &r_inputAudioBuffer);                             // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
         //initialise the ambisonic codec object I'll be using
-        vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(0,0);
+        vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(45,0);
         std::unique_ptr<vraudio::MonoAmbisonicCodec<>> aci(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}));
         
         aci->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);

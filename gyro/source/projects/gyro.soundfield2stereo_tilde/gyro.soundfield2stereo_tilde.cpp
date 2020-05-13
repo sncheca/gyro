@@ -6,10 +6,10 @@
 //convert a soundfield into stereo. This won't sound as good as binaural, but it's good for quick checking and ABing.
 
 #include "c74_min.h"
-#include "../../resonance_audio/ambisonics/stereo_from_soundfield_converter.h" //need cpp
-#include "../../pita/audio_buffer_conversion.h"
+#include "ambisonics/stereo_from_soundfield_converter.h"
+#include "audio_buffer_conversion.h"
 
-#include "../../resonance_audio/dsp/gain.h" //yes needed
+#include "dsp/gain.h"
 
 using namespace c74::min;
 
@@ -17,7 +17,7 @@ class soundfield2stereo : public object<soundfield2stereo>, public vector_operat
 private:
     const int kAmbisonicOrder;
     const int kNumIns;
-    std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_outputs!
+    std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
 public:
     MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
     MIN_TAGS        { "audio, sampling" };
@@ -46,7 +46,7 @@ public:
     void operator()(audio_bundle input, audio_bundle output) {
  
         auto nFrames = input.frame_count();
-        vraudio::AudioBuffer r_inputAudioBuffer(kNumIns, nFrames);      // resonance-style mono audio buffer for input
+        vraudio::AudioBuffer r_inputAudioBuffer(kNumIns, nFrames);      // resonance-style audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(2, nFrames);           // resonance-style audio buffer for output
         Min2Res(input, &r_inputAudioBuffer);                            // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         

@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include "../../resonance_audio/base/spherical_angle.h"
+#include "base/spherical_angle.h"
 
 #include <cmath>
 
-#include "../../resonance_audio/base/constants_and_types.h"
+#include "base/constants_and_types.h"
 
 namespace vraudio {
 

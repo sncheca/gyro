@@ -6,8 +6,8 @@
 //in this file, audio comes in, is converted twice, and goes out exactly the same as it came in
 
 #include "c74_min.h"
-#include "../../resonance_audio/base/audio_buffer.h"
-#include "../../pita/audio_buffer_conversion.h"
+#include "base/audio_buffer.h"
+#include "audio_buffer_conversion.h"
 
 using namespace c74::min;
 
