@@ -36,6 +36,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/min-api/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/min-lib/cmake_install.cmake")
+  include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.binauralDecoder_tilde/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.encoder_tilde/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.hello-world/cmake_install.cmake")
   include("/Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/cmake_install.cmake")

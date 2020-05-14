@@ -6,13 +6,13 @@ A MaxMSP wrapper for Google Resonance. A treat for your ears. Gyro because, well
 1. This wrapper utilizes the Cycling74's min-devkit, which can be found here: link to min-devkit: https://github.com/Cycling74/min-devkit
 2. The sounds you hear are powered by Google Resonance. [insert link]
 
-#Using Gyro
+# Using Gyro
 
 # Using min-devkit
 
 Important: There must be an alias for the min-devkit folder in the Max 8/Packages folder. 
 
-##Creating a new Package
+## Creating a new Package
 can use the max interface to do this. extras >> Min >> C++ Object Development Kit.maxpat. 
 
 ## Modifying an Object
@@ -40,5 +40,5 @@ Also, note that, although the documentation says that samples() is a vector, IT 
 This work was jointly funded by the [Yale Center for Collaborative Arts and Media](https://ccam.yale.edu/) and the [Yale Department of Music](https://yalemusic.yale.edu/). Special thanks to Professor Konrad Kaczmarek.  
 All `min-devkit`, `min-api`, and `min-lib` code is the property of Cycling74. All `resonance_audio` code is the property of Google. All other code is the property of Sofia Checa, but may be used freely for any purpose, provided that Cycling74, Google, and Sofia are properly attributed. 
 
-##Help and Contact
-Please feel free to reach out to __ with bugs, issues, questions, or anything else. 
+## Help and Contact
+Please feel free to reach out to [email alias] with bugs, issues, questions, or anything else. 

@@ -7,6 +7,11 @@ default:
 # Rules to remove targets that are older than anything to which they
 # link.  This forces Xcode to relink the targets from scratch.  It
 # does not seem to check these dependencies itself.
+PostBuild.gyro.binauralDecoder_tilde.Debug:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~
+
+
 PostBuild.gyro.encoder_tilde.Debug:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
@@ -37,6 +42,11 @@ PostBuild.gyro.thru_tilde.Debug:
 PostBuild.mock_kernel.Debug:
 /Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib
+
+
+PostBuild.gyro.binauralDecoder_tilde.Release:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~
 
 
 PostBuild.gyro.encoder_tilde.Release:
@@ -71,6 +81,11 @@ PostBuild.mock_kernel.Release:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib
 
 
+PostBuild.gyro.binauralDecoder_tilde.MinSizeRel:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~
+
+
 PostBuild.gyro.encoder_tilde.MinSizeRel:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
@@ -101,6 +116,11 @@ PostBuild.gyro.thru_tilde.MinSizeRel:
 PostBuild.mock_kernel.MinSizeRel:
 /Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/libmock_kernel.dylib:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/libmock_kernel.dylib
+
+
+PostBuild.gyro.binauralDecoder_tilde.RelWithDebInfo:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.binauralDecoder~.mxo/Contents/MacOS/gyro.binauralDecoder~
 
 
 PostBuild.gyro.encoder_tilde.RelWithDebInfo:
