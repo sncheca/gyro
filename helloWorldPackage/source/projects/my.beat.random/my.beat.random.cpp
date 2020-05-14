@@ -20,6 +20,7 @@ public:
     outlet<> bang_out		{ this, "(bang) triggers at randomized interval" };
     outlet<> interval_out	{ this, "(float) the interval for the current bang" };
     outlet<> special_out        { this, "(message) a special message"};
+    float localSpecial;
 
     argument<number> minimum_arg { this, "minimum", "Initial lower-bound of generated random interval.",
         MIN_ARGUMENT_FUNCTION {
@@ -33,16 +34,16 @@ public:
         }
     };
     
-    argument<number> special_arg { this, "special", "A special argument.",
-        MIN_ARGUMENT_FUNCTION {
-            specialNumber = arg;
-        }
-    };
+//    argument<number> special_arg { this, "special", "A special argument.",
+//        MIN_ARGUMENT_FUNCTION {
+//            specialNumber = arg;
+//        }
+//    };
 
     timer<> metro { this,
         MIN_FUNCTION {
             auto interval = lib::math::random(min, max);
-            special_out.send(float(specialNumber)); //this is odd. I need to understand these data types
+            special_out.send(float(localSpecial)); //this is odd. I need to understand these data types
             interval_out.send(interval);
             bang_out.send("bang");
 
@@ -79,17 +80,17 @@ public:
         category {"Range"}, order {2}
     };
     
-    attribute<number> specialNumber { this, "max", 42, title {"special number attribute"},
-       description {"Upper-bound of generated random interval."},
-       setter { MIN_FUNCTION {
-           UNUSED(this);   // silences compiler warning since we don't access class members
-
-           double value = args[0];
-           if (value < 1.0)
-               value = 1.0;
-           return {value};
-       }},
-   };
+//    attribute<number> specialNumber { this, "max", 42, title {"special number attribute"},
+//       description {"Upper-bound of generated random interval."},
+//       setter { MIN_FUNCTION {
+//           UNUSED(this);   // silences compiler warning since we don't access class members
+//
+//           double value = args[0];
+//           if (value < 1.0)
+//               value = 1.0;
+//           return {value};
+//       }},
+//   };
 
     attribute<bool> on { this, "on", false, title {"On/Off"},
         description {"Activate the timer."},
@@ -105,7 +106,7 @@ public:
     message<> m_number { this, "number", "message for special number",
         MIN_FUNCTION {
             if (inlet == 1)
-                specialNumber = args[0];
+                localSpecial = args[0];
             return {};
         }
     };

@@ -9,9 +9,9 @@
 /* Begin PBXAggregateTarget section */
 		436E33F56B674B71B6626A34 /* RUN_TESTS */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 9E93B8B6B06849C99C649CCE /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+			buildConfigurationList = 0B0048905A2A4069992C9E3B /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
 			buildPhases = (
-				F9ABB1BA54FB42068B89FB00 /* CMake PostBuild Rules */,
+				B4D5D4ABC9494C35B815DD01 /* CMake PostBuild Rules */,
 			);
 			dependencies = (
 			);
@@ -20,22 +20,22 @@
 		};
 		83869E97B1BA49B49CA789E1 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 75C2C0C7CA7C44D78CFDEE6D /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = EBDFC386AAA84718A8E006A9 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				5938E24E40224F54ABBA0FC7 /* CMake Rules */,
+				645029F7F02C4F83B074C2CF /* CMake Rules */,
 			);
 			dependencies = (
-				FB7D709DE61742F8BE69DA90 /* PBXTargetDependency */,
-				0C6868E5319C4C76BC8ED68B /* PBXTargetDependency */,
+				E22E9DB49F1C47C796374400 /* PBXTargetDependency */,
+				3D80A09859F442C9A1FDFC18 /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
 		};
 		A7ED6A0C239B4B2D9CD2AF55 /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 67D1DEDEFEA4478092C6AA42 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = 7B49A3A034FF489C9B98985E /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				608D940F5BDE42ECAD20F24E /* CMake Rules */,
+				5A9141D6CAF442EEA438186C /* CMake Rules */,
 			);
 			dependencies = (
 			);
@@ -44,11 +44,11 @@
 		};
 		E99B8F36F5084584B1F3E5B2 /* LIB */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = FC264460525143988D9076C8 /* Build configuration list for PBXAggregateTarget "LIB" */;
+			buildConfigurationList = F5086FE942C34DCD9535C8A1 /* Build configuration list for PBXAggregateTarget "LIB" */;
 			buildPhases = (
 			);
 			dependencies = (
-				B5E9D6F75F634716BAF94185 /* PBXTargetDependency */,
+				62FE824B90774B2EAB7826C1 /* PBXTargetDependency */,
 			);
 			name = LIB;
 			productName = LIB;
@@ -56,143 +56,143 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildStyle section */
-		1D0EC33D2DEE44FF8E3FDA68 /* Release */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = Release;
-		};
-		487189242D824A9696FA6573 /* MinSizeRel */ = {
+		17B5F628F1BB4F4394946752 /* MinSizeRel */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = MinSizeRel;
 		};
-		92075128401044B48927E50D /* Debug */ = {
+		23B3D79A11C243F9984A23B3 /* Debug */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Debug;
 		};
-		C9433EB632194E87BC09BB78 /* RelWithDebInfo */ = {
+		9617CB44D52442EE9B556AC5 /* RelWithDebInfo */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = RelWithDebInfo;
 		};
+		AEA12B20882C4C07BB2147A7 /* Release */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Release;
+		};
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		0F3D0A8935754908A4E0F92D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0FAB37473024CC4BC574791 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7ED6A0C239B4B2D9CD2AF55;
-			remoteInfo = ZERO_CHECK;
-		};
-		1E866E60F66447A79F0CEE7F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F0FAB37473024CC4BC574791 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A7ED6A0C239B4B2D9CD2AF55;
-			remoteInfo = ZERO_CHECK;
-		};
-		D71FF627F5A5487EBEA75BB0 /* PBXContainerItemProxy */ = {
+		6092580BEF5849148DBC6DE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0FAB37473024CC4BC574791 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E99B8F36F5084584B1F3E5B2;
 			remoteInfo = LIB;
 		};
+		7E00FEFC8AE94CA99C16A545 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0FAB37473024CC4BC574791 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7ED6A0C239B4B2D9CD2AF55;
+			remoteInfo = ZERO_CHECK;
+		};
+		E9383AE16DA24C01A68452DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0FAB37473024CC4BC574791 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A7ED6A0C239B4B2D9CD2AF55;
+			remoteInfo = ZERO_CHECK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		079080E860F943808B464253 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib.h; path = include/c74_lib.h; sourceTree = SOURCE_ROOT; };
-		07CB7FFB044941D1A7604373 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_onepole.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_onepole.h; path = include/c74_lib_onepole.h; sourceTree = SOURCE_ROOT; };
-		0C1798BB89D0493085DBD1BE /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_oscillator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_oscillator.h; path = include/c74_lib_oscillator.h; sourceTree = SOURCE_ROOT; };
-		10BA1B1C7EF54A73B4C55384 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_generator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_generator.h; path = include/c74_lib_generator.h; sourceTree = SOURCE_ROOT; };
-		17B382B20A874BB397429063 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_saturation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_saturation.h; path = include/c74_lib_saturation.h; sourceTree = SOURCE_ROOT; };
-		29EE636BE0504830BEA24604 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_circular_storage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_circular_storage.h; path = include/c74_lib_circular_storage.h; sourceTree = SOURCE_ROOT; };
-		38623F6DB1544304888C620A /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_delay.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_delay.h; path = include/c74_lib_delay.h; sourceTree = SOURCE_ROOT; };
-		44655A83A60C4761B9A3E230 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_dcblocker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_dcblocker.h; path = include/c74_lib_dcblocker.h; sourceTree = SOURCE_ROOT; };
-		45F436239B1C40B1B1E5DFF8 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_limiter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_limiter.h; path = include/c74_lib_limiter.h; sourceTree = SOURCE_ROOT; };
-		4E6925CEF48840C5BC0C546D /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_sync.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_sync.h; path = include/c74_lib_sync.h; sourceTree = SOURCE_ROOT; };
-		51086F6A4BF14C3496DCD88F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_adsr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_adsr.h; path = include/c74_lib_adsr.h; sourceTree = SOURCE_ROOT; };
-		530CBAB0F7FA4B0B9F8F55DB /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_easing.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_easing.h; path = include/c74_lib_easing.h; sourceTree = SOURCE_ROOT; };
-		7350033F3FFC49BE954236BA /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_math.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_math.h; path = include/c74_lib_math.h; sourceTree = SOURCE_ROOT; };
-		7F1252714ABD4F8DA3D9F203 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		8ADA38CB29004D79AE02B8BC /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_interpolator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_interpolator.h; path = include/c74_lib_interpolator.h; sourceTree = SOURCE_ROOT; };
-		8CE92B28D3B54B72969959A2 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_allpass.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_allpass.h; path = include/c74_lib_allpass.h; sourceTree = SOURCE_ROOT; };
-		B04BBC6538474D37B42C16B9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_filters.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_filters.h; path = include/c74_lib_filters.h; sourceTree = SOURCE_ROOT; };
-		C553999CC80245FFAE0F3125 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		2DE051F1A95B4804B48F2A99 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_interpolator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_interpolator.h; path = include/c74_lib_interpolator.h; sourceTree = SOURCE_ROOT; };
+		370EA273C0B84131835B8E35 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_onepole.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_onepole.h; path = include/c74_lib_onepole.h; sourceTree = SOURCE_ROOT; };
+		3BF82286113641F59F53E45F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_dcblocker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_dcblocker.h; path = include/c74_lib_dcblocker.h; sourceTree = SOURCE_ROOT; };
+		4BEA709BEEDC4BE3AA6A9BF1 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_allpass.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_allpass.h; path = include/c74_lib_allpass.h; sourceTree = SOURCE_ROOT; };
+		53606E46B3EB43B380DC6F73 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_oscillator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_oscillator.h; path = include/c74_lib_oscillator.h; sourceTree = SOURCE_ROOT; };
+		59D8BB3884E048C3B44226A6 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_adsr.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_adsr.h; path = include/c74_lib_adsr.h; sourceTree = SOURCE_ROOT; };
+		5AA95BB20AEC458A8EB32A46 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		5FB847F0E9894F9491BB8877 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_saturation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_saturation.h; path = include/c74_lib_saturation.h; sourceTree = SOURCE_ROOT; };
+		6192AD7623FC4E178D996A5A /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_filters.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_filters.h; path = include/c74_lib_filters.h; sourceTree = SOURCE_ROOT; };
+		676BDCA655B24C1095B0D5B8 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		71B647E306644D97907D1CC4 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_delay.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_delay.h; path = include/c74_lib_delay.h; sourceTree = SOURCE_ROOT; };
+		832C4C253EF7421487243BA9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_circular_storage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_circular_storage.h; path = include/c74_lib_circular_storage.h; sourceTree = SOURCE_ROOT; };
+		832E47DF8A6C469BA2460EA1 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_easing.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_easing.h; path = include/c74_lib_easing.h; sourceTree = SOURCE_ROOT; };
+		9880F605778D4CCCB0AF563F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_limiter.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_limiter.h; path = include/c74_lib_limiter.h; sourceTree = SOURCE_ROOT; };
+		CDA5BABBDA334BE482210B93 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_sync.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_sync.h; path = include/c74_lib_sync.h; sourceTree = SOURCE_ROOT; };
+		E831E660CEEA4457BF1254E2 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_math.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_math.h; path = include/c74_lib_math.h; sourceTree = SOURCE_ROOT; };
+		EA2F0C067EDA42EFB0B8DE1D /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_generator.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib_generator.h; path = include/c74_lib_generator.h; sourceTree = SOURCE_ROOT; };
+		ED2CE1FAC19C45D6A709AEB9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = c74_lib.h; path = include/c74_lib.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		2278366AD49D46F2A5D334A3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7E16D173A0D94A7B8D45DB3A /* Header Files */ = {
-			isa = PBXGroup;
-			children = (
-				079080E860F943808B464253 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib.h */,
-				51086F6A4BF14C3496DCD88F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_adsr.h */,
-				8CE92B28D3B54B72969959A2 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_allpass.h */,
-				29EE636BE0504830BEA24604 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_circular_storage.h */,
-				44655A83A60C4761B9A3E230 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_dcblocker.h */,
-				38623F6DB1544304888C620A /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_delay.h */,
-				530CBAB0F7FA4B0B9F8F55DB /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_easing.h */,
-				B04BBC6538474D37B42C16B9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_filters.h */,
-				10BA1B1C7EF54A73B4C55384 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_generator.h */,
-				8ADA38CB29004D79AE02B8BC /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_interpolator.h */,
-				45F436239B1C40B1B1E5DFF8 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_limiter.h */,
-				7350033F3FFC49BE954236BA /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_math.h */,
-				07CB7FFB044941D1A7604373 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_onepole.h */,
-				0C1798BB89D0493085DBD1BE /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_oscillator.h */,
-				17B382B20A874BB397429063 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_saturation.h */,
-				4E6925CEF48840C5BC0C546D /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_sync.h */,
-			);
-			name = "Header Files";
-			sourceTree = "<group>";
-		};
-		9A3C5392CDEA43FEB2FD101A /* LIB */ = {
-			isa = PBXGroup;
-			children = (
-				7E16D173A0D94A7B8D45DB3A /* Header Files */,
-				C553999CC80245FFAE0F3125 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */,
-			);
-			name = LIB;
-			sourceTree = "<group>";
-		};
-		ABC1232D6899461B8450B08A /* ALL_BUILD */ = {
-			isa = PBXGroup;
-			children = (
-				BB93EE8F2211443AB4F78E9B /* CMake Rules */,
-				7F1252714ABD4F8DA3D9F203 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */,
-			);
-			name = ALL_BUILD;
-			sourceTree = "<group>";
-		};
-		BB93EE8F2211443AB4F78E9B /* CMake Rules */ = {
+		050183336D3B438DA4A85A2E /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		EEF2B25FBD334AC3AE9211D8 = {
+		060A7D8158094C8E981C49C8 /* Header Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A3C5392CDEA43FEB2FD101A /* LIB */,
-				ABC1232D6899461B8450B08A /* ALL_BUILD */,
-				2278366AD49D46F2A5D334A3 /* Products */,
+				ED2CE1FAC19C45D6A709AEB9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib.h */,
+				59D8BB3884E048C3B44226A6 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_adsr.h */,
+				4BEA709BEEDC4BE3AA6A9BF1 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_allpass.h */,
+				832C4C253EF7421487243BA9 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_circular_storage.h */,
+				3BF82286113641F59F53E45F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_dcblocker.h */,
+				71B647E306644D97907D1CC4 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_delay.h */,
+				832E47DF8A6C469BA2460EA1 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_easing.h */,
+				6192AD7623FC4E178D996A5A /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_filters.h */,
+				EA2F0C067EDA42EFB0B8DE1D /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_generator.h */,
+				2DE051F1A95B4804B48F2A99 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_interpolator.h */,
+				9880F605778D4CCCB0AF563F /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_limiter.h */,
+				E831E660CEEA4457BF1254E2 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_math.h */,
+				370EA273C0B84131835B8E35 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_onepole.h */,
+				53606E46B3EB43B380DC6F73 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_oscillator.h */,
+				5FB847F0E9894F9491BB8877 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_saturation.h */,
+				CDA5BABBDA334BE482210B93 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/include/c74_lib_sync.h */,
+			);
+			name = "Header Files";
+			sourceTree = "<group>";
+		};
+		13CEDD2D656F423CB38B26C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		598A9DFBBFEA4984ACDF16D7 /* LIB */ = {
+			isa = PBXGroup;
+			children = (
+				060A7D8158094C8E981C49C8 /* Header Files */,
+				5AA95BB20AEC458A8EB32A46 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */,
+			);
+			name = LIB;
+			sourceTree = "<group>";
+		};
+		6503943A36764201AA19EA7B /* ALL_BUILD */ = {
+			isa = PBXGroup;
+			children = (
+				050183336D3B438DA4A85A2E /* CMake Rules */,
+				676BDCA655B24C1095B0D5B8 /* /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/source/min-lib/CMakeLists.txt */,
+			);
+			name = ALL_BUILD;
+			sourceTree = "<group>";
+		};
+		F30DB1EF8FC246FEA98A755E = {
+			isa = PBXGroup;
+			children = (
+				598A9DFBBFEA4984ACDF16D7 /* LIB */,
+				6503943A36764201AA19EA7B /* ALL_BUILD */,
+				13CEDD2D656F423CB38B26C9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,18 +205,18 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1120;
 			};
-			buildConfigurationList = B035A943AC33403689F1CE7B /* Build configuration list for PBXProject "MinLib" */;
+			buildConfigurationList = BBF8297FF5AA42C28210E991 /* Build configuration list for PBXProject "MinLib" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				92075128401044B48927E50D /* Debug */,
-				1D0EC33D2DEE44FF8E3FDA68 /* Release */,
-				487189242D824A9696FA6573 /* MinSizeRel */,
-				C9433EB632194E87BC09BB78 /* RelWithDebInfo */,
+				23B3D79A11C243F9984A23B3 /* Debug */,
+				AEA12B20882C4C07BB2147A7 /* Release */,
+				17B5F628F1BB4F4394946752 /* MinSizeRel */,
+				9617CB44D52442EE9B556AC5 /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = EEF2B25FBD334AC3AE9211D8;
+			mainGroup = F30DB1EF8FC246FEA98A755E;
 			projectDirPath = "../../../source/min-lib";
 			projectRoot = "";
 			targets = (
@@ -229,7 +229,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2D8CFD9B60694DF7949C15A1 = {
+		0980FA286C424B38A11EF727 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -244,48 +244,7 @@
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		5938E24E40224F54ABBA0FC7 /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib -f /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		5DEAEC282B7C4DC58BA0917C = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		5E8C771FEE314EA2B06A2069 = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		608D940F5BDE42ECAD20F24E /* CMake Rules */ = {
+		5A9141D6CAF442EEA438186C /* CMake Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -296,7 +255,18 @@ exit 0";
 			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib -f /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		DA8BD71563B5458ABE2D01BE = {
+		645029F7F02C4F83B074C2CF /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib -f /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		933F790F5FF346AAB06DD415 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -311,7 +281,7 @@ exit 0";
 exit 0";
 			showEnvVarsInLog = 0;
 		};
-		F9ABB1BA54FB42068B89FB00 /* CMake PostBuild Rules */ = {
+		B4D5D4ABC9494C35B815DD01 /* CMake PostBuild Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,288 +292,58 @@ exit 0";
 			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib -f /Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
+		B9DA000CC9BE442098441BB8 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		E2BDD21A6B9C4D85837BD051 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0C6868E5319C4C76BC8ED68B /* PBXTargetDependency */ = {
+		3D80A09859F442C9A1FDFC18 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E99B8F36F5084584B1F3E5B2 /* LIB */;
-			targetProxy = D71FF627F5A5487EBEA75BB0 /* PBXContainerItemProxy */;
+			targetProxy = 6092580BEF5849148DBC6DE2 /* PBXContainerItemProxy */;
 		};
-		B5E9D6F75F634716BAF94185 /* PBXTargetDependency */ = {
+		62FE824B90774B2EAB7826C1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7ED6A0C239B4B2D9CD2AF55 /* ZERO_CHECK */;
-			targetProxy = 0F3D0A8935754908A4E0F92D /* PBXContainerItemProxy */;
+			targetProxy = E9383AE16DA24C01A68452DC /* PBXContainerItemProxy */;
 		};
-		FB7D709DE61742F8BE69DA90 /* PBXTargetDependency */ = {
+		E22E9DB49F1C47C796374400 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A7ED6A0C239B4B2D9CD2AF55 /* ZERO_CHECK */;
-			targetProxy = 1E866E60F66447A79F0CEE7F /* PBXContainerItemProxy */;
+			targetProxy = 7E00FEFC8AE94CA99C16A545 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		14127A7EA61143F1AE2DB8D8 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		1426418EE0DE4EBCB8B7A265 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		192B2893A22642AC842160AE /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		1D8E37DDAC2E4C45A20DAC40 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		1DC69DED896040718FB2452C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = LIB;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		304A16AB68BD43BA906D8F49 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		4650C196F891474F8ABE8746 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
-			};
-			name = MinSizeRel;
-		};
-		466C2A580F954CB8A54B2C23 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		4A4E090873824036B4C31563 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		4FD0FCFEC94D4AB1B09489E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
-			};
-			name = Release;
-		};
-		8438CC1E1CDC43B8BB0E59E8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		87E3E717A0AD4B70838418CC /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = LIB;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		973C0B1E25F14D34B93EA3FF /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = MinSizeRel;
-		};
-		A34ABB002C6A46E48EA5C10F /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		C2E52D6FD4DB497AACFB515B /* RelWithDebInfo */ = {
+		052D16E15186498686FE8515 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -623,7 +363,117 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		D3CBD0674F8E4BC58E5D7435 /* Debug */ = {
+		1AC56C24924241C7A7D7A547 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		2276111F1B834941A962D6F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
+			};
+			name = Release;
+		};
+		2B14B14FA824455D8C2306A0 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		3A8AB2E92DDC40869EE68D82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = LIB;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		53E412C95A4D4F16988E2A9E /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		7BB92C2552174CDEA25C7289 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = MinSizeRel;
+		};
+		7FD6B06756AB4E34B012BDF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
@@ -633,7 +483,107 @@ exit 0";
 			};
 			name = Debug;
 		};
-		D49885B34ABA466793185915 /* RelWithDebInfo */ = {
+		849C33E4E0E34FE8907D3D60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		8691886AE36341528F44B0A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		911F0CBEEDAD436885D5A584 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = LIB;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Debug;
+		};
+		A06DA861486B4918972E6E5D /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
+			};
+			name = RelWithDebInfo;
+		};
+		A09EBFC919D74C3A81787963 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
+			};
+			name = MinSizeRel;
+		};
+		C4C19FD811CA4C889CDE751E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		C722922AA24A43418FC43567 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -653,7 +603,7 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		DD4D9811BA8C4AF790D3A30E /* MinSizeRel */ = {
+		D5F4E472EAFC4FE2A91B83B1 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -673,17 +623,27 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		E2C257B24EE442DEABEA9B2F /* RelWithDebInfo */ = {
+		DFB0322CF98B46679618B397 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib/build";
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = RelWithDebInfo;
+			name = Debug;
 		};
-		F4C8EEE505304E7ABBDCCDE9 /* Release */ = {
+		E54F0EF5A41B4680948C2D55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -702,61 +662,101 @@ exit 0";
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
 			name = Release;
+		};
+		E9B69DD446974E83BA92FC3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		FBDEF6887BD449F8BFC51AF9 /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = "/Users/sofia/Documents/GitHub/gyro/helloWorldPackage/build/source/min-lib";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		67D1DEDEFEA4478092C6AA42 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		0B0048905A2A4069992C9E3B /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				192B2893A22642AC842160AE /* Debug */,
-				304A16AB68BD43BA906D8F49 /* Release */,
-				4A4E090873824036B4C31563 /* MinSizeRel */,
-				A34ABB002C6A46E48EA5C10F /* RelWithDebInfo */,
+				DFB0322CF98B46679618B397 /* Debug */,
+				E54F0EF5A41B4680948C2D55 /* Release */,
+				2B14B14FA824455D8C2306A0 /* MinSizeRel */,
+				1AC56C24924241C7A7D7A547 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		75C2C0C7CA7C44D78CFDEE6D /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		7B49A3A034FF489C9B98985E /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1426418EE0DE4EBCB8B7A265 /* Debug */,
-				8438CC1E1CDC43B8BB0E59E8 /* Release */,
-				466C2A580F954CB8A54B2C23 /* MinSizeRel */,
-				D49885B34ABA466793185915 /* RelWithDebInfo */,
+				8691886AE36341528F44B0A0 /* Debug */,
+				E9B69DD446974E83BA92FC3B /* Release */,
+				53E412C95A4D4F16988E2A9E /* MinSizeRel */,
+				FBDEF6887BD449F8BFC51AF9 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		9E93B8B6B06849C99C649CCE /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+		BBF8297FF5AA42C28210E991 /* Build configuration list for PBXProject "MinLib" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D8E37DDAC2E4C45A20DAC40 /* Debug */,
-				F4C8EEE505304E7ABBDCCDE9 /* Release */,
-				973C0B1E25F14D34B93EA3FF /* MinSizeRel */,
-				14127A7EA61143F1AE2DB8D8 /* RelWithDebInfo */,
+				7FD6B06756AB4E34B012BDF6 /* Debug */,
+				2276111F1B834941A962D6F1 /* Release */,
+				A09EBFC919D74C3A81787963 /* MinSizeRel */,
+				A06DA861486B4918972E6E5D /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		B035A943AC33403689F1CE7B /* Build configuration list for PBXProject "MinLib" */ = {
+		EBDFC386AAA84718A8E006A9 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D3CBD0674F8E4BC58E5D7435 /* Debug */,
-				4FD0FCFEC94D4AB1B09489E1 /* Release */,
-				4650C196F891474F8ABE8746 /* MinSizeRel */,
-				E2C257B24EE442DEABEA9B2F /* RelWithDebInfo */,
+				849C33E4E0E34FE8907D3D60 /* Debug */,
+				C4C19FD811CA4C889CDE751E /* Release */,
+				7BB92C2552174CDEA25C7289 /* MinSizeRel */,
+				C722922AA24A43418FC43567 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		FC264460525143988D9076C8 /* Build configuration list for PBXAggregateTarget "LIB" */ = {
+		F5086FE942C34DCD9535C8A1 /* Build configuration list for PBXAggregateTarget "LIB" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1DC69DED896040718FB2452C /* Debug */,
-				87E3E717A0AD4B70838418CC /* Release */,
-				DD4D9811BA8C4AF790D3A30E /* MinSizeRel */,
-				C2E52D6FD4DB497AACFB515B /* RelWithDebInfo */,
+				911F0CBEEDAD436885D5A584 /* Debug */,
+				3A8AB2E92DDC40869EE68D82 /* Release */,
+				D5F4E472EAFC4FE2A91B83B1 /* MinSizeRel */,
+				052D16E15186498686FE8515 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
