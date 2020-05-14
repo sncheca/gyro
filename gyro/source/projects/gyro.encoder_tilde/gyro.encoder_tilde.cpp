@@ -29,7 +29,10 @@ class encoder : public object<encoder>, public vector_operator<> {
 private:
     const int kAmbisonicOrder;
     const int kNumOuts;
-    float angle = 45;
+    float angle1 = 0;
+    float angle2 = 0;
+    inlet<>  in1     { this, "(signal) Channel 1", "signal" };
+    inlet<>  angleIn { this, "(list) Numbers to specify angles in axis-angle", "list"}; //first number is side-to-side, second number is up-down
     std::vector< std::unique_ptr<outlet<>> >    m_outlets; //note that this must be called m_outputs!
 public:
     MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
@@ -37,8 +40,6 @@ public:
     MIN_AUTHOR        { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
 
-    inlet<>  in1     { this, "(signal) Channel 1", "signal" };
-//    inlet<>  angleIn { this, "(float) Number to specify angle" };
 
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     encoder(const atoms& args = {}):kAmbisonicOrder(args[0]), kNumOuts((kAmbisonicOrder+1)*(kAmbisonicOrder+1)) { //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
@@ -52,30 +53,33 @@ public:
         for (auto i=0; i < outlet_count; ++i) {
             //TODO the channel number should be in the assist message. String nonsense.
             auto an_outlet = std::make_unique<outlet<>>(this, "(signal) Channel", "signal");
-            m_outlets.push_back( std::move(an_outlet) );
+            m_outlets.push_back( std::move(an_outlet) ); //TODO put this in one line
         }
     }
     
-//    message<> m_number { this, "number", "message for special number",
-//        MIN_FUNCTION {
-//            if (inlet == 1)
-//                angle = args[0];
-//            return {};
-//        }
-//    };
+    message<> axisAngleList { this, "list", "message for angles",
+        MIN_FUNCTION {
+            if (inlet == 1)
+                angle1 = args[0];
+                angle2 = args[1];
+            return {};
+        }
+    };
 
     void operator()(audio_bundle input, audio_bundle output) {
+        double* s = input.samples(0);
+        audio_bundle tempIn(&s, 1, input.frame_count()); //this is very nasty and inelegant.
  
-        auto nFrames = input.frame_count();
+        auto nFrames = tempIn.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);             // resonance-style mono audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(kNumOuts, nFrames);     // resonance-style audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer);                             // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        Min2Res(tempIn, &r_inputAudioBuffer);                             // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
         //initialise the ambisonic codec object I'll be using
-        vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(angle, 0);
-        std::unique_ptr<vraudio::MonoAmbisonicCodec<>> aci(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}));
+        vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(angle1, angle2);
+        std::unique_ptr<vraudio::MonoAmbisonicCodec<>> myCodec(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}));
         
-        aci->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);
+        myCodec->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);
         ///for now just copy the input buffer to the output buffer. Eventually this will become ambisonic processing
 //        r_outputAudioBuffer = r_inputAudioBuffer; //utilize copy assignment defined by AudioBuffer class
         
