@@ -20,34 +20,37 @@
 using namespace c74::min;
 //using namespace vraudio; //TODO clean these (after everything else compiles)
 
-std::ifstream filenameToIstream(const string s){
-    std::ifstream ifilestream;
-    ifilestream.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
-    return ifilestream;
-}
+//std::ifstream filenameToIstream(const string s){
+//    std::ifstream ifs;
+//    ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
+//    if(ifs.good()){
+//        return ifs;
+//    } else {
+//        error("Unable to open file" + s);
+//        exit(3);
+//    }
+//}
 
 class binauralDecoder : public object<binauralDecoder>, public vector_operator<> {
 private:
     const int kAmbisonicOrder;
     const int kNumIns;
     const float kSampleRate = c74::max::sys_getsr();
-    size_t kBlockSize = c74::max::sys_getblksize();
+    const size_t kBlockSize = c74::max::sys_getblksize();
 
-    //access the wav file needed to construct the hrir. TODO move more of this into the above function.
-    const string fileName = "../../resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH/sh_hrir_order_" + std::to_string(kAmbisonicOrder) + ".wav";
-    std::ifstream ifs = filenameToIstream(fileName);
-    std::unique_ptr<const vraudio::Wav> wav = vraudio::Wav::CreateOrNull(&ifs);
+    //convert the hrir wav file into something we can use. TODO move more of this into the above function, depending on how we use it.
+    std::ifstream ifs;
+    std::unique_ptr<const vraudio::Wav> wav;
     
-    vraudio::Resampler resampler;
-    unique_ptr<vraudio::AudioBuffer> my_sh_hrirs = CreateShHrirsFromWav(*wav, kSampleRate, &resampler);
-    vraudio::FftManager fftManager;
-    vraudio::AmbisonicBinauralDecoder binaural_decoder;
-    //    std::unique_ptr<vraudio::AmbisonicBinauralDecoder> binaural_decoder(new vraudio::AmbisonicBinauralDecoder(*my_sh_hrirs, kBlockSize, &fftManager));
+    vraudio::Resampler resampler; //use default constructor
+    unique_ptr<vraudio::AudioBuffer> my_sh_hrirs;
     
+    vraudio::FftManager fftManager; //will be initialised in initialisation list below
+    vraudio::AmbisonicBinauralDecoder binaural_decoder; //will be initialised in initialisation list below
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
 public:
-    MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
+    MIN_DESCRIPTION    { "binaural decoder" };
     MIN_TAGS           { "audio, sampling" };
     MIN_AUTHOR         { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
@@ -55,10 +58,13 @@ public:
 
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     binauralDecoder(const atoms& args = {})
-        : kAmbisonicOrder(args[0]),
-          kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),
-          fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
-          binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager){ //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
+      : kAmbisonicOrder(args[0]),
+        kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),
+        ifs(filenameToIstream("../../resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH/sh_hrir_order_" + std::to_string(kAmbisonicOrder) + ".wav")),
+        wav(vraudio::Wav::CreateOrNull(&ifs)),
+        my_sh_hrirs(CreateShHrirsFromWav(*wav, kSampleRate, &resampler)),
+        fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
+        binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager){ //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
         
         //inlet handling
         if (args.empty()){
@@ -77,6 +83,19 @@ public:
     
     outlet<>  out1    { this, "(signal) Stereo Left", "signal" };
     outlet<>  out2    { this, "(signal) Stereo Right", "signal" };
+    
+    c74::min::function stringToStream = MIN_FUNCTION {
+        std::ifstream ifs;
+        ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
+        if(ifs.good()){
+            
+//            return ifs;
+        } else {
+            error("Unable to open file" + s);
+            exit(3);
+        }
+        return {};
+    }
 
     void operator()(audio_bundle input, audio_bundle output) {
  
@@ -86,7 +105,7 @@ public:
         Min2Res(input, &r_inputAudioBuffer);                            // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
 //        StereoFromSoundfield(r_inputAudioBuffer, &r_outputAudioBuffer); //convert the soundfield into stereo using mid-side
-        binaural_decoder.Process(r_inputAudioBuffer, &r_outputAudioBuffer);
+        binaural_decoder.Process(r_inputAudioBuffer, &r_outputAudioBuffer); //decode the buffer!
         
         Res2Min(r_outputAudioBuffer, &output);                    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
