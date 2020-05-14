@@ -23,15 +23,35 @@ include_directories(
 
 
 set( SOURCE_FILES
+
+    #this indenting scheme is meant to shed some light on dependencies, although there are many more interdependancies than expressed here. 
+
 	${PROJECT_NAME}.cpp
-	${RESONANCE_INCLUDES}/base/audio_buffer.cpp
-    ${RESONANCE_INCLUDES}/base/channel_view.cpp
-    ${RESONANCE_INCLUDES}/base/simd_utils.cpp
-    ${RESONANCE_INCLUDES}/ambisonics/ambisonic_binaural_decoder.cpp
-    ${RESONANCE_INCLUDES}/dsp/fft_manager.cpp
-    ${RESONANCE_INCLUDES}/dsp/partitioned_fft_filter.cpp
-    ${RESONANCE_INCLUDES}/dsp/sh_hrir_creator.cpp
-    ${RESONANCE_INCLUDES}/utils/wav.cpp
+        #for audio buffers
+        ${RESONANCE_INCLUDES}/base/audio_buffer.cpp
+        ${RESONANCE_INCLUDES}/base/channel_view.cpp
+        ${RESONANCE_INCLUDES}/base/simd_utils.cpp
+    
+        ${RESONANCE_INCLUDES}/ambisonics/ambisonic_binaural_decoder.cpp
+            ${RESONANCE_INCLUDES}/dsp/fft_manager.cpp
+                ${RESONANCE_INCLUDES}/third_party/pffft/pffft.c
+            ${RESONANCE_INCLUDES}/dsp/partitioned_fft_filter.cpp
+                ${RESONANCE_INCLUDES}/base/misc_math.cpp
+                ${RESONANCE_INCLUDES}/dsp/utils.cpp     #only known from .cpp file
+                    ${RESONANCE_INCLUDES}/dsp/biquad_filter.cpp #only known from .cpp file
+                    ${RESONANCE_INCLUDES}/dsp/filter_coefficient_generators.cpp #only known from .cpp file
+        
+        ${RESONANCE_INCLUDES}/dsp/sh_hrir_creator.cpp
+            ${RESONANCE_INCLUDES}/dsp/resampler.cpp
+            ${RESONANCE_INCLUDES}/utils/planar_interleaved_conversion.cpp #only known from .cpp file
+                ${RESONANCE_INCLUDES}/utils/sample_type_conversion.cpp #only known from .cpp file
+            ${RESONANCE_INCLUDES}/third_party/SADIE_hrtf_database/generated/hrtf_assets.cpp
+        ${RESONANCE_INCLUDES}/utils/wav.cpp
+            ${RESONANCE_INCLUDES}/utils/wav_reader.cpp
+        
+        ##
+        
+        
     
 )
 

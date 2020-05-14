@@ -9,15 +9,18 @@
 #include "ambisonics/ambisonic_binaural_decoder.h"
 #include "audio_buffer_conversion.h"
 
-#include "dsp/fft_manager.h"
-#include "dsp/partitioned_fft_filter.h"
 #include "dsp/sh_hrir_creator.h"
 #include "utils/wav.h"
 
-using namespace c74::min;
-using namespace vraudio; //TODO clean these (after everything else compiles)
+// these are already included in the above, but just in case
+#include "dsp/fft_manager.h"
+#include "dsp/partitioned_fft_filter.h"
+#include "third_party/pffft/pffft.h"
 
-std::ifstream filenameToIstream(string s){
+using namespace c74::min;
+//using namespace vraudio; //TODO clean these (after everything else compiles)
+
+std::ifstream filenameToIstream(const string s){
     std::ifstream ifilestream;
     ifilestream.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
     return ifilestream;
@@ -27,22 +30,35 @@ class binauralDecoder : public object<binauralDecoder>, public vector_operator<>
 private:
     const int kAmbisonicOrder;
     const int kNumIns;
-    const float kSampleRate = c74::max::sys_getsr(); //not actually sure whether to init this here or in the constructor
-    const int kBlockSize = c74::max::sys_getblksize();
-    AmbisonicBinauralDecoder binaural_decoder;
+    const float kSampleRate = c74::max::sys_getsr();
+    size_t kBlockSize = c74::max::sys_getblksize();
+
+    //access the wav file needed to construct the hrir. TODO move more of this into the above function.
+    const string fileName = "../../resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH/sh_hrir_order_" + std::to_string(kAmbisonicOrder) + ".wav";
+    std::ifstream ifs = filenameToIstream(fileName);
+    std::unique_ptr<const vraudio::Wav> wav = vraudio::Wav::CreateOrNull(&ifs);
     
+    vraudio::Resampler resampler;
+    unique_ptr<vraudio::AudioBuffer> my_sh_hrirs = CreateShHrirsFromWav(*wav, kSampleRate, &resampler);
+    vraudio::FftManager fftManager;
+    vraudio::AmbisonicBinauralDecoder binaural_decoder;
+    //    std::unique_ptr<vraudio::AmbisonicBinauralDecoder> binaural_decoder(new vraudio::AmbisonicBinauralDecoder(*my_sh_hrirs, kBlockSize, &fftManager));
+    
+
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
 public:
     MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
-    MIN_TAGS        { "audio, sampling" };
-    MIN_AUTHOR        { "Cycling '74" };
+    MIN_TAGS           { "audio, sampling" };
+    MIN_AUTHOR         { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
 
 
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     binauralDecoder(const atoms& args = {})
         : kAmbisonicOrder(args[0]),
-          kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)) { //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
+          kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),
+          fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
+          binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager){ //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
         
         //inlet handling
         if (args.empty()){
@@ -57,16 +73,8 @@ public:
             auto an_inlet = std::make_unique<inlet<>>(this, "(signal) Channel", "signal");
             m_inlets.push_back( std::move(an_inlet) );
         }
-        
-        //build the decoder object
-        string fileName = "mySadie/sh_hrir_order_" + std::to_string(kAmbisonicOrder) + ".wav";      //find the wav file needed to construct the hrir
-        std::ifstream ifs = filenameToIstream(fileName);
-        Resampler resampler;
-        unique_ptr<vraudio::AudioBuffer> sh_hrirs = CreateShHrirsFromWav(*(vraudio::Wav::CreateOrNull(&ifs)), kSampleRate, &resampler);
-        vraudio::FftManager fftManager(kBlockSize);
-        binaural_decoder = AmbisonicBinauralDecoder(*sh_hrirs , kBlockSize, &fftManager);
-        
     }
+    
     outlet<>  out1    { this, "(signal) Stereo Left", "signal" };
     outlet<>  out2    { this, "(signal) Stereo Right", "signal" };
 

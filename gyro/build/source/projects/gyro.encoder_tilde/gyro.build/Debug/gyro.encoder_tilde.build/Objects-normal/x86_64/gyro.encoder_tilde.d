@@ -285,11 +285,12 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/../Eigen/Dense \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/ambisonics/utils.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/base/misc_math.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/constants_and_types.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/logging.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/utils/pseudoinverse.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/utils/../../resonance_audio/Eigen/Dense \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/ambisonic_codec.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../pita/audio_buffer_conversion.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../pita/../resonance_audio/base/audio_buffer.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/audio_buffer.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/spherical_angle.h

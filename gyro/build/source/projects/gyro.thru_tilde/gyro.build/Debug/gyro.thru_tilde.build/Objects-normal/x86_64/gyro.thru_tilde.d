@@ -91,5 +91,4 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../resonance_audio/base/channel_view.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../resonance_audio/base/logging.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../resonance_audio/base/constants_and_types.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../pita/audio_buffer_conversion.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../pita/../resonance_audio/base/audio_buffer.h
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.thru_tilde/../../pita/audio_buffer_conversion.h

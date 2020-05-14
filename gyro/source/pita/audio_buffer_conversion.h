@@ -13,7 +13,7 @@ The easiest way to interface between the two existing ecosystems is to simply co
 #define PITA_AUDIO_BUFFER_CONVERSION_H_
 
 #include "c74_min.h" //for access to audio_bundle object
-#include "../resonance_audio/base/audio_buffer.h" //for access to audioBuffer object and logging (for checks)
+#include "base/audio_buffer.h" //for access to audioBuffer object and logging (for checks)
 
 using namespace c74::min;
 

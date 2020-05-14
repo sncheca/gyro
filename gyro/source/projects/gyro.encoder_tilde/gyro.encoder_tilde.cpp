@@ -77,6 +77,7 @@ public:
         
         //initialise the ambisonic codec object I'll be using
         vraudio::SphericalAngle myAngle = vraudio::SphericalAngle::FromDegrees(angle1, angle2);
+        //TODO this should be in a constructor or something, don't remake it every time
         std::unique_ptr<vraudio::MonoAmbisonicCodec<>> myCodec(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}));
         
         myCodec->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);

@@ -17,7 +17,7 @@ limitations under the License.
 #ifndef RESONANCE_AUDIO_DSP_FFT_MANAGER_H_
 #define RESONANCE_AUDIO_DSP_FFT_MANAGER_H_
 
-#include "pffft.h"
+#include "third_party/pffft/pffft.h"
 #include "base/audio_buffer.h"
 
 namespace vraudio {

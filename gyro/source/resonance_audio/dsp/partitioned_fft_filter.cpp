@@ -23,7 +23,7 @@ limitations under the License.
 
 #include <algorithm>
 
-#include "pffft.h"
+#include "third_party/pffft/pffft.h"
 #include "base/constants_and_types.h"
 #include "base/logging.h"
 #include "base/misc_math.h"
