@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 5.0, -853.0, 829.0, 547.0 ],
+						"rect" : [ 5.0, -879.0, 829.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -161,7 +161,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
 									"patching_rect" : [ 320.0, 290.0, 176.5, 23.0 ],
-									"text" : "gyro.binauralDecoder~ 3"
+									"text" : "gyro.soundfield2Stereo~ 3"
 								}
 
 							}
@@ -286,14 +286,14 @@
 									"patching_rect" : [ 307.0, 378.0, 118.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
-											"parameter_initial" : [ -50 ]
+											"parameter_initial" : [ -50 ],
+											"parameter_shortname" : "live.gain~"
 										}
 
 									}
@@ -537,6 +537,14 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"order" : 2,
+									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
 									"order" : 0,
 									"source" : [ "obj-28", 0 ]
@@ -641,7 +649,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 829.0, 547.0 ],
+						"rect" : [ 0.0, 26.0, 829.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -718,7 +726,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gyro.binauralDecoder~.mxo",
+				"name" : "gyro.soundfield2stereo~.mxo",
 				"type" : "iLaX"
 			}
  ],

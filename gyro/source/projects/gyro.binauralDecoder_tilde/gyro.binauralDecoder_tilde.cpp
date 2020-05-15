@@ -3,7 +3,7 @@
 ///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-//convert a soundfield into stereo. This won't sound as good as binaural, but it's good for quick checking and ABing.
+//binaurally render a soundfield, using HRTFs
 
 #include "c74_min.h"
 #include "ambisonics/ambisonic_binaural_decoder.h"
@@ -11,6 +11,7 @@
 
 #include "dsp/sh_hrir_creator.h"
 #include "utils/wav.h"
+#include <string>
 
 // these are already included in the above, but just in case
 #include "dsp/fft_manager.h"
@@ -20,41 +21,51 @@
 using namespace c74::min;
 //using namespace vraudio; //TODO clean these (after everything else compiles)
 
-std::string createString(const int order){
-//    std::string s = "/Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH/sh_hrir_order_" + std::to_string(order) + ".wav";
-//    std::string s = std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(order) + std::string(".wav");
-    std::string s = "WAV/Subject_002/SH/sh_hrir_order_3.wav";
+//std::string createString(int order){ //todo try const
+//
+//    std::string s = std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(3) + std::string(".wav"); //this works
+//
+////    std::string s("WAV/Subject_002/SH/sh_hrir_order_3.wav");
+////    std::string s("WAV/Subject_002/SH/sh_hrir_order_");
+//////    s += std::to_string(3); //this works fine
+////    s += std::to_string(order); //this crashes.
+//////    s += '3'; //this works fine
+//////    s += char(order + 48); //this crashes
+////    s += ".wav";
+//
+//
+//    return s;
+//}
 
-    return s;
-}
-
-std::ifstream filenameToIstream(const string s){
-    std::ifstream ifs;
-    ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
-    if(ifs.good()){
-        return ifs;
-    } else {
-        error("Unable to open file" + s);
-        exit(3);
-    }
-}
+//std::ifstream filenameToIstream(const string s){
+//    std::ifstream ifs;
+//    ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
+//    if(ifs.good()){
+//        return ifs;
+//    } else {
+//        error("Unable to open file" + s);
+//        exit(3);
+//    }
+//}
 
 class binauralDecoder : public object<binauralDecoder>, public vector_operator<> {
 private:
-    const int kAmbisonicOrder;
-    const int kNumIns;
     const float kSampleRate = c74::max::sys_getsr();
     const size_t kBlockSize = c74::max::sys_getblksize();
+    
+    const int kAmbisonicOrder;
+    const int kNumIns;
+//    const int myNum = 3; //TODO remove
 
     //convert the hrir wav file into something we can use. TODO move more of this into the above function, depending on how we use it.
     const std::string filename;
 //    std::ifstream ifs;
 //    std::unique_ptr<const vraudio::Wav> wav;
     
-    vraudio::Resampler resampler; //use default constructor
+    vraudio::Resampler resampler; //remove this member
     unique_ptr<vraudio::AudioBuffer> my_sh_hrirs;
     
-    vraudio::FftManager fftManager; //will be initialised in initialisation list below
+    vraudio::FftManager fftManager; //remove this member
     vraudio::AmbisonicBinauralDecoder binaural_decoder; //will be initialised in initialisation list below
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
@@ -67,14 +78,18 @@ public:
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     binauralDecoder(const atoms& args = {})
       : kAmbisonicOrder(args[0]),
-        kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),
-        filename((createString(kAmbisonicOrder))),
+        kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)), //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
+    
+//        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(3) + std::string(".wav")), //works
+//        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(myNum) + std::string(".wav")), //works, shows that it's not a problem with to_string
+        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(kAmbisonicOrder) + std::string(".wav")),
+    
 //        ifs((filenameToIstream(filename))),
 //        wav(vraudio::Wav::CreateOrNull(&ifs)),
 //        my_sh_hrirs(CreateShHrirsFromWav(*wav, kSampleRate, &resampler)),
         my_sh_hrirs(vraudio::CreateShHrirsFromAssets(filename, kSampleRate, &resampler)),
         fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
-        binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager) //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
+        binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager)
         {
         //inlet handling
         if (args.empty()){
