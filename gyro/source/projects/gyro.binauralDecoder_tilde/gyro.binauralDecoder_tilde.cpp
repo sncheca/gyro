@@ -21,21 +21,14 @@
 using namespace c74::min;
 //using namespace vraudio; //TODO clean these (after everything else compiles)
 
-//std::string createString(int order){ //todo try const
-//
-//    std::string s = std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(3) + std::string(".wav"); //this works
-//
-////    std::string s("WAV/Subject_002/SH/sh_hrir_order_3.wav");
-////    std::string s("WAV/Subject_002/SH/sh_hrir_order_");
-//////    s += std::to_string(3); //this works fine
-////    s += std::to_string(order); //this crashes.
-//////    s += '3'; //this works fine
-//////    s += char(order + 48); //this crashes
-////    s += ".wav";
-//
-//
-//    return s;
-//}
+//create a string based on the ambisonic order
+std::string createString(const int n){ //todo try const
+    if(n == 0){ //this forces it to not crash
+        return std::string("WAV/Subject_002/SH/sh_hrir_order_1.wav");
+    }
+    std::string s(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(n) + std::string(".wav"));
+    return s;
+}
 
 //std::ifstream filenameToIstream(const string s){
 //    std::ifstream ifs;
@@ -53,20 +46,19 @@ private:
     const float kSampleRate = c74::max::sys_getsr();
     const size_t kBlockSize = c74::max::sys_getblksize();
     
+    //everything else will be initialised in the member initialisation lists in the constructor
     const int kAmbisonicOrder;
     const int kNumIns;
-//    const int myNum = 3; //TODO remove
 
     //convert the hrir wav file into something we can use. TODO move more of this into the above function, depending on how we use it.
     const std::string filename;
 //    std::ifstream ifs;
 //    std::unique_ptr<const vraudio::Wav> wav;
     
-    vraudio::Resampler resampler; //remove this member
+    vraudio::Resampler resampler;
     unique_ptr<vraudio::AudioBuffer> my_sh_hrirs;
-    
-    vraudio::FftManager fftManager; //remove this member
-    vraudio::AmbisonicBinauralDecoder binaural_decoder; //will be initialised in initialisation list below
+    vraudio::FftManager fftManager;
+    vraudio::AmbisonicBinauralDecoder binaural_decoder;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
 public:
@@ -79,10 +71,7 @@ public:
     binauralDecoder(const atoms& args = {})
       : kAmbisonicOrder(args[0]),
         kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)), //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
-    
-//        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(3) + std::string(".wav")), //works
-//        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(myNum) + std::string(".wav")), //works, shows that it's not a problem with to_string
-        filename(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(kAmbisonicOrder) + std::string(".wav")),
+        filename(createString(kAmbisonicOrder)),
     
 //        ifs((filenameToIstream(filename))),
 //        wav(vraudio::Wav::CreateOrNull(&ifs)),
@@ -91,6 +80,8 @@ public:
         fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
         binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager)
         {
+        cout << "inside constructor" << kAmbisonicOrder << endl;
+        
         //inlet handling
         if (args.empty()){
             error("Argument required. Please include the ambisonic order.");
