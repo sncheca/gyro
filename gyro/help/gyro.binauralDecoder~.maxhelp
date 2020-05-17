@@ -107,12 +107,24 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"id" : "obj-15",
-									"linecount" : 20,
+									"id" : "obj-27",
+									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 21.0, 16.0, 150.0, 297.0 ],
+									"patching_rect" : [ 508.0, 290.0, 301.0, 50.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)\n"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"linecount" : 18,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 21.0, 16.0, 155.0, 268.0 ],
 									"text" : "NOTE: you must add the directory containing the hrir wav files to the file preferences. Go to Options >> File Preferences, and add \n{...}/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH. For me this is\n/Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH\nThis feature will be changed when I add the HRTF selection feature. "
 								}
 
@@ -172,8 +184,8 @@
 									"numinlets" : 16,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 320.0, 290.0, 176.5, 23.0 ],
-									"text" : "gyro.soundfield2Stereo~ 3"
+									"patching_rect" : [ 326.0, 290.0, 176.5, 23.0 ],
+									"text" : "gyro.binauralDecoder~ 3"
 								}
 
 							}
@@ -196,7 +208,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 16,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 320.0, 245.0, 176.5, 23.0 ],
+									"patching_rect" : [ 326.0, 245.0, 176.5, 23.0 ],
 									"text" : "gyro.encoder~ 3"
 								}
 
@@ -295,17 +307,17 @@
 									"orientation" : 1,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 307.0, 378.0, 118.0, 36.0 ],
+									"patching_rect" : [ 325.0, 378.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmin" : -70.0,
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1
+											"parameter_unitstyle" : 4
 										}
 
 									}
@@ -328,7 +340,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 449.5, 451.0, 20.0, 20.0 ],
+									"patching_rect" : [ 416.25, 470.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -344,7 +356,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 363.0, 439.5, 108.0, 25.0 ],
+									"patching_rect" : [ 381.0, 439.5, 108.0, 25.0 ],
 									"text" : "turn on audio"
 								}
 
@@ -356,7 +368,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 307.0, 430.0, 44.0, 44.0 ],
+									"patching_rect" : [ 325.0, 430.0, 44.0, 44.0 ],
 									"prototypename" : "helpfile"
 								}
 
@@ -542,14 +554,6 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"order" : 1,
-									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
 									"order" : 2,
 									"source" : [ "obj-28", 0 ]
 								}
@@ -557,8 +561,24 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-8", 0 ],
+									"destination" : [ "obj-13", 0 ],
 									"order" : 0,
+									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-2", 0 ],
+									"order" : 3,
+									"source" : [ "obj-28", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-8", 0 ],
+									"order" : 1,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -738,7 +758,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "gyro.soundfield2stereo~.mxo",
+				"name" : "gyro.binauralDecoder~.mxo",
 				"type" : "iLaX"
 			}
  ],
