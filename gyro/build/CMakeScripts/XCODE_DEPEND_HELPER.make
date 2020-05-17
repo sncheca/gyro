@@ -29,6 +29,11 @@ PostBuild.mock_kernel.Debug: /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
 
 
+PostBuild.gyro.rotator_tilde.Debug:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
+
+
 PostBuild.gyro.soundfield2stereo_tilde.Debug:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
@@ -64,6 +69,11 @@ PostBuild.mock_kernel.Release: /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyr
 /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test:\
 	/Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
+
+
+PostBuild.gyro.rotator_tilde.Release:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
 
 
 PostBuild.gyro.soundfield2stereo_tilde.Release:
@@ -103,6 +113,11 @@ PostBuild.mock_kernel.MinSizeRel: /Users/sofia/Documents/GitHub/gyro/gyro/tests/
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/gyro.hello-world_test
 
 
+PostBuild.gyro.rotator_tilde.MinSizeRel:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
+
+
 PostBuild.gyro.soundfield2stereo_tilde.MinSizeRel:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
@@ -138,6 +153,11 @@ PostBuild.mock_kernel.RelWithDebInfo: /Users/sofia/Documents/GitHub/gyro/gyro/te
 /Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/gyro.hello-world_test:\
 	/Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/libmock_kernel.dylib
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/gyro.hello-world_test
+
+
+PostBuild.gyro.rotator_tilde.RelWithDebInfo:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
 
 
 PostBuild.gyro.soundfield2stereo_tilde.RelWithDebInfo:
