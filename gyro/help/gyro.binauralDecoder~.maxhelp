@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 98.0, 134.0, 868.0, 599.0 ],
+		"rect" : [ 69.0, 134.0, 868.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 98.0, 186.0, 868.0, 547.0 ],
+						"rect" : [ 69.0, 186.0, 868.0, 547.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -106,6 +106,18 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-15",
+									"linecount" : 20,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 21.0, 16.0, 150.0, 297.0 ],
+									"text" : "NOTE: you must add the directory containing the hrir wav files to the file preferences. Go to Options >> File Preferences, and add \n{...}/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH. For me this is\n/Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH\nThis feature will be changed when I add the HRTF selection feature. "
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-13",
 									"maxclass" : "message",
@@ -286,14 +298,14 @@
 									"patching_rect" : [ 307.0, 378.0, 118.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_initial_enable" : 1
 										}
 
 									}

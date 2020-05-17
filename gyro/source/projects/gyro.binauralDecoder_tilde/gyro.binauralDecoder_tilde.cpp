@@ -3,6 +3,8 @@
 ///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
+///Copyright Sofia Checa 2020.
+
 //binaurally render a soundfield, using HRTFs
 
 #include "c74_min.h"
@@ -18,52 +20,64 @@
 #include "dsp/partitioned_fft_filter.h"
 #include "third_party/pffft/pffft.h"
 
-using namespace c74::min;
+using namespace c74::min; //TODO do we actually need std for strings?
 //using namespace vraudio; //TODO clean these (after everything else compiles)
 
-//create a string based on the ambisonic order
-std::string createString(const int n){ //todo try const
-    if(n == 0){ //this forces it to not crash
-        return std::string("WAV/Subject_002/SH/sh_hrir_order_1.wav");
+std::ifstream filenameToIstream(const string s){
+    std::ifstream ifs;
+    ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened! And must throw / catch exception in the constructor!
+    if(ifs.good()){
+        return ifs;
+    } else {
+        error("Unable to open file" + s);
+        exit(3);
     }
-    std::string s(std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(n) + std::string(".wav"));
-    return s;
 }
 
-//std::ifstream filenameToIstream(const string s){
-//    std::ifstream ifs;
-//    ifs.open(s, std::ifstream::in);  //TODO need safety checking that the file opened!
-//    if(ifs.good()){
-//        return ifs;
-//    } else {
-//        error("Unable to open file" + s);
-//        exit(3);
-//    }
-//}
+//given a certain ambisonic order, use the sadie assets to generate an AudioBuffer containing the appropriate HRIRs.
+unique_ptr<vraudio::AudioBuffer> asset2HRIR(const int k, const float sr){
+    std::string s;
+    if(k == 0){ //this forces it to not crash
+        s = "WAV/Subject_002/SH/sh_hrir_order_1.wav";
+    } else {
+        s = std::string("WAV/Subject_002/SH/sh_hrir_order_") + std::to_string(k) + std::string(".wav");
+    }
+    vraudio::Resampler resampler;
+    return vraudio::CreateShHrirsFromAssets(s, sr, &resampler);
+}
+
+//given a certain ambisonic order, use the sadie ambi-encoded wave files to generate an AudioBuffer containing the appropriate HRIRs.
+unique_ptr<vraudio::AudioBuffer> wav2HRIR(const int k, const float sr){
+    std::string filename;
+    if(k == 0){ //this forces it to not crash
+        filename = "sh_hrir_order_1.wav";
+        //TODO this can't be an absolute path!
+    } else {
+        filename = std::string("sh_hrir_order_") + std::to_string(k) + std::string(".wav");
+    }
+    path p(filename); //The path function lets us tap into the file preferences of Max. See c74_min_path.h
+    std::ifstream ifs((filenameToIstream(string(p))));
+    unique_ptr<const vraudio::Wav> wav(vraudio::Wav::CreateOrNull(&ifs));
+    vraudio::Resampler resampler;
+    return vraudio::CreateShHrirsFromWav(*wav, sr, &resampler);
+}
 
 class binauralDecoder : public object<binauralDecoder>, public vector_operator<> {
 private:
-    const float kSampleRate = c74::max::sys_getsr();
+    const float kSampleRate = c74::max::sys_getsr(); //TODO perhaps localize this to the HRIR generator functions, depending on extended use cases.
     const size_t kBlockSize = c74::max::sys_getblksize();
     
     //everything else will be initialised in the member initialisation lists in the constructor
     const int kAmbisonicOrder;
     const int kNumIns;
-
-    //convert the hrir wav file into something we can use. TODO move more of this into the above function, depending on how we use it.
-    const std::string filename;
-//    std::ifstream ifs;
-//    std::unique_ptr<const vraudio::Wav> wav;
-    
-    vraudio::Resampler resampler;
-    unique_ptr<vraudio::AudioBuffer> my_sh_hrirs;
+    const unique_ptr<vraudio::AudioBuffer> sh_hrirs; //stands for Spherical Harmonic encoded Head-Related Impulse Response
     vraudio::FftManager fftManager;
     vraudio::AmbisonicBinauralDecoder binaural_decoder;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
 public:
-    MIN_DESCRIPTION    { "binaural decoder" };
-    MIN_TAGS           { "audio, sampling" };
+    MIN_DESCRIPTION    { "Decodes a soundfield to binaural. Wear headphones when using binuaral objects." };
+    MIN_TAGS           { "gyro, binaural, ambisonics, audio" };
     MIN_AUTHOR         { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
 
@@ -71,14 +85,13 @@ public:
     binauralDecoder(const atoms& args = {})
       : kAmbisonicOrder(args[0]),
         kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)), //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
-        filename(createString(kAmbisonicOrder)),
     
-//        ifs((filenameToIstream(filename))),
-//        wav(vraudio::Wav::CreateOrNull(&ifs)),
-//        my_sh_hrirs(CreateShHrirsFromWav(*wav, kSampleRate, &resampler)),
-        my_sh_hrirs(vraudio::CreateShHrirsFromAssets(filename, kSampleRate, &resampler)),
+        //note that there are two ways to create spherical harmonic encoded hrirs. You can create them from wav or asset files. Both of those are generated by an external Matlab script.
+        sh_hrirs(wav2HRIR(kAmbisonicOrder, kSampleRate)),
+//        sh_hrirs(asset2HRIR(kAmbisonicOrder, kSampleRate)),
+    
         fftManager(kBlockSize), //note that this argument must be of type size_t, since the constructor is explicit. Do not try to cast inside the parentheses. This could lead to unintended consequences if you do not manage parentheses correctly, due to the so-called "Most Vexing Parse"
-        binaural_decoder(*my_sh_hrirs, kBlockSize, &fftManager)
+        binaural_decoder(*sh_hrirs, kBlockSize, &fftManager)
         {
         cout << "inside constructor" << kAmbisonicOrder << endl;
         
@@ -88,12 +101,9 @@ public:
         } else if(int(args[0]) > 3 || int(args[0]) < 1){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
-        auto inlet_count = kNumIns;
-
-        for (auto i=0; i < inlet_count; ++i) {
+        for (auto i=0; i < kNumIns; ++i) {
             //TODO the channel number should be in the assist message. String nonsense.
-            auto an_inlet = std::make_unique<inlet<>>(this, "(signal) Channel", "signal");
-            m_inlets.push_back( std::move(an_inlet) );
+            m_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel", "signal") );
         }
     }
     
@@ -103,7 +113,7 @@ public:
     void operator()(audio_bundle input, audio_bundle output) {
 
         auto nFrames = input.frame_count();
-        vraudio::AudioBuffer r_inputAudioBuffer(kNumIns, nFrames);      // resonance-style audio buffer for input, should be kNumIns
+        vraudio::AudioBuffer r_inputAudioBuffer(kNumIns, nFrames);      // resonance-style audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(2, nFrames);           // resonance-style audio buffer for output
         Min2Res(input, &r_inputAudioBuffer);                            // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
 
