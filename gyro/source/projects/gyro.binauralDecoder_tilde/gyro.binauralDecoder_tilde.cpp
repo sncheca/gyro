@@ -16,7 +16,7 @@
 #include <string>
 
 using namespace c74::min;
-//using namespace vraudio; //TODO clean these (after everything else compiles)
+//note that the vraudio namespace is used for Resonance objects. I do not "use" this namespace so that is clear to the viewer where these objects come from
 
 std::ifstream filenameToIstream(const std::string s){
     std::ifstream ifs;

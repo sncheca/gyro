@@ -21,9 +21,9 @@ using namespace c74::min;
 void Min2Res(audio_bundle& bundleIn, vraudio::AudioBuffer* bufferOut){
     DCHECK(bufferOut);
     //require that specs of the audio objects match
-    DCHECK_EQ(bundleIn.channel_count(), bufferOut->num_channels());
+    DCHECK_GE(bundleIn.channel_count(), bufferOut->num_channels()); //The bundleIn may have more channels than the bufferOut
     DCHECK_EQ(bundleIn.frame_count(), bufferOut->num_frames());
-    auto nChannels = bundleIn.channel_count();
+    auto nChannels = bufferOut->num_channels(); //NOTE: critical that nChannels is defined by AudioBuffer and not audio_bundle. The audio_bundle may have more channels, and audio_buffer struct has no error checking for nonexistant channels.
     auto nFrames = bundleIn.frame_count();
     
     //iterate through all channels
@@ -42,7 +42,7 @@ void Min2Res(audio_bundle& bundleIn, vraudio::AudioBuffer* bufferOut){
 //convert AudioBuffer object (Resonance) to audio_bundle object (Min)
 void Res2Min(const vraudio::AudioBuffer& bufferIn, audio_bundle* bundleOut){
     //require that specs of the audio objects match
-    DCHECK_EQ(bufferIn.num_channels(), bundleOut->channel_count());
+    DCHECK_LE(bufferIn.num_channels(), bundleOut->channel_count()); //bufferIn may have fewer channels than the bundleOut
     DCHECK_EQ(bufferIn.num_frames(), bundleOut->frame_count());
     auto nChannels = bufferIn.num_channels();
     auto nFrames = bufferIn.num_frames();
