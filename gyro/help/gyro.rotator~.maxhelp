@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 34.0, 79.0, 895.0, 599.0 ],
+		"rect" : [ 6.0, -784.0, 1095.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 34.0, 131.0, 895.0, 547.0 ],
+						"rect" : [ 6.0, -732.0, 1095.0, 547.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -107,13 +107,26 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-18",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "signal" ],
+									"patching_rect" : [ 237.0, 190.0, 47.0, 23.0 ],
+									"text" : "noise~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"attr" : "quaternion",
+									"attr_display" : 1,
 									"id" : "obj-10",
 									"maxclass" : "attrui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 583.0, 290.0, 345.0, 23.0 ]
+									"patching_rect" : [ 638.0, 241.0, 417.0, 23.0 ]
 								}
 
 							}
@@ -123,7 +136,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 600.5, 39.0, 150.0, 21.0 ],
+									"patching_rect" : [ 912.5, 84.0, 150.0, 21.0 ],
 									"text" : "TODO: figure out axis"
 								}
 
@@ -135,7 +148,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 721.0, 65.0, 29.5, 23.0 ],
+									"patching_rect" : [ 670.0, 54.0, 29.5, 23.0 ],
 									"text" : "1"
 								}
 
@@ -148,7 +161,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 743.0, 105.0, 50.0, 23.0 ]
+									"patching_rect" : [ 692.0, 94.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -160,7 +173,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 682.0, 105.0, 50.0, 23.0 ]
+									"patching_rect" : [ 631.0, 94.0, 50.0, 23.0 ]
 								}
 
 							}
@@ -171,7 +184,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "list", "" ],
-									"patching_rect" : [ 589.5, 9.0, 77.0, 23.0 ],
+									"patching_rect" : [ 901.5, 54.0, 77.0, 23.0 ],
 									"text" : "jit.axis2quat"
 								}
 
@@ -183,19 +196,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 729.5, 182.0, 37.0, 23.0 ],
+									"patching_rect" : [ 678.5, 171.0, 37.0, 23.0 ],
 									"text" : "0 0 0"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-59",
-									"maxclass" : "newobj",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 705.0, 249.0, 34.0, 23.0 ],
-									"text" : "print"
 								}
 
 							}
@@ -205,7 +207,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 768.5, 219.0, 166.0, 21.0 ],
+									"patching_rect" : [ 717.5, 208.0, 166.0, 21.0 ],
 									"text" : "note that the output is xyzw"
 								}
 
@@ -217,7 +219,7 @@
 									"numinlets" : 3,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 689.0, 148.0, 228.0, 23.0 ],
+									"patching_rect" : [ 638.0, 137.0, 228.0, 23.0 ],
 									"text" : "pak 0. 0. 0."
 								}
 
@@ -229,7 +231,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 793.5, 182.0, 45.0, 23.0 ],
+									"patching_rect" : [ 742.5, 171.0, 45.0, 23.0 ],
 									"text" : "0 90 0"
 								}
 
@@ -241,7 +243,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "list", "" ],
-									"patching_rect" : [ 689.0, 219.0, 83.0, 23.0 ],
+									"patching_rect" : [ 638.0, 208.0, 83.0, 23.0 ],
 									"text" : "jit.euler2quat"
 								}
 
@@ -250,23 +252,24 @@
 								"box" : 								{
 									"id" : "obj-5",
 									"maxclass" : "newobj",
-									"numinlets" : 17,
+									"numinlets" : 16,
 									"numoutlets" : 16,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 326.0, 290.0, 187.0, 23.0 ],
+									"patching_rect" : [ 326.0, 290.0, 176.5, 23.0 ],
 									"text" : "gyro.rotator~ 3"
 								}
 
 							}
 , 							{
 								"box" : 								{
+									"bubble" : 1,
 									"id" : "obj-27",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 508.0, 335.0, 301.0, 50.0 ],
-									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)\n"
+									"patching_rect" : [ 508.0, 326.5, 301.0, 40.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
 								}
 
 							}
@@ -463,14 +466,14 @@
 									"patching_rect" : [ 325.0, 378.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmax" : 6.0,
-											"parameter_initial" : [ -50 ],
-											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
+											"parameter_initial" : [ -50 ],
+											"parameter_shortname" : "live.gain~"
 										}
 
 									}
@@ -641,7 +644,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-5", 16 ],
+									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -766,16 +769,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-5", 16 ],
-									"order" : 1,
-									"source" : [ "obj-29", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-59", 0 ],
-									"order" : 0,
+									"destination" : [ "obj-10", 0 ],
 									"source" : [ "obj-29", 0 ]
 								}
 
@@ -1020,7 +1014,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 895.0, 547.0 ],
+						"rect" : [ 0.0, 26.0, 1095.0, 547.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,

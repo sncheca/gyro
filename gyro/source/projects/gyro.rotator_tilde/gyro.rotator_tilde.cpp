@@ -36,7 +36,7 @@ public:
     rotator(const atoms& args = {})
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
         kNumSphericalHarmonics((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),   //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
-        kNumInlets(kNumSphericalHarmonics + 1), //extra inlet for the angle control
+        kNumInlets(kNumSphericalHarmonics),
         kNumOutlets(kNumSphericalHarmonics),
         hoa_rotator(kAmbisonicOrder)
         {
@@ -52,11 +52,8 @@ public:
             m_outlets.push_back( std::make_unique<outlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") );
 
         }
-        //inlet for angle data
-        m_inlets.push_back( std::make_unique<inlet<>>(this, "(float) quaternion xyzw in", "float") );
     }
-    
-    
+        
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"},
         description{"Quaternion (xyzw) to be used for world rotation"},
         setter{
@@ -69,21 +66,18 @@ public:
                 world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //note different order
                 return{args[0], args[1], args[2], args[3]}; //still using jit order
             }
-        }
+        },
+        category {"World Rotation"}, order{2}
     };
     
-    message<> updateRotationAngle { this, "list", "message for world rotation",
-        MIN_FUNCTION {
-            if (inlet == kNumInlets-1){ //last inlet
-//                if(args[0] == "quat"){
-                    //TODO error check for number of args
-                    //NOTE: the order for the inlet is designed to match the order used by jit objects such as jit.euler2quat
-                    
-                    quaternion_attr = args;
-//                }
+    attribute< vector<double> > euler_attr { this, "euler", {0.1, 0.0, 0.0}, title{"Euler angles (order)"},
+        description{"Euler angles (order) to be used for world rotation"},
+        setter{
+            MIN_FUNCTION{
+                return {0.1, 0.0, 0.0};
             }
-            return {};
-        }
+        },
+        category {"World Rotation"}, order{1}
     };
     
     void operator()(audio_bundle input, audio_bundle output) {

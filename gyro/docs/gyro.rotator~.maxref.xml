@@ -33,17 +33,17 @@
 
 	<methodlist>
 
-		<method name='list'>
-			<digest>message for world rotation </digest>
-			<description>message for world rotation </description>
-		</method>
-
 	</methodlist>
 
 
 	<!--ATTRIBUTES-->
 
 	<attributelist>
+
+		<attribute name='euler' get='1' set='1' type='float64' size='1' >
+			<digest>Euler angles (order) to be used for world rotation </digest>
+			<description>Euler angles (order) to be used for world rotation </description>
+		</attribute>
 
 		<attribute name='quaternion' get='1' set='1' type='float64' size='1' >
 			<digest>Quaternion (xyzw) to be used for world rotation </digest>
