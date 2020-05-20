@@ -10,6 +10,7 @@
 #include "c74_min.h"
 #include "ambisonics/hoa_rotator.h"
 #include "audio_buffer_conversion.h"
+#include "ambisonics/utils.h"
 
 using namespace c74::min;
 
@@ -35,14 +36,13 @@ public:
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     rotator(const atoms& args = {})
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
-        kNumSphericalHarmonics((kAmbisonicOrder+1)*(kAmbisonicOrder+1)),   //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
+        kNumSphericalHarmonics(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),   //determine how many spherical harmonics there are for this order
         kNumInlets(kNumSphericalHarmonics),
         kNumOutlets(kNumSphericalHarmonics),
         hoa_rotator(kAmbisonicOrder)
         {
         
-        //inlet handling
-        //most max objects do not complain about extra arguments, so I don't either.
+        //inlet handling. Most max objects do not complain about extra arguments, so I don't either.
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
@@ -58,13 +58,13 @@ public:
         description{"Quaternion (xyzw) to be used for world rotation"},
         setter{
             MIN_FUNCTION{
-                float qw, qx, qy, qz;
+                float qw, qx, qy, qz; //exanding this so it's more human-readable
                 qx = args[0];
                 qy = args[1];
                 qz = args[2];
                 qw = args[3];
-                world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //note different order
-                return{args[0], args[1], args[2], args[3]}; //still using jit order
+                world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //using Resonance quaternion order (wxyz)
+                return{args[0], args[1], args[2], args[3]}; //using jit quaternion order (xyzw)
             }
         },
         category {"World Rotation"}, order{2}
