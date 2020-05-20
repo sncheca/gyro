@@ -56,21 +56,32 @@ public:
         m_inlets.push_back( std::make_unique<inlet<>>(this, "(float) quaternion xyzw in", "float") );
     }
     
+    
+    attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"},
+        description{"Quaternion (xyzw) to be used for world rotation"},
+        setter{
+            MIN_FUNCTION{
+                float qw, qx, qy, qz;
+                qx = args[0];
+                qy = args[1];
+                qz = args[2];
+                qw = args[3];
+                world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //note different order
+                return{args[0], args[1], args[2], args[3]}; //still using jit order
+            }
+        }
+    };
+    
     message<> updateRotationAngle { this, "list", "message for world rotation",
         MIN_FUNCTION {
-            float qw, qx, qy, qz;
-            cout << "inside update rotation message" << endl;
-//            if (inlet == kNumInlets-1){ //last inlet
+            if (inlet == kNumInlets-1){ //last inlet
 //                if(args[0] == "quat"){
                     //TODO error check for number of args
                     //NOTE: the order for the inlet is designed to match the order used by jit objects such as jit.euler2quat
-                    qx = args[0];
-                    qy = args[1];
-                    qz = args[2];
-                    qw = args[3];
-                    world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //note different order
+                    
+                    quaternion_attr = args;
 //                }
-//            }
+            }
             return {};
         }
     };

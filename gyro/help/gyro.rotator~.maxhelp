@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -23.0, -826.0, 1169.0, 599.0 ],
+		"rect" : [ 34.0, 79.0, 895.0, 599.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -23.0, -800.0, 1169.0, 573.0 ],
+						"rect" : [ 34.0, 131.0, 895.0, 547.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -107,13 +107,13 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
-									"displaymode" : 5,
+									"attr" : "quaternion",
 									"id" : "obj-10",
 									"maxclass" : "attrui",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 919.0, 317.0, 150.0, 23.0 ]
+									"patching_rect" : [ 583.0, 290.0, 345.0, 23.0 ]
 								}
 
 							}
@@ -463,14 +463,14 @@
 									"patching_rect" : [ 325.0, 378.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 4
+											"parameter_unitstyle" : 4,
+											"parameter_mmin" : -70.0,
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1
 										}
 
 									}
@@ -636,6 +636,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-5", 0 ],
 									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-5", 16 ],
+									"source" : [ "obj-10", 0 ]
 								}
 
 							}
@@ -1013,7 +1020,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1169.0, 573.0 ],
+						"rect" : [ 0.0, 26.0, 895.0, 547.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
