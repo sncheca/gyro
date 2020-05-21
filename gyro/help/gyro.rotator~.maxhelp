@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 6.0, -732.0, 1095.0, 547.0 ],
+						"rect" : [ 6.0, -758.0, 1095.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -131,7 +131,7 @@
 							}
 , 							{
 								"box" : 								{
-									"attr" : "quaternion",
+									"attr" : "euler",
 									"attr_display" : 1,
 									"id" : "obj-10",
 									"maxclass" : "attrui",
@@ -207,7 +207,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 727.5, 208.0, 166.0, 21.0 ],
+									"patching_rect" : [ 742.5, 201.0, 166.0, 21.0 ],
 									"text" : "note that the output is xyzw"
 								}
 
@@ -231,7 +231,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "list", "" ],
-									"patching_rect" : [ 638.0, 208.0, 83.0, 23.0 ],
+									"patching_rect" : [ 659.0, 201.0, 83.0, 23.0 ],
 									"text" : "jit.euler2quat"
 								}
 
@@ -454,14 +454,14 @@
 									"patching_rect" : [ 325.0, 378.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 4
+											"parameter_unitstyle" : 4,
+											"parameter_mmin" : -70.0,
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0
 										}
 
 									}
@@ -711,7 +711,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-29", 0 ],
+									"destination" : [ "obj-10", 0 ],
 									"source" : [ "obj-22", 0 ]
 								}
 
@@ -745,13 +745,6 @@
 									"destination" : [ "obj-8", 0 ],
 									"order" : 1,
 									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-10", 0 ],
-									"source" : [ "obj-29", 0 ]
 								}
 
 							}
@@ -1003,7 +996,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1095.0, 547.0 ],
+						"rect" : [ 0.0, 26.0, 1095.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
