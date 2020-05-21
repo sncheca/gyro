@@ -281,4 +281,11 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/base/constants_and_types.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/base/misc_math.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../pita/audio_buffer_conversion.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/ambisonics/utils.h
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/ambisonics/utils.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/EulerAngles \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/../../Eigen/Core \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/../../Eigen/Geometry \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/../../Eigen/src/Core/util/DisableStupidWarnings.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/src/EulerAngles/EulerSystem.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/src/EulerAngles/EulerAngles.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.rotator_tilde/../../resonance_audio/third_party/eigen/unsupported/Eigen/../../Eigen/src/Core/util/ReenableStupidWarnings.h

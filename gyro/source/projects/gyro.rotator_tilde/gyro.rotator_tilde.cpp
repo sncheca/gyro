@@ -11,9 +11,9 @@
 #include "ambisonics/hoa_rotator.h"
 #include "audio_buffer_conversion.h"
 #include "ambisonics/utils.h"
-#include "third_party/eigen/Eigen/Dense" //to use quaternion constructor
-#include "third_party/eigen/Eigen/src/Geometry/EulerAngles.h" //to use quaternion constructor
 
+#include "third_party/eigen/Eigen/Dense" //to use quaternion constructor
+#include "third_party/eigen/unsupported/Eigen/EulerAngles" //to use euler conversions. Note that the one provided in Dense does not have the Euler class.
 
 using namespace c74::min;
 
@@ -25,7 +25,7 @@ private:
     const int kNumInlets;
     const int kNumOutlets;
     Eigen::Quaternionf quaternion; //keep this as a member since it can be updated by either quaternion_attr or euler_attr
-    Eigen::EulerAngles euler_angles;
+    Eigen::EulerAngles<float, Eigen::EulerAnglesXYZd> euler_angles;
     vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations
     vraudio::HoaRotator hoa_rotator;
 

@@ -12,7 +12,6 @@
 #define EIGEN_QUATERNION_H
 namespace Eigen { 
 
-
 /***************************************************************************
 * Definition of QuaternionBase<Derived>
 * The implementation is at the end of the file
