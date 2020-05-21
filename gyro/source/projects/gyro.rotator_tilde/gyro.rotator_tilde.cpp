@@ -11,6 +11,9 @@
 #include "ambisonics/hoa_rotator.h"
 #include "audio_buffer_conversion.h"
 #include "ambisonics/utils.h"
+#include "third_party/eigen/Eigen/Dense" //to use quaternion constructor
+#include "third_party/eigen/Eigen/src/Geometry/EulerAngles.h" //to use quaternion constructor
+
 
 using namespace c74::min;
 
@@ -21,7 +24,9 @@ private:
     const int kNumSphericalHarmonics;
     const int kNumInlets;
     const int kNumOutlets;
-    vraudio::WorldRotation world_rotation;
+    Eigen::Quaternionf quaternion; //keep this as a member since it can be updated by either quaternion_attr or euler_attr
+    Eigen::EulerAngles euler_angles;
+    vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations
     vraudio::HoaRotator hoa_rotator;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
@@ -54,19 +59,24 @@ public:
         }
     }
         
-    attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"},
+    attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
         description{"Quaternion (xyzw) to be used for world rotation"},
-        setter{
-            MIN_FUNCTION{
+        setter{ MIN_FUNCTION{
                 float qw, qx, qy, qz; //exanding this so it's more human-readable
                 qx = args[0];
                 qy = args[1];
                 qz = args[2];
                 qw = args[3];
-                world_rotation = vraudio::WorldRotation(qw, qx, qy, qz); //using Resonance quaternion order (wxyz)
-                return{args[0], args[1], args[2], args[3]}; //using jit quaternion order (xyzw)
-            }
-        },
+                quaternion = Eigen::Quaternionf(qw, qx, qy, qz); //set the member quaternion
+                //set the member euler
+                //Eigen::Quaternionf is a quaternion made of floats. All of this low-level linear alegbra comes from the Eigen library
+                world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
+                return{};
+        }},
+        getter{ MIN_GETTER_FUNCTION{
+            //this setup guarantees that we're returning the most up-to-date quaternion (the one stored as a member) which may have been modified by euler_attr
+            return {quaternion.x(), quaternion.y(), quaternion.z(), quaternion.w()}; //use jit order (xyzw)
+        }},
         category {"World Rotation"}, order{2}
     };
     
@@ -74,7 +84,7 @@ public:
         description{"Euler angles (order) to be used for world rotation"},
         setter{
             MIN_FUNCTION{
-                return {0.1, 0.0, 0.0};
+                return {args[0], args[1], args[2]};
             }
         },
         category {"World Rotation"}, order{1}

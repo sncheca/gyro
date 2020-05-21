@@ -18,9 +18,11 @@ Outwardly, all `gyro` objects obey the same ordering standards as `jit` objects.
 
 Please note that jitter uses a **Right-Handed** coordinate System. Some VR headsets / headtracking use a **Left-Handed** coordinate system (and so does Unity). To use a Left-Handed Coordinated system with `gyro` objects, [TODO!!] Note that this capability is not supported in jitter. 
 
+I also recommend playing around with jitter helpfiles, such as `jit.euler2quat.maxhelp` to develop an intuition for the angles. 
+
 Please note that the _Rotate Order_ attribute in the inspector for `jit` objects just controls the _order_ in which the rotations are performed, but does _not_ change the order in which the angles are expressed. 
 
-If you are only using the externals, but not looking at any of the underlying code, then you don't need to worry about any of the below. 
+If you are only using the externals, but not looking at any of the underlying code, then you don't need to worry about any of the below.  
 
 ## Resonance-style angle expressions
 Inside the code, all angle protocols are converted to the way _Resonance_ does it. This means that:  

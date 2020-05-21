@@ -19,7 +19,7 @@ limitations under the License.
 
 #include <vector>
 
-#include "Eigen/Dense"
+#include "third_party/eigen/Eigen/Dense"
 #include "base/audio_buffer.h"
 #include "base/misc_math.h"
 

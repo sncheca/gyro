@@ -20,7 +20,7 @@ limitations under the License.
 #include <cmath>
 #include <vector>
 
-#include "../../resonance_audio/Eigen/Dense"
+#include "../../resonance_audio/third_party/eigen/Eigen/Dense"
 #include "../../resonance_audio/ambisonics/ambisonic_codec.h"
 #include "../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h"
 #include "../../resonance_audio/ambisonics/utils.h"

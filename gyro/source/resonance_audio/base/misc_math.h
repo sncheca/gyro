@@ -29,7 +29,7 @@ limitations under the License.
 #include <vector>
 
 #include "integral_types.h"
-#include "../Eigen/Dense"
+#include "third_party/eigen/Eigen/Dense"
 #include "constants_and_types.h"
 #include "logging.h"
 
