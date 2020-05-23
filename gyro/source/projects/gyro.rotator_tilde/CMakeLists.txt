@@ -7,7 +7,6 @@ cmake_minimum_required(VERSION 3.0)
 set(C74_MIN_API_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../../min-api)
 set(RESONANCE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/../../resonance_audio)
 set(PITA_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/../../pita)
-set(UNSUPPORTED_EIGEN_INCLUDES ${RESONANCE_INCLUDES}/third_party/eigen/unsupported/Eigen)
 include(${C74_MIN_API_DIR}/script/min-pretarget.cmake)
 
 
@@ -20,7 +19,6 @@ include_directories(
 	"${C74_INCLUDES}"
     "${RESONANCE_INCLUDES}"
     "${PITA_INCLUDES}"
-    "${UNSUPPORTED_EIGEN_INCLUDES}"
 )
 
 

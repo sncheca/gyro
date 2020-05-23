@@ -4,8 +4,9 @@
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
 ///Copyright Sofia Checa 2020.
+///This work was jointly funded by the Yale CCAM, the Yale Blended Reality Grant, and the Yale Department of Music.
 
-//binaurally render a soundfield, using HRTFs
+//rotate a soundfield, using HRTFs
 
 #include "c74_min.h"
 #include "ambisonics/hoa_rotator.h"
@@ -14,7 +15,7 @@
 
 // Low-level linear alegbra (quaternions, euler, rotation matrices, etc) comes from the Eigen library
 #include "third_party/eigen/Eigen/Dense" //to use quaternion constructor
-#include "EulerAngles" //to use euler conversions. Note that the one provided in Dense does not have the Euler class.
+#include "third_party/eigen/unsupported/Eigen/EulerAngles" //to use euler conversions. Note that the one provided in Dense does not have the Euler class.
 
 /* notes about world rotations
  
@@ -27,9 +28,6 @@ The rotate object can support world rotation input in the form of either quatern
 
 using namespace c74::min;
 
-//somehow using the xyzf type was tricky
-typedef Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > GyroEulerAngles; //there is probably a more elegant place to put this / manage this. May even depend on mode
-
 class rotator : public object<rotator>, public vector_operator<> {
 private:
     //everything will be initialised in the member initialisation lists in the constructor
@@ -38,7 +36,7 @@ private:
     const int kNumInlets;
     const int kNumOutlets;
     Eigen::Quaternionf quaternion; //keep this as a member since it can be updated by either quaternion_attr or euler_attr
-    GyroEulerAngles euler_angles;
+    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > euler_angles;
     vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations
     vraudio::HoaRotator hoa_rotator;
 
@@ -71,6 +69,19 @@ public:
 
         }
     }
+    
+    //TODO grow this, use enum map
+//    attribute<symbol> rotate_order {this, "rotate order", "zxy", title{"Rotate Order"},
+//        description{"Set the order in which rotations are applied."}, //TODO copy description from jit
+//        setter{
+//            MIN_FUNCTION{
+//                if(args[0] == "zxy")
+//                    return {"zxy"};
+//                else
+//                    return {"xyz"};
+//            }
+//        }
+//    };
         
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
         description{"Quaternion (xyzw) to be used for world rotation"},
@@ -82,7 +93,7 @@ public:
                 qw = args[3];
                 quaternion = Eigen::Quaternionf(qw, qx, qy, qz); //set the member quaternion using Resonance/Eigen quaternion order (wxyz)
                 //set the member euler
-                euler_angles = GyroEulerAngles(quaternion.toRotationMatrix()); //quat -> mat -> euler
+                euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix()); //quat -> mat -> euler
                 world_rotation = vraudio::WorldRotation(quaternion);
                 return{};
         }},
@@ -98,10 +109,10 @@ public:
         setter{
             MIN_FUNCTION{
                 float ex, ey, ez;
-                ex = vraudio::kRadiansFromDegrees * float(args[0]);  //so euler angles are stored internally as radians
-                ey = vraudio::kRadiansFromDegrees * float(args[1]);
-                ez = vraudio::kRadiansFromDegrees * float(args[2]);
-                euler_angles = GyroEulerAngles(ex, ey, ez); //set the member euler_angles
+                ex = vraudio::kRadiansFromDegrees * float(args[2]);  //euler angles are stored internally as radians
+                ey = vraudio::kRadiansFromDegrees * float(args[0]);
+                ez = vraudio::kRadiansFromDegrees * float(args[1]);
+                euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez); //set the member euler_angles
                 quaternion = static_cast<Eigen::Quaternionf>(euler_angles); //set the member quaternion
 //                world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
                 return {};
@@ -110,9 +121,9 @@ public:
         getter {
             MIN_GETTER_FUNCTION{
                 //get the most up-to-date euler angles (the one stored as a member) which may have been modified by quaternion_attr
-                return {vraudio::kDegreesFromRadians * euler_angles.alpha(),
-                        vraudio::kDegreesFromRadians * euler_angles.beta(),
-                        vraudio::kDegreesFromRadians * euler_angles.gamma()};
+                return {vraudio::kDegreesFromRadians * euler_angles.beta(),
+                        vraudio::kDegreesFromRadians * euler_angles.gamma(),
+                        vraudio::kDegreesFromRadians * euler_angles.alpha()};
             }
         },
         category {"World Rotation"}, order{1}

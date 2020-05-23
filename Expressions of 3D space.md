@@ -3,16 +3,15 @@ Objects like the `encoder~` and the `rotator~` use 3D angles to place source or 
 
 3D angle protocols are always a huge source of confusion, because unfortunately they are not universal. Let me try to make this as clear as possible.
 
-`gyro` supports 3 ways to express 3D angles. These are  
+`gyro` supports 2 ways to express 3D angles. These are  
 1. Quaternions  
 2. Euler angles  
-3. Axis-Angle  
 
 ## Jit-style angle expressions
 
 Outwardly, all `gyro` objects obey the same ordering standards as `jit` objects. This means that:  
 1. Quaternions are ordered `x, y, z, w`  
-2. Euler angles are ordered `xyz`, where the `x` direction is up-down (pitch), the `y` direction is side-side (yaw), and the `z` direction is tilt (roll). This picture (modifed from [here](https://www.shutterstock.com/image-vector/aviation-concept-axis-movement-three-dimensional-191329868)) communicates this clearly.
+2. Euler angles are ordered `xyz`, where the `x` direction is up-down (pitch), the `y` direction is side-side (yaw), and the `z` direction is tilt (roll). This picture (modifed from [here](https://www.shutterstock.com/image-vector/aviation-concept-axis-movement-three-dimensional-191329868)) communicates clearly how Euler angles work in Jitter.
 
 ![](rollPitchYaw.png)
 
