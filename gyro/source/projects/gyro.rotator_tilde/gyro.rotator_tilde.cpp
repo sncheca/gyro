@@ -28,6 +28,10 @@ The rotate object can support world rotation input in the form of either quatern
 
 using namespace c74::min;
 
+//enum RotateOrder {
+//    XYZ, XZY, YXZ, YZX, ZXY, ZYX
+//};
+
 class rotator : public object<rotator>, public vector_operator<> {
 private:
     //everything will be initialised in the member initialisation lists in the constructor
@@ -36,7 +40,8 @@ private:
     const int kNumInlets;
     const int kNumOutlets;
     Eigen::Quaternionf quaternion; //keep this as a member since it can be updated by either quaternion_attr or euler_attr
-    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > euler_angles;
+//    RotateOrder rotateOrder = ZXY;
+    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > euler_angles;
     vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations
     vraudio::HoaRotator hoa_rotator;
 
@@ -48,7 +53,8 @@ public:
     MIN_TAGS           { "gyro, encoder, binauralDecoder, ambisonics, audio" };
     MIN_AUTHOR         { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
-    
+
+//    typedef Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > GyroEulerAngles;
     /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
     rotator(const atoms& args = {})
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
@@ -57,7 +63,7 @@ public:
         kNumOutlets(kNumSphericalHarmonics),
         hoa_rotator(kAmbisonicOrder)
         {
-        
+        cout << rotate_order_attr.get() << endl;
         //inlet handling. Most max objects do not complain about extra arguments, so I don't either.
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
@@ -71,17 +77,10 @@ public:
     }
     
     //TODO grow this, use enum map
-//    attribute<symbol> rotate_order {this, "rotate order", "zxy", title{"Rotate Order"},
-//        description{"Set the order in which rotations are applied."}, //TODO copy description from jit
-//        setter{
-//            MIN_FUNCTION{
-//                if(args[0] == "zxy")
-//                    return {"zxy"};
-//                else
-//                    return {"xyz"};
-//            }
-//        }
-//    };
+    attribute<symbol> rotate_order_attr {this, "rotate order", "zxy", title{"Rotate Order"},
+        description{"Set the order in which rotations are applied."}, //TODO copy description from jit
+        range{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"},
+    };
         
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
         description{"Quaternion (xyzw) to be used for world rotation"},
@@ -92,8 +91,23 @@ public:
                 qz = args[2];
                 qw = args[3];
                 quaternion = Eigen::Quaternionf(qw, qx, qy, qz); //set the member quaternion using Resonance/Eigen quaternion order (wxyz)
-                //set the member euler
-                euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix()); //quat -> mat -> euler
+            
+                //set euler_angles member by converting quat -> mat -> euler, using the appropriate rotation order. Note that the euler_angles member will also be implicitly cast to its own type, but I cast it back to the right order in the euler_attr getter.
+                auto rotateOrder = rotate_order_attr.get();
+                if(rotateOrder == "xyz"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+                } else if(rotateOrder == "xzy"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+                } else if(rotateOrder == "yxz"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+                } else if(rotateOrder == "yzx"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+                } else if(rotateOrder == "zxy"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+                } else if(rotateOrder == "zyx"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+                }
+            
                 world_rotation = vraudio::WorldRotation(quaternion);
                 return{};
         }},
@@ -101,7 +115,6 @@ public:
             //get the most up-to-date quaternion (the one stored as a member) which may have been modified by euler_attr
             return {quaternion.x(), quaternion.y(), quaternion.z(), quaternion.w()}; //use jit order (xyzw)
         }},
-        category {"World Rotation"}, order{2}
     };
     
     attribute< vector<double> > euler_attr { this, "euler", {0.1, 0.0, 0.0}, title{"Euler angles (order)"},
@@ -112,21 +125,68 @@ public:
                 ex = vraudio::kRadiansFromDegrees * float(args[2]);  //euler angles are stored internally as radians
                 ey = vraudio::kRadiansFromDegrees * float(args[0]);
                 ez = vraudio::kRadiansFromDegrees * float(args[1]);
-                euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez); //set the member euler_angles
+                auto rotateOrder = rotate_order_attr.get();
+                
+                //set euler_angles member using the appropriate rotation order. Note that the euler_angles member will also be implicitly cast to its own type, but I cast it back to the right order in the euler_attr getter.
+                if(rotateOrder == "xyz"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(ex, ey, ez);
+                } else if(rotateOrder == "xzy"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(ex, ey, ez);
+                } else if(rotateOrder == "yxz"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(ex, ey, ez);
+                } else if(rotateOrder == "yzx"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez);
+                } else if(rotateOrder == "zxy"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(ex, ey, ez);
+                } else if(rotateOrder == "zyx"){
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(ex, ey, ez);
+                }
+                
                 quaternion = static_cast<Eigen::Quaternionf>(euler_angles); //set the member quaternion
-//                world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
+                world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
                 return {};
             }
         },
         getter {
             MIN_GETTER_FUNCTION{
                 //get the most up-to-date euler angles (the one stored as a member) which may have been modified by quaternion_attr
-                return {vraudio::kDegreesFromRadians * euler_angles.beta(),
-                        vraudio::kDegreesFromRadians * euler_angles.gamma(),
-                        vraudio::kDegreesFromRadians * euler_angles.alpha()};
+                //recast the euler angles to the correct euler system, making use of the EulerAngles operator=
+                auto rotateOrder = rotate_order_attr.get();
+                if(rotateOrder == "xyz"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "xzy"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "yxz"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "yzx"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "zxy"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "zyx"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else {
+                    return {}; //silence warning
+                }
             }
         },
-        category {"World Rotation"}, order{1}
     };
     
     void operator()(audio_bundle input, audio_bundle output) {
