@@ -41,7 +41,7 @@ private:
     const int kNumOutlets;
     Eigen::Quaternionf quaternion; //keep this as a member since it can be updated by either quaternion_attr or euler_attr
 //    RotateOrder rotateOrder = ZXY;
-    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > euler_angles;
+    Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > euler_angles;
     vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations
     vraudio::HoaRotator hoa_rotator;
 
@@ -63,7 +63,85 @@ public:
         kNumOutlets(kNumSphericalHarmonics),
         hoa_rotator(kAmbisonicOrder)
         {
-        cout << rotate_order_attr.get() << endl;
+            
+        //this shows that casting works the way I thought it did
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >  a1(0*vraudio::kRadiansFromDegrees, 45*vraudio::kRadiansFromDegrees, 0*vraudio::kRadiansFromDegrees);
+//        cout << a1.alpha()*vraudio::kDegreesFromRadians << " " << a1.beta()*vraudio::kDegreesFromRadians << " " << a1.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >  a2(0*vraudio::kRadiansFromDegrees, 90*vraudio::kRadiansFromDegrees, 0*vraudio::kRadiansFromDegrees);
+//        cout << a2.alpha()*vraudio::kDegreesFromRadians << " " << a2.beta()*vraudio::kDegreesFromRadians << " " << a2.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > a3  = (Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >)a2;
+//        cout << a3.alpha()*vraudio::kDegreesFromRadians << " " << a3.beta()*vraudio::kDegreesFromRadians << " " << a3.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > a4 = a3;
+//        cout << a4.alpha()*vraudio::kDegreesFromRadians << " " << a4.beta()*vraudio::kDegreesFromRadians << " " << a4.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >  a5(90*vraudio::kRadiansFromDegrees, 0*vraudio::kRadiansFromDegrees, 0*vraudio::kRadiansFromDegrees);
+//        cout << a5.alpha()*vraudio::kDegreesFromRadians << " " << a5.beta()*vraudio::kDegreesFromRadians << " " << a5.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >  a6(10*vraudio::kRadiansFromDegrees, 20*vraudio::kRadiansFromDegrees,30*vraudio::kRadiansFromDegrees);
+//        cout << a6.alpha()*vraudio::kDegreesFromRadians << " " << a6.beta()*vraudio::kDegreesFromRadians << " " << a6.gamma()*vraudio::kDegreesFromRadians << endl;
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3>> a7 = a6;
+//        cout << a7.alpha()*vraudio::kDegreesFromRadians << " " << a7.beta()*vraudio::kDegreesFromRadians << " " << a7.gamma()*vraudio::kDegreesFromRadians << endl;
+//
+//        Eigen::Quaternionf q1 = a1;
+//        print(q1);
+//
+//        Eigen::Quaternionf q2 = a2;
+//        print(q2);
+//
+//        Eigen::Quaternionf q3 = a3;
+//        print(q3);
+//
+//        Eigen::Quaternionf q4 = a4;
+//        print(q4);
+//
+//        Eigen::Quaternionf q5 = a5;
+//        print(q5);
+//
+//        Eigen::Quaternionf q6 = a6;
+//        print(q6);
+//
+//        Eigen::Quaternionf q7 = a7;
+//        print(q7);
+        
+            
+        //jit angles
+        int jx = -86;
+        int jy = 12;
+        int jz = 43;
+        
+        // convert from jit triples to eigen triples
+        int lex = jz; //43
+        int ley = jx; //-86
+        int lez = jy; //12
+            
+        Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >  a1(lex*vraudio::kRadiansFromDegrees, ley*vraudio::kRadiansFromDegrees, lez*vraudio::kRadiansFromDegrees);
+        cout << a1.angles().transpose()*vraudio::kDegreesFromRadians << endl;
+        Eigen::Quaternionf eq1 = Eigen::Quaternionf(a1);
+        Eigen::Quaternionf fq1 = Eigen::Quaternionf(eq1.w(), eq1.y(), eq1.z(), eq1.x());
+        print(fq1);
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > a1back(q1);
+//        cout << a1back.angles().transpose()*vraudio::kDegreesFromRadians << endl;
+//        Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > a1backchange(q1);
+//        cout << a1backchange.angles().transpose()*vraudio::kDegreesFromRadians << endl;
+
+        
+        //note that the xyz order is the same as the 123 order. This should work with zyx
+        Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >  a2(lex*vraudio::kRadiansFromDegrees, lez*vraudio::kRadiansFromDegrees, ley*vraudio::kRadiansFromDegrees);
+        cout << a2.angles().transpose()*vraudio::kDegreesFromRadians << endl;
+        Eigen::Quaternionf eq2 = Eigen::Quaternionf(a2);
+        Eigen::Quaternionf fq2 = Eigen::Quaternionf(eq2.w(), eq2.y(), eq2.z(), eq2.x());
+        print(fq2);
+            
+        //this should work with yzx
+        Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >  a3(lez*vraudio::kRadiansFromDegrees, lex*vraudio::kRadiansFromDegrees, ley*vraudio::kRadiansFromDegrees);
+        cout << a3.angles().transpose()*vraudio::kDegreesFromRadians << endl;
+        Eigen::Quaternionf eq3 = Eigen::Quaternionf(a3);
+        Eigen::Quaternionf fq3 = Eigen::Quaternionf(eq3.w(), eq3.y(), eq3.z(), eq3.x());
+        print(fq3);
+            
         //inlet handling. Most max objects do not complain about extra arguments, so I don't either.
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
@@ -75,25 +153,43 @@ public:
 
         }
     }
+    void print(Eigen::Quaternionf q){
+        cout << q.x() << "____" << q.y() << "____" << q.z() << "____" << q.w() << endl;
+//        cout << q.z() << "____" << q.x() << "____" << q.y() << "____" << q.w() << endl;
+        
+        //convert from Eigen-style quaternion to jitter style quaternion.
+//        cout << q.y() << "____" << q.z() << "____" << q.x() << "____" << q.w() << endl;
+
+
+    }
     
     //TODO grow this, use enum map
     attribute<symbol> rotate_order_attr {this, "rotate order", "zxy", title{"Rotate Order"},
         description{"Set the order in which rotations are applied."}, //TODO copy description from jit
-        range{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"},
+        range{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"}
     };
         
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
         description{"Quaternion (xyzw) to be used for world rotation"},
         setter{ MIN_FUNCTION{
-                float qw, qx, qy, qz; //exanding this so it's more human-readable
+                float qw, qx, qy, qz; //expanding this so it's more human-readable
                 qx = args[0];
                 qy = args[1];
                 qz = args[2];
                 qw = args[3];
-                quaternion = Eigen::Quaternionf(qw, qx, qy, qz); //set the member quaternion using Resonance/Eigen quaternion order (wxyz)
             
+//                qx = args[2];
+//                qy = args[0];
+//                qz = args[1];
+//                qw = args[3];
+            
+                quaternion = Eigen::Quaternionf(qw, qx, qy, qz); //set the member quaternion using Resonance/Eigen quaternion order (wxyz)
+//                Eigen::Quaternionf reordered_quaternion = Eigen::Quaternionf(qw, qy, qz, qx); //231
+//                Eigen::Quaternionf reordered_quaternion = Eigen::Quaternionf(qw, qz, qx, qy); //312
+
                 //set euler_angles member by converting quat -> mat -> euler, using the appropriate rotation order. Note that the euler_angles member will also be implicitly cast to its own type, but I cast it back to the right order in the euler_attr getter.
                 auto rotateOrder = rotate_order_attr.get();
+//                cout << rotateOrder << endl;
                 if(rotateOrder == "xyz"){
                     euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
                 } else if(rotateOrder == "xzy"){
@@ -108,6 +204,34 @@ public:
                     euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
                 }
             
+//                if(rotateOrder == "xyz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "xzy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "yxz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "yzx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "zxy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "zyx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                }
+            
+//                if(rotateOrder == "xyz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "xzy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "yxz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "yzx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "zxy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                } else if(rotateOrder == "zyx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                }
+            
                 world_rotation = vraudio::WorldRotation(quaternion);
                 return{};
         }},
@@ -121,28 +245,69 @@ public:
         description{"Euler angles (order) to be used for world rotation"},
         setter{
             MIN_FUNCTION{
-                float ex, ey, ez;
-                ex = vraudio::kRadiansFromDegrees * float(args[2]);  //euler angles are stored internally as radians
-                ey = vraudio::kRadiansFromDegrees * float(args[0]);
-                ez = vraudio::kRadiansFromDegrees * float(args[1]);
-                auto rotateOrder = rotate_order_attr.get();
+                //note: I split this up to make it human readable.
+                //get the jitter-ordered angles from the arguments
+                float jit_x = vraudio::kRadiansFromDegrees * float(args[0]);  //euler angles are stored internally as radians
+                float jit_y = vraudio::kRadiansFromDegrees * float(args[1]);
+                float jit_z = vraudio::kRadiansFromDegrees * float(args[2]);
                 
+                // convert from jit triples to eigen triples. These are in RADIANS
+                float eigen_x = jit_z;
+                float eigen_y = jit_x;
+                float eigen_z = jit_y;
+                
+                auto rotateOrder = rotate_order_attr.get();
+//                cout << rotateOrder << endl;
                 //set euler_angles member using the appropriate rotation order. Note that the euler_angles member will also be implicitly cast to its own type, but I cast it back to the right order in the euler_attr getter.
+                
+//                if(rotateOrder == "xyz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(ex, ey, ez);
+//                } else if(rotateOrder == "xzy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(ex, ey, ez);
+//                } else if(rotateOrder == "yxz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(ex, ey, ez);
+//                } else if(rotateOrder == "yzx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez);
+//                } else if(rotateOrder == "zxy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(ex, ey, ez);
+//                } else if(rotateOrder == "zyx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(ex, ey, ez);
+//                }
+//                remapped ordering
                 if(rotateOrder == "xyz"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(eigen_y, eigen_z, eigen_x);
                 } else if(rotateOrder == "xzy"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(eigen_y, eigen_x, eigen_z);
                 } else if(rotateOrder == "yxz"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(eigen_z, eigen_y, eigen_x);
                 } else if(rotateOrder == "yzx"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(eigen_z, eigen_x, eigen_y);
                 } else if(rotateOrder == "zxy"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(eigen_x, eigen_y, eigen_z);
                 } else if(rotateOrder == "zyx"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(ex, ey, ez);
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(eigen_x, eigen_z, eigen_y);
                 }
                 
-                quaternion = static_cast<Eigen::Quaternionf>(euler_angles); //set the member quaternion
+                //remapped ordering, other direction
+//                if(rotateOrder == "xyz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(ex, ey, ez);
+//                } else if(rotateOrder == "xzy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(ex, ey, ez);
+//                } else if(rotateOrder == "yxz"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(ex, ey, ez);
+//                } else if(rotateOrder == "yzx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(ex, ey, ez);
+//                } else if(rotateOrder == "zxy"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(ex, ey, ez);
+//                } else if(rotateOrder == "zyx"){
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(ex, ey, ez);
+//                }
+                Eigen::Quaternionf eq(euler_angles);
+                eq.normalize();
+                quaternion = Eigen::Quaternionf(eq.w(), eq.y(), eq.z(), eq.x());
+
+//                quaternion = euler_angles;
+//                quaternion = static_cast<Eigen::Quaternionf>(euler_angles); //set the member quaternion
                 world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
                 return {};
             }
@@ -150,41 +315,114 @@ public:
         getter {
             MIN_GETTER_FUNCTION{
                 //get the most up-to-date euler angles (the one stored as a member) which may have been modified by quaternion_attr
-                //recast the euler angles to the correct euler system, making use of the EulerAngles operator=
+
                 auto rotateOrder = rotate_order_attr.get();
+                
+                //recast the euler angles to the correct euler system, making use of the EulerAngles operator=
+//                if(rotateOrder == "xyz"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                            vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "xzy"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "yxz"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "yzx"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "zxy"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "zyx"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else {
+//                    return {}; //silence warning
+//                }
+                
+                //remapped order
                 if(rotateOrder == "xyz"){
-                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > recast_euler_angles = euler_angles;
-                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+                            vraudio::kDegreesFromRadians * recast_euler_angles.beta()};
                 } else if(rotateOrder == "xzy"){
-                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > recast_euler_angles = euler_angles;
-                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
-                } else if(rotateOrder == "yxz"){
                     Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > recast_euler_angles = euler_angles;
                     return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                        vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+                } else if(rotateOrder == "yxz"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
                 } else if(rotateOrder == "yzx"){
-                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > recast_euler_angles = euler_angles;
-                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
-                } else if(rotateOrder == "zxy"){
                     Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > recast_euler_angles = euler_angles;
                     return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                } else if(rotateOrder == "zxy"){
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
                 } else if(rotateOrder == "zyx"){
-                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > recast_euler_angles = euler_angles;
-                    return {vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
-                            vraudio::kDegreesFromRadians * recast_euler_angles.alpha()};
+                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > recast_euler_angles = euler_angles;
+                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma(),
+                        vraudio::kDegreesFromRadians * recast_euler_angles.beta()};
                 } else {
                     return {}; //silence warning
                 }
+                
+                //remapped order, other direction
+//                if(rotateOrder == "xyz"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                            vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                            vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "xzy"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "yxz"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "yzx"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "zxy"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else if(rotateOrder == "zyx"){
+//                    Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > recast_euler_angles = euler_angles;
+//                    return {vraudio::kDegreesFromRadians * recast_euler_angles.alpha(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.beta(),
+//                        vraudio::kDegreesFromRadians * recast_euler_angles.gamma()};
+//                } else {
+//                    return {}; //silence warning
+//                }
+                
             }
         },
     };
