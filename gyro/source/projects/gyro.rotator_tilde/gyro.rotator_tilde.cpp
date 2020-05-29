@@ -170,9 +170,9 @@ public:
     }
     
     //TODO grow this, use enum map
-    attribute<symbol> rotate_order_attr {this, "rotate order", "zxy", title{"Rotate Order"},
+    attribute<symbol> rotate_order_attr {this, "rotate order", "yzx", title{"Rotate Order"},
         description{"Set the order in which rotations are applied."}, //TODO copy description from jit
-        range{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"}
+        range{"auto", "xyz", "xzy", "yxz", "yzx", "zxy", "zyx"}
     };
         
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
@@ -195,47 +195,74 @@ public:
 
                 //set euler_angles member by converting quat -> mat -> euler, using the appropriate rotation order. Note that the euler_angles member will also be implicitly cast to its own type, but I cast it back to the right order in the euler_attr getter.
                 auto rotateOrder = rotate_order_attr.get();
+                Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > quat_euler_angles;
+            
 //                cout << rotateOrder << endl;
                 if(rotateOrder == "xyz"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
                 } else if(rotateOrder == "xzy"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
+
                 } else if(rotateOrder == "yxz"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
+
                 } else if(rotateOrder == "yzx"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
+
                 } else if(rotateOrder == "zxy"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
+
                 } else if(rotateOrder == "zyx"){
-                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > (quat_euler_angles.alpha(), quat_euler_angles.beta(), quat_euler_angles.gamma()); //reorder
+
                 }
             
+
 //                if(rotateOrder == "xyz"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                } else if(rotateOrder == "xzy"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                } else if(rotateOrder == "yxz"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                } else if(rotateOrder == "yzx"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                } else if(rotateOrder == "zxy"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                } else if(rotateOrder == "zyx"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > (quat_euler_angles.gamma(), quat_euler_angles.alpha(), quat_euler_angles.beta()); //reorder
 //                }
             
+            
 //                if(rotateOrder == "xyz"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,1,2> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                } else if(rotateOrder == "xzy"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<3,2,1> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                } else if(rotateOrder == "yxz"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,3,2> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                } else if(rotateOrder == "yzx"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<1,2,3> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                } else if(rotateOrder == "zxy"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,3,1> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                } else if(rotateOrder == "zyx"){
-//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                    quat_euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(quaternion.toRotationMatrix());
+//                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> > (quat_euler_angles.beta(), quat_euler_angles.gamma(), quat_euler_angles.alpha()); //reorder
 //                }
             
                 world_rotation = vraudio::WorldRotation(quaternion);
@@ -318,9 +345,8 @@ public:
 //                    euler_angles = Eigen::EulerAngles<float, Eigen::EulerSystem<2,1,3> >(ex, ey, ez);
 //                }
                 Eigen::Quaternionf eq(quat_euler_angles);
-                eq.normalize();
+//                eq.normalize();
                 quaternion = Eigen::Quaternionf(eq.w(), eq.y(), eq.z(), eq.x()); //back to jitter order for xyz
-
 //                quaternion = euler_angles;
 //                quaternion = static_cast<Eigen::Quaternionf>(euler_angles); //set the member quaternion
                 world_rotation = vraudio::WorldRotation(quaternion); //using Resonance/Eigen quaternion order (wxyz)
