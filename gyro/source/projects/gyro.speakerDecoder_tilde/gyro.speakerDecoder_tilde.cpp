@@ -24,7 +24,7 @@ private:
     const int kAmbisonicOrder;
     const int kNumInlets;
     const int kNumOutlets;
-    const std::vector<vraudio::SphericalAngle> speakerAngles;
+    const std::vector<vraudio::SphericalAngle> speakerAngles = {vraudio::SphericalAngle::FromDegrees(0, 0), vraudio::SphericalAngle::FromDegrees(90, 0), vraudio::SphericalAngle::FromDegrees(180, 0), vraudio::SphericalAngle::FromDegrees(270, 0)};
     vraudio::AmbisonicCodecImpl<> speaker_decoder;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
@@ -56,9 +56,11 @@ public:
         }
         
         //TODO: outlet help message should have the angle.
-        std::string outletHelpMessage("(signal) Channel ");
+        std::string outletHelpMessage;
         for (auto i=0; i < kNumOutlets; ++i) {
-            m_outlets.push_back( std::make_unique<outlet<>>(this, outletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            //hover over the outlet to learn its speaker location
+            outletHelpMessage = "(signal) Channel " + std::to_string(i+1) + " (" + std::to_string(speakerAngles.at(i).azimuth()*vraudio::kDegreesFromRadians) + ", " + std::to_string(speakerAngles.at(i).elevation()*vraudio::kDegreesFromRadians) + ")";
+            m_outlets.push_back( std::make_unique<outlet<>>(this, outletHelpMessage, "signal") );
         }
     }
     
@@ -66,12 +68,12 @@ public:
 
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(kNumInlets, nFrames);   // resonance-style audio buffer for input
-        vraudio::AudioBuffer r_outputAudioBuffer(2, nFrames);   // resonance-style audio buffer for output
+        vraudio::AudioBuffer r_outputAudioBuffer(kNumOutlets, nFrames);   // resonance-style audio buffer for output
         Min2Res(input, &r_inputAudioBuffer);    // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
 
-//        binaural_decoder.Process(r_inputAudioBuffer, &r_outputAudioBuffer);     //decode the buffer!
+        speaker_decoder.DecodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);     //decode the buffer!
         //TODO: change to output below after adding the actual processing.
-        Res2Min(r_inputAudioBuffer, &output);   // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        Res2Min(r_outputAudioBuffer, &output);   // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
 
     }
 };
