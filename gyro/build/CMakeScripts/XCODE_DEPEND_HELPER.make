@@ -39,6 +39,11 @@ PostBuild.gyro.soundfield2stereo_tilde.Debug:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
 
 
+PostBuild.gyro.speakerDecoder_tilde.Debug:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~
+
+
 PostBuild.gyro.thru_tilde.Debug:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.thru~.mxo/Contents/MacOS/gyro.thru~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.thru~.mxo/Contents/MacOS/gyro.thru~
@@ -79,6 +84,11 @@ PostBuild.gyro.rotator_tilde.Release:
 PostBuild.gyro.soundfield2stereo_tilde.Release:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
+
+
+PostBuild.gyro.speakerDecoder_tilde.Release:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~
 
 
 PostBuild.gyro.thru_tilde.Release:
@@ -123,6 +133,11 @@ PostBuild.gyro.soundfield2stereo_tilde.MinSizeRel:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
 
 
+PostBuild.gyro.speakerDecoder_tilde.MinSizeRel:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~
+
+
 PostBuild.gyro.thru_tilde.MinSizeRel:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.thru~.mxo/Contents/MacOS/gyro.thru~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.thru~.mxo/Contents/MacOS/gyro.thru~
@@ -163,6 +178,11 @@ PostBuild.gyro.rotator_tilde.RelWithDebInfo:
 PostBuild.gyro.soundfield2stereo_tilde.RelWithDebInfo:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~
+
+
+PostBuild.gyro.speakerDecoder_tilde.RelWithDebInfo:
+/Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~:
+	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.speakerDecoder~.mxo/Contents/MacOS/gyro.speakerDecoder~
 
 
 PostBuild.gyro.thru_tilde.RelWithDebInfo:
