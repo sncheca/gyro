@@ -107,6 +107,42 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"attr" : "spkr angles",
+									"id" : "obj-10",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 546.0, 260.0, 340.0, 23.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"attr" : "quaternion",
+									"id" : "obj-15",
+									"maxclass" : "attrui",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 665.25, 417.0, 266.0, 23.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "newobj",
+									"numinlets" : 4,
+									"numoutlets" : 4,
+									"outlettype" : [ "signal", "signal", "signal", "signal" ],
+									"patching_rect" : [ 665.25, 457.0, 83.0, 23.0 ],
+									"text" : "gyro.rotator~"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-6",
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
@@ -233,17 +269,17 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 439.0, 303.0, 38.0, 233.0 ],
+									"patching_rect" : [ 452.0, 348.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.gain~[4]",
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[4]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_mmin" : -70.0
 										}
 
 									}
@@ -263,17 +299,17 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 398.666666666666686, 303.0, 38.0, 233.0 ],
+									"patching_rect" : [ 407.666666666666686, 348.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.gain~[3]",
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[3]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_mmin" : -70.0
 										}
 
 									}
@@ -293,17 +329,17 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 358.333333333333314, 303.0, 38.0, 233.0 ],
+									"patching_rect" : [ 364.333333333333314, 348.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.gain~[2]",
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[2]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_mmin" : -70.0
 										}
 
 									}
@@ -318,10 +354,10 @@
 									"id" : "obj-18",
 									"maxclass" : "newobj",
 									"numinlets" : 4,
-									"numoutlets" : 4,
-									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 320.0, 262.0, 140.0, 23.0 ],
-									"text" : "gyro.speakerDecoder~"
+									"numoutlets" : 6,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal" ],
+									"patching_rect" : [ 320.0, 307.0, 162.0, 23.0 ],
+									"text" : "gyro.speakerDecoder~ 1 6"
 								}
 
 							}
@@ -443,17 +479,17 @@
 									"numoutlets" : 4,
 									"outlettype" : [ "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 318.0, 303.0, 38.0, 233.0 ],
+									"patching_rect" : [ 320.0, 348.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_mmin" : -70.0
 										}
 
 									}
@@ -494,6 +530,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-18", 0 ],
+									"source" : [ "obj-10", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-11", 0 ]
 								}
@@ -510,6 +553,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-1", 1 ],
 									"source" : [ "obj-14", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-13", 0 ],
+									"source" : [ "obj-15", 0 ]
 								}
 
 							}
@@ -751,9 +801,9 @@
 		"lines" : [  ],
 		"parameters" : 		{
 			"obj-2::obj-5" : [ "live.gain~[4]", "live.gain~", 0 ],
-			"obj-2::obj-19" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"obj-2::obj-4" : [ "live.gain~[3]", "live.gain~", 0 ],
 			"obj-2::obj-3" : [ "live.gain~[2]", "live.gain~", 0 ],
+			"obj-2::obj-19" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"parameterbanks" : 			{
 
 			}
@@ -778,6 +828,10 @@
 			}
 , 			{
 				"name" : "gyro.speakerDecoder~.mxo",
+				"type" : "iLaX"
+			}
+, 			{
+				"name" : "gyro.rotator~.mxo",
 				"type" : "iLaX"
 			}
  ],

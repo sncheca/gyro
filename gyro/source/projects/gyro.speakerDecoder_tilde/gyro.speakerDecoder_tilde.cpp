@@ -18,13 +18,26 @@
 using namespace c74::min;
 //note that the vraudio namespace is used for Resonance objects. I do not "use" this namespace so that is clear to the viewer where these objects come from
 
+typedef vector<double> interleavedSpkrLoc;
+
+//TODO: this will have to copy...  I don't like that.
+//determine the default locations for the speakers. Currently they are arranged in a 2D ring by default. TODO: update so that the default is 3D
+std::vector<vraudio::SphericalAngle> initSpeakerLocations(const int nChannels){
+    std::vector<vraudio::SphericalAngle> angles;
+    for(int i = 0; i < nChannels; i++){
+        angles.push_back(vraudio::SphericalAngle::FromDegrees(360*i/nChannels, 0));
+    }
+    return angles;
+}
+
 class speakerDecoder : public object<speakerDecoder>, public vector_operator<> {
 private:
     //everything will be initialised in the member initialisation lists in the constructor
     const int kAmbisonicOrder;
     const int kNumInlets;
     const int kNumOutlets;
-    const std::vector<vraudio::SphericalAngle> speakerAngles = {vraudio::SphericalAngle::FromDegrees(0, 0), vraudio::SphericalAngle::FromDegrees(90, 0), vraudio::SphericalAngle::FromDegrees(180, 0), vraudio::SphericalAngle::FromDegrees(270, 0)};
+    std::vector<vraudio::SphericalAngle> speakerAngles;
+    std::vector<double> vec;
     vraudio::AmbisonicCodecImpl<> speaker_decoder;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
@@ -39,7 +52,9 @@ public:
     speakerDecoder(const atoms& args = {})
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
         kNumInlets(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),   //determine how many spherical harmonics there are for this order
-        kNumOutlets(4), // set this to 4 for now TODO: update this
+        kNumOutlets(args.size()<2 ? kNumInlets : int(args[1])), // if there is no second argument, set kNumOutlets = kNumInlets. TODO: what does this mean for @channel 16
+        speakerAngles(initSpeakerLocations(kNumOutlets)),
+        vec(2*kNumOutlets, 0.0), //TODO: must be able to cast between sphericalAngle vector and interleaved vector.
         speaker_decoder(kAmbisonicOrder, speakerAngles)
 
     {
@@ -55,14 +70,44 @@ public:
             m_inlets.push_back( std::make_unique<inlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
         
-        //TODO: outlet help message should have the angle.
         std::string outletHelpMessage;
         for (auto i=0; i < kNumOutlets; ++i) {
             //hover over the outlet to learn its speaker location
             outletHelpMessage = "(signal) Channel " + std::to_string(i+1) + " (" + std::to_string(speakerAngles.at(i).azimuth()*vraudio::kDegreesFromRadians) + ", " + std::to_string(speakerAngles.at(i).elevation()*vraudio::kDegreesFromRadians) + ")";
             m_outlets.push_back( std::make_unique<outlet<>>(this, outletHelpMessage, "signal") );
         }
+        
     }
+    
+    //a long vector that holds interleaved azimuth elevation values
+    //TODO: initialise to variable size vector
+    //note that vector<float> is not supported
+    attribute< interleavedSpkrLoc > angles_attr { this, "spkr angles", vec,
+        title{"Speaker Angles: interleaved (azimuth, elevation)"},
+        description{"Speaker Angles: interleaved (azimuth, elevation)"},
+        setter{MIN_FUNCTION{
+            //TODO: scalable length
+//            TODO: error check to make sure that the vector is the correct length
+//            adjust the speakerAngles member. Potentially turn this into a constructor or cast
+            for(int i = 0; i<kNumOutlets; i++){
+                speakerAngles.at(i) = vraudio::SphericalAngle::FromDegrees(float(args[2*i]), float(args[2*i+1]));
+                //TODO: update the outlet description, or get rid of angle in description
+            }
+            speaker_decoder.set_angles(speakerAngles); //update the speaker angles in the decoder
+            return{};
+        }},
+        getter{ MIN_GETTER_FUNCTION{
+            return{speakerAngles.at(0).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(0).elevation()*vraudio::kDegreesFromRadians,
+                   speakerAngles.at(1).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(1).elevation()*vraudio::kDegreesFromRadians,
+                   speakerAngles.at(2).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(2).elevation()*vraudio::kDegreesFromRadians,
+                   speakerAngles.at(3).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(3).elevation()*vraudio::kDegreesFromRadians,
+                   speakerAngles.at(4).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(4).elevation()*vraudio::kDegreesFromRadians,
+                   speakerAngles.at(5).azimuth()*vraudio::kDegreesFromRadians, speakerAngles.at(5).elevation()*vraudio::kDegreesFromRadians,
+            };
+        }
+            
+        }
+    };
     
     void operator()(audio_bundle input, audio_bundle output) {
 

@@ -106,7 +106,6 @@ public:
         range{"xyz", "xzy", "yxz", "yzx", "zxy", "zyx"} //jit objects have auto as an option, but I prefer to be more explicit, and just set a default
     };
     
-    //TODO: resolve the 0 quaternion issue
     attribute< vector<double> > quaternion_attr { this, "quaternion", {0.1, 0.0, 0.0, 1.0}, title{"Quaternion (xyzw)"}, //note that vector<float> is not supported
         description{"Quaternion (xyzw) to be used for world rotation"},
         setter{ MIN_FUNCTION{
