@@ -32,12 +32,37 @@
 
 	<methodlist>
 
+		<method name='set'>
+			<digest>Set a speaker's location using (azimuth, elevation) in degrees </digest>
+			<description>Set a speaker's location using (azimuth, elevation) in degrees </description>
+		</method>
+
 	</methodlist>
 
 
 	<!--ATTRIBUTES-->
 
 	<attributelist>
+
+		<attribute name='Spkr 4 angles' get='1' set='1' type='float64' size='1' >
+			<digest>Set a speaker's direction using (azimuth, elevation) in degrees</digest>
+			<description>Set a speaker's direction using (azimuth, elevation) in degrees. </description>
+		</attribute>
+
+		<attribute name='Spkr 3 angles' get='1' set='1' type='float64' size='1' >
+			<digest>Set a speaker's direction using (azimuth, elevation) in degrees</digest>
+			<description>Set a speaker's direction using (azimuth, elevation) in degrees. </description>
+		</attribute>
+
+		<attribute name='Spkr 2 angles' get='1' set='1' type='float64' size='1' >
+			<digest>Set a speaker's direction using (azimuth, elevation) in degrees</digest>
+			<description>Set a speaker's direction using (azimuth, elevation) in degrees. </description>
+		</attribute>
+
+		<attribute name='Spkr 1 angles' get='1' set='1' type='float64' size='1' >
+			<digest>Set a speaker's direction using (azimuth, elevation) in degrees</digest>
+			<description>Set a speaker's direction using (azimuth, elevation) in degrees. </description>
+		</attribute>
 
 		<attribute name='spkr angles' get='1' set='1' type='float64' size='1' >
 			<digest>Speaker Angles: interleaved (azimuth, elevation) </digest>
