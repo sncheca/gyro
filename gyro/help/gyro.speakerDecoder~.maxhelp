@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -164.0, -905.0, 851.0, 801.0 ],
+		"rect" : [ -164.0, -905.0, 1050.0, 801.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -164.0, -853.0, 851.0, 749.0 ],
+						"rect" : [ -164.0, -853.0, 1050.0, 749.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -285,14 +285,14 @@
 									"patching_rect" : [ 227.0, 378.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[4]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_longname" : "live.gain~[4]"
 										}
 
 									}
@@ -315,14 +315,14 @@
 									"patching_rect" : [ 182.666666666666686, 378.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[3]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_longname" : "live.gain~[3]"
 										}
 
 									}
@@ -345,14 +345,14 @@
 									"patching_rect" : [ 139.333333333333314, 378.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[2]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_longname" : "live.gain~[2]"
 										}
 
 									}
@@ -367,10 +367,10 @@
 									"id" : "obj-18",
 									"maxclass" : "newobj",
 									"numinlets" : 4,
-									"numoutlets" : 4,
-									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 95.0, 337.0, 140.0, 23.0 ],
-									"text" : "gyro.speakerDecoder~"
+									"numoutlets" : 5,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "signal" ],
+									"patching_rect" : [ 95.0, 337.0, 162.0, 23.0 ],
+									"text" : "gyro.speakerDecoder~ 1 5"
 								}
 
 							}
@@ -495,14 +495,14 @@
 									"patching_rect" : [ 95.0, 378.0, 38.0, 233.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_initial_enable" : 1,
+											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -20 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0
+											"parameter_longname" : "live.gain~[1]"
 										}
 
 									}
@@ -767,7 +767,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 851.0, 749.0 ],
+						"rect" : [ 0.0, 26.0, 1050.0, 749.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -820,10 +820,10 @@
  ],
 		"lines" : [  ],
 		"parameters" : 		{
-			"obj-2::obj-19" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"obj-2::obj-5" : [ "live.gain~[4]", "live.gain~", 0 ],
 			"obj-2::obj-4" : [ "live.gain~[3]", "live.gain~", 0 ],
 			"obj-2::obj-3" : [ "live.gain~[2]", "live.gain~", 0 ],
+			"obj-2::obj-19" : [ "live.gain~[1]", "live.gain~", 0 ],
 			"parameterbanks" : 			{
 
 			}
