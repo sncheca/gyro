@@ -199,7 +199,7 @@ public:
                 int speakerID = int(args[0])-1; //internal speakerID is 0 indexed.
                 if(speakerID >= 0 && speakerID < kNumOutlets){ //if the user enters a speaker number that is out of range
                     speakerAngles.at(speakerID).set_azimuth(float(args[1])*vraudio::kRadiansFromDegrees);
-                    speakerAngles.at(speakerID).set_elevation(float(args[2])*vraudio::kRadiansFromDegrees);                    
+                    speakerAngles.at(speakerID).set_elevation(float(args[2])*vraudio::kRadiansFromDegrees);
                     m_outlets.at(speakerID)->setDescription("(signal) Channel " + std::to_string(speakerID+1) + " (" + std::to_string(int(args[1])) + "°, " + std::to_string(int(args[2])) + "°)");
             //      m_attr.at(speakerID) = {float(args[1]), float(args[2])}; //TODO: assign attribute from message
                     speaker_decoder.set_angles(speakerAngles);
@@ -236,6 +236,15 @@ public:
         }
     };
     
+    attribute< dict > anglesDict_attr {this, "spkr dict", dict(),
+        setter{MIN_FUNCTION{
+            return{}; 
+        }},
+        getter{MIN_GETTER_FUNCTION{
+            return{0.0};
+        }}
+    };
+            
     void operator()(audio_bundle input, audio_bundle output) {
 
         auto nFrames = input.frame_count();
