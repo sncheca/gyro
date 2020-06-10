@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 5.0, -853.0, 829.0, 547.0 ],
+						"rect" : [ 5.0, -879.0, 829.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -107,13 +107,25 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 481.0, 245.0, 97.0, 23.0 ],
+									"text" : "1 -90. 0."
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-12",
 									"maxclass" : "message",
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 580.0, 177.0, 38.0, 23.0 ],
-									"text" : "-90 0"
+									"patching_rect" : [ 625.0, 177.0, 70.0, 23.0 ],
+									"text" : "set 1 -90 0"
 								}
 
 							}
@@ -124,8 +136,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 534.0, 177.0, 34.0, 23.0 ],
-									"text" : "90 0"
+									"patching_rect" : [ 534.0, 177.0, 66.0, 23.0 ],
+									"text" : "set 1 90 0"
 								}
 
 							}
@@ -136,20 +148,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 484.5, 177.0, 29.5, 23.0 ],
-									"text" : "0 0"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-6",
-									"linecount" : 3,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 43.0, 209.0, 208.0, 50.0 ],
-									"text" : "DONT LOOK AT THIS LOOK AT THE HELP FILE FOR SOUNDFIELD2STEREO"
+									"patching_rect" : [ 463.0, 177.0, 58.0, 23.0 ],
+									"text" : "set 1 0 0"
 								}
 
 							}
@@ -167,25 +167,13 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-5",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 534.0, 270.5, 267.0, 36.0 ],
-									"text" : "not actually sure if I am using the hoa object correctly"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-3",
 									"maxclass" : "newobj",
-									"numinlets" : 5,
+									"numinlets" : 4,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 307.0, 277.0, 216.0, 23.0 ],
-									"text" : "hoa.2d.decoder~ 2 @mode binaural"
+									"patching_rect" : [ 307.0, 277.0, 140.0, 23.0 ],
+									"text" : "gyro.binauralDecoder~"
 								}
 
 							}
@@ -193,11 +181,11 @@
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 4,
-									"outlettype" : [ "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 320.0, 215.0, 103.0, 23.0 ],
-									"text" : "gyro.encoder~ 1"
+									"numinlets" : 3,
+									"numoutlets" : 5,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "list" ],
+									"patching_rect" : [ 320.0, 215.0, 114.0, 23.0 ],
+									"text" : "gyro.encoder~ 1 3"
 								}
 
 							}
@@ -392,7 +380,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 1 ],
+									"destination" : [ "obj-6", 1 ],
+									"source" : [ "obj-1", 4 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-10", 0 ]
 								}
 
@@ -406,14 +401,14 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 1 ],
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-12", 0 ]
 								}
 
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 1 ],
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -553,7 +548,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 829.0, 547.0 ],
+						"rect" : [ 0.0, 26.0, 829.0, 573.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -630,7 +625,7 @@
 				"type" : "iLaX"
 			}
 , 			{
-				"name" : "hoa.2d.decoder~.mxo",
+				"name" : "gyro.binauralDecoder~.mxo",
 				"type" : "iLaX"
 			}
  ],

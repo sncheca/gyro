@@ -9,6 +9,7 @@
 #include "ambisonics/ambisonic_codec_impl.h"
 #include "ambisonics/ambisonic_codec.h"
 #include "audio_buffer_conversion.h"
+#include "pita_spherical_angle.h"
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
 #include "base/spherical_angle.h" //yes needed
@@ -20,11 +21,12 @@ private:
     const int kAmbisonicOrder;
     const int kNumOutputChannels;
     const int kNumSources;
-    vraudio::SphericalAngle myAngle;
-    inlet<>  in1     { this, "(signal) Channel 1", "signal" };
-    inlet<>  angleIn { this, "(list) Numbers to specify angles in axis-angle", "list"}; //first number is side-to-side, second number is up-down
-    std::vector< std::unique_ptr<outlet<>> >    m_outlets; //note that this must be called m_outputs!
+    std::vector<vraudio::SphericalAngle> source_angles;
     std::unique_ptr<vraudio::MonoAmbisonicCodec<>> ambisonic_encoder;
+    
+    std::vector< std::unique_ptr<inlet<>> >    g_inlets;
+    std::vector< std::unique_ptr<outlet<>> >    g_outlets;
+    
 public:
     MIN_DESCRIPTION    { "Encode point sources with desginated directions to ambisonic sound field." };
     MIN_TAGS        { "audio, sampling" };
@@ -37,28 +39,48 @@ public:
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),
         kNumOutputChannels(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),
         kNumSources(args.size()<2 ? 1 : int(args[1])), // if there is no second argument, set kNumSources = 1
-        myAngle(vraudio::SphericalAngle::FromDegrees(0,0)),
-        ambisonic_encoder(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, {myAngle}))
+        source_angles(std::vector<vraudio::SphericalAngle>(1, vraudio::SphericalAngle::FromDegrees(0,0))), //all sources will start at position (0,0). This will create a nice spreading effect when you move them -- good for demos :)
+        ambisonic_encoder(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, source_angles))
     { //body of constructor
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
         
-        auto outlet_count = kNumOutputChannels;
-
-        for (auto i=0; i < outlet_count; ++i) {
-            //TODO the channel number should be in the assist message. String nonsense.
-            auto an_outlet = std::make_unique<outlet<>>(this, "(signal) Channel", "signal");
-            m_outlets.push_back( std::move(an_outlet) ); //TODO put this in one line
+        for (auto i=0; i < kNumSources; ++i) {
+            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Source " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
+        
+        for (auto i=0; i < kNumOutputChannels; ++i) {
+            g_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") );
+        }
+        
+        //one more outlet for dumping out speaker angle information
+        g_outlets.push_back( std::make_unique<outlet<>>(this, "(list) Interleaved list of source angles (°) in axis-angle, i.e., [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]", "list") );
     }
     
-    message<> axisAngleList { this, "list", "message for angles",
+    //TODO: can we consolidate anything from the equivalent in the decoder?
+    message<> setSourceAngles { this, "set", "Set a source's location using (azimuth, elevation) in degrees",
         MIN_FUNCTION {
-            if (inlet == 1)
-                myAngle.set_azimuth(args[0]);
-                myAngle.set_elevation(args[1]);
-                ambisonic_encoder->set_angles({myAngle});
+            int argc = args.size(); //C-style, avoid repetition.
+            if(argc % 3 == 0){ //disregard the entire message if it is poorly formatted. There are too many ways to make a mistake, it's not worth trying to extract some meaning from it.
+                for(int i = 0; i < argc; i+=3){
+                    int sourceID = int(args[i])-1; //internal speakerID is 0 indexed.
+                    if(sourceID >= 0 && sourceID < kNumSources){ //if the user enters a speaker number that is out of range
+                        source_angles.at(sourceID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
+                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
+//                        g_inlets.at(sourceID)->setDescription("(signal) Channel " + std::to_string(sourceID+1) + " (" + std::to_string(int(args[i+1])) + "°, " + std::to_string(int(args[i+2])) + "°)");
+                    } else {
+                    cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << "input channels." << endl;
+                    }
+                }
+                //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
+                ambisonic_encoder->set_angles(source_angles);
+                g_outlets.back()->send(pita::sa2atoms(source_angles));
+            
+            } else {
+                // error message telling them how to use it
+                cerr << "Angles have not been set due to a poorly formatted message. Message usage: interleaved list in the form [set <speaker1ID> <azimuth1> <elevation1> <speaker2ID> <azimuth2> <elevation2>]" << endl;
+            }
             return {};
         }
     };

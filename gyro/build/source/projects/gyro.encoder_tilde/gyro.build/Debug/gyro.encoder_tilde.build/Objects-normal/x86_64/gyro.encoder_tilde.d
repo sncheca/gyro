@@ -292,5 +292,6 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/ambisonic_codec.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../pita/audio_buffer_conversion.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/audio_buffer.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../pita/pita_spherical_angle.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.encoder_tilde/../../resonance_audio/base/spherical_angle.h

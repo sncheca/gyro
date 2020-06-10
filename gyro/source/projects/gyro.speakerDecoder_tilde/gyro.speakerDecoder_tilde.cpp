@@ -12,6 +12,7 @@
 #include "ambisonics/ambisonic_codec_impl.h"
 #include "audio_buffer_conversion.h"
 #include "pita_port.h" //for pitaOutlet, a derived class that allows the m_description to be modified.
+#include "pita_spherical_angle.h"
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
 #include "base/spherical_angle.h"
@@ -34,17 +35,6 @@ std::vector<vraudio::SphericalAngle> initSpeakerAngles(const int nChannels){
     std::vector<vraudio::SphericalAngle> angles(nChannels, vraudio::SphericalAngle()); //preallocate is better practice
     setDefaultSpeakerAngles(angles);
     return angles;
-}
-
-// Convert sphericalAngles vector to an interleaved list of speaker angles (°) in axis-angle in the form [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]
-vector<atom> sa2atoms(const std::vector<vraudio::SphericalAngle>& other){
-    vector<atom> a;
-    for(int i = 0; i<other.size(); i++){
-        a.push_back(i+1); //change to human indexing
-        a.push_back(other.at(i).azimuth()*vraudio::kDegreesFromRadians);
-        a.push_back(other.at(i).elevation()*vraudio::kDegreesFromRadians);
-    }
-    return a;
 }
 
 class speakerDecoder : public object<speakerDecoder>, public vector_operator<> {
@@ -101,7 +91,7 @@ public:
     // Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
     message<> getSpeakerAngles {this, "getAngles", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
         MIN_FUNCTION{
-            m_outlets.back()->send(sa2atoms(speaker_angles));
+            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
@@ -109,7 +99,7 @@ public:
     // Bang equivalent of the getSpeakerAngles (above). Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
     message<> bangSpeakerAngles {this, "bang", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
         MIN_FUNCTION{
-            m_outlets.back()->send(sa2atoms(speaker_angles));
+            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
@@ -130,7 +120,7 @@ public:
                 }
                 //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
                 speaker_decoder.set_angles(speaker_angles);
-                m_outlets.back()->send(sa2atoms(speaker_angles));
+                m_outlets.back()->send(pita::sa2atoms(speaker_angles));
             
             } else {
                 // error message telling them how to use it
@@ -145,7 +135,7 @@ public:
         MIN_FUNCTION{
             setDefaultSpeakerAngles(speaker_angles);
             speaker_decoder.set_angles(speaker_angles);
-            m_outlets.back()->send(sa2atoms(speaker_angles));
+            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
