@@ -10,6 +10,7 @@
 #include "ambisonics/ambisonic_codec.h"
 #include "audio_buffer_conversion.h"
 #include "pita_spherical_angle.h"
+#include "pita_port.h"
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
 #include "base/spherical_angle.h" //yes needed
@@ -24,7 +25,7 @@ private:
     std::vector<vraudio::SphericalAngle> source_angles;
     std::unique_ptr<vraudio::MonoAmbisonicCodec<>> ambisonic_encoder;
     
-    std::vector< std::unique_ptr<inlet<>> >    g_inlets;
+    std::vector< std::unique_ptr<pita::p_inlet> >    g_inlets;
     std::vector< std::unique_ptr<outlet<>> >    g_outlets;
     
 public:
@@ -39,7 +40,7 @@ public:
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),
         kNumOutputChannels(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),
         kNumSources(args.size()<2 ? 1 : int(args[1])), // if there is no second argument, set kNumSources = 1
-        source_angles(std::vector<vraudio::SphericalAngle>(1, vraudio::SphericalAngle::FromDegrees(0,0))), //all sources will start at position (0,0). This will create a nice spreading effect when you move them -- good for demos :)
+        source_angles(std::vector<vraudio::SphericalAngle>(kNumSources, vraudio::SphericalAngle::FromDegrees(0,0))), //all sources will start at position (0,0). This will create a nice spreading effect when you move them -- good for demos :)
         ambisonic_encoder(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, source_angles))
     { //body of constructor
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
@@ -47,7 +48,7 @@ public:
         }
         
         for (auto i=0; i < kNumSources; ++i) {
-            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Source " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            g_inlets.push_back( std::make_unique<pita::p_inlet>(this, pita::generatePortAngleLabel(i, source_angles), "signal") ); 
         }
         
         for (auto i=0; i < kNumOutputChannels; ++i) {
@@ -67,8 +68,7 @@ public:
                     int sourceID = int(args[i])-1; //internal speakerID is 0 indexed.
                     if(sourceID >= 0 && sourceID < kNumSources){ //if the user enters a speaker number that is out of range
                         source_angles.at(sourceID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
-                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
-//                        g_inlets.at(sourceID)->setDescription("(signal) Channel " + std::to_string(sourceID+1) + " (" + std::to_string(int(args[i+1])) + "°, " + std::to_string(int(args[i+2])) + "°)");
+                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees); g_inlets.at(i)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
                     } else {
                     cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << "input channels." << endl;
                     }
@@ -90,15 +90,13 @@ public:
         audio_bundle tempIn(&s, 1, input.frame_count()); //this is very nasty and inelegant.
  
         auto nFrames = tempIn.frame_count();
-        vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);             // resonance-style mono audio buffer for input
+        vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);  // resonance-style mono audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(kNumOutputChannels, nFrames);     // resonance-style audio buffer for output
-        Min2Res(tempIn, &r_inputAudioBuffer);                             // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        Min2Res(tempIn, &r_inputAudioBuffer); // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
-        ambisonic_encoder->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);
-        ///for now just copy the input buffer to the output buffer. Eventually this will become ambisonic processing
-//        r_outputAudioBuffer = r_inputAudioBuffer; //utilize copy assignment defined by AudioBuffer class
+        ambisonic_encoder->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer); //encode the buffer!
         
-        Res2Min(r_outputAudioBuffer, &output);                    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
     }
 };
