@@ -3,7 +3,7 @@
 ///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-///Copyright Sofia Checa 2020.
+//Copyright 2020 Sofia Checa, Yale CCAM // Yale Blended Reality // Yale Department of Music
 
 //decode a soundfield to a speaker array
 
@@ -11,8 +11,8 @@
 #include "ambisonics/ambisonic_codec.h"
 #include "ambisonics/ambisonic_codec_impl.h"
 #include "audio_buffer_conversion.h"
-#include "pita_port.h" //for p_outlet, a derived class that allows the m_description to be modified.
 #include "pita_spherical_angle.h"
+#include "pita_port.h" //for p_outlet, a derived class that allows the m_description to be modified.
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
 #include "base/spherical_angle.h"

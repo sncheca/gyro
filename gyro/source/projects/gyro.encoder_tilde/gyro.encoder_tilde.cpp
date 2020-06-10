@@ -3,7 +3,9 @@
 ///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-//an ambisonic encoder that supports 1st, 2nd, and 3rd order ambisonics. 
+//Copyright 2020 Sofia Checa, Yale CCAM // Yale Blended Reality // Yale Department of Music
+
+//a multichannel ambisonic encoder that supports 1st, 2nd, and 3rd order ambisonics.
 
 #include "c74_min.h"
 #include "ambisonics/ambisonic_codec_impl.h"
@@ -17,20 +19,30 @@
 
 using namespace c74::min;
 
+void setDefaultSourceAngles(std::vector<vraudio::SphericalAngle>& angles){
+    int nSpeakers = angles.size();
+    for(int i = 0; i < nSpeakers; i++){
+        angles.at(i).set_azimuth(0);
+        angles.at(i).set_elevation(0);
+    }
+    return;
+}
+
 class encoder : public object<encoder>, public vector_operator<> {
 private:
     const int kAmbisonicOrder;
     const int kNumOutputChannels;
     const int kNumSources;
     std::vector<vraudio::SphericalAngle> source_angles;
-    std::unique_ptr<vraudio::MonoAmbisonicCodec<>> ambisonic_encoder;
+//    std::unique_ptr<vraudio::MonoAmbisonicCodec<>> ambisonic_encoder;
+    vraudio::AmbisonicCodecImpl<> ambisonic_encoder;
     
     std::vector< std::unique_ptr<pita::p_inlet> >    g_inlets;
     std::vector< std::unique_ptr<outlet<>> >    g_outlets;
     
 public:
     MIN_DESCRIPTION    { "Encode point sources with desginated directions to ambisonic sound field." };
-    MIN_TAGS        { "audio, sampling" };
+    MIN_TAGS        { "audio, decoder, ambisonics" };
     MIN_AUTHOR        { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
 
@@ -41,7 +53,7 @@ public:
         kNumOutputChannels(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),
         kNumSources(args.size()<2 ? 1 : int(args[1])), // if there is no second argument, set kNumSources = 1
         source_angles(std::vector<vraudio::SphericalAngle>(kNumSources, vraudio::SphericalAngle::FromDegrees(0,0))), //all sources will start at position (0,0). This will create a nice spreading effect when you move them -- good for demos :)
-        ambisonic_encoder(new vraudio::MonoAmbisonicCodec<>(kAmbisonicOrder, source_angles))
+        ambisonic_encoder(kAmbisonicOrder, source_angles)
     { //body of constructor
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
@@ -59,6 +71,22 @@ public:
         g_outlets.push_back( std::make_unique<outlet<>>(this, "(list) Interleaved list of source angles (°) in axis-angle, i.e., [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]", "list") );
     }
     
+    // Dump interleaved list of source angles (°) in axis-angle out of last outlet
+    message<> getSourceAngles {this, "getAngles", "Dump interleaved list of source angles (°) in axis-angle out of last outlet",
+        MIN_FUNCTION{
+            g_outlets.back()->send(pita::sa2atoms(source_angles));
+            return{};
+        }
+    };
+    
+    // Bang equivalent of the getSpeakerAngles (above). Dump interleaved list of source angles (°) in axis-angle out of last outlet
+    message<> bangSpeakerAngles {this, "bang", "Dump interleaved list of source angles (°) in axis-angle out of last outlet",
+        MIN_FUNCTION{
+            g_outlets.back()->send(pita::sa2atoms(source_angles));
+            return{};
+        }
+    };
+    
     //TODO: can we consolidate anything from the equivalent in the decoder?
     message<> setSourceAngles { this, "set", "Set a source's location using (azimuth, elevation) in degrees",
         MIN_FUNCTION {
@@ -74,7 +102,7 @@ public:
                     }
                 }
                 //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
-                ambisonic_encoder->set_angles(source_angles);
+                ambisonic_encoder.set_angles(source_angles);
                 g_outlets.back()->send(pita::sa2atoms(source_angles));
             
             } else {
@@ -84,17 +112,25 @@ public:
             return {};
         }
     };
+                        
+    // reset source angles to (0,0)
+    message<> resetSpeakerAngles{this, "reset", "Reset speaker angles to default.",
+        MIN_FUNCTION{
+            setDefaultSourceAngles(source_angles);
+            ambisonic_encoder.set_angles(source_angles);
+            g_outlets.back()->send(pita::sa2atoms(source_angles));
+            return{};
+        }
+    };
 
     void operator()(audio_bundle input, audio_bundle output) {
-        double* s = input.samples(0);
-        audio_bundle tempIn(&s, 1, input.frame_count()); //this is very nasty and inelegant.
  
-        auto nFrames = tempIn.frame_count();
-        vraudio::AudioBuffer r_inputAudioBuffer(1, nFrames);  // resonance-style mono audio buffer for input
+        auto nFrames = input.frame_count();
+        vraudio::AudioBuffer r_inputAudioBuffer(kNumSources, nFrames);  // resonance-style mono audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(kNumOutputChannels, nFrames);     // resonance-style audio buffer for output
-        Min2Res(tempIn, &r_inputAudioBuffer); // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        Min2Res(input, &r_inputAudioBuffer); // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
-        ambisonic_encoder->EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer); //encode the buffer!
+        ambisonic_encoder.EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer); //encode the buffer!
         
         Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
