@@ -11,6 +11,7 @@
 #include "ambisonics/ambisonic_codec.h"
 #include "ambisonics/ambisonic_codec_impl.h"
 #include "audio_buffer_conversion.h"
+#include "pita_port.h" //for pitaOutlet, a derived class that allows the m_description to be modified.
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
 #include "base/spherical_angle.h"
@@ -18,87 +19,46 @@
 using namespace c74::min;
 //note that the vraudio namespace is used for Resonance objects. I do not "use" this namespace so that is clear to the viewer where these objects come from
 
-typedef vector<double> InterleavedList;
-
-#define PITA_MIN_FUNCTION [this, i](const c74::min::atoms& args, int inlet) -> c74::min::atoms
-#define PITA_MIN_GETTER_FUNCTION [this, i]() -> atoms
-
-//TODO: move this into pita
-class pitaOutlet : public outlet<> {
-public:
-    pitaOutlet(object_base* an_owner, const std::string& a_description, const std::string& a_type = "", size_t an_atom_count = 1): outlet(an_owner, a_description, a_type, an_atom_count){}
-    pitaOutlet(object_base* an_owner, const std::string& a_description, size_t an_atom_count, const std::string& a_type = "") : pitaOutlet(an_owner, a_description, a_type, an_atom_count){}
-    void setDescription(string s){
-        m_description = s;
-        return;
+// gets called by both initSpeakerAngles and reset message
+void setDefaultSpeakerAngles(std::vector<vraudio::SphericalAngle>& angles){
+    int nSpeakers = angles.size();
+    for(int i = 0; i < nSpeakers; i++){
+        angles.at(i).set_azimuth(vraudio::kTwoPi*i/nSpeakers);
+        angles.at(i).set_elevation(0);
     }
-};
+    return;
+}
 
-//TODO: this will have to copy...  I don't like that.
 //determine the default angles for the speakers. Currently they are arranged in a 2D ring by default. TODO: update so that the default is 3D
 std::vector<vraudio::SphericalAngle> initSpeakerAngles(const int nChannels){
-    std::vector<vraudio::SphericalAngle> angles;
-    for(int i = 0; i < nChannels; i++){
-        angles.push_back(vraudio::SphericalAngle(vraudio::kTwoPi*i/nChannels, 0));
-    }
+    std::vector<vraudio::SphericalAngle> angles(nChannels, vraudio::SphericalAngle()); //preallocate is better practice
+    setDefaultSpeakerAngles(angles);
     return angles;
 }
 
-//NOT ELEGANT, need to replace. Make these conversions more elegant. check using unique vectors. That might fix the copying issues.
-//TODO: pre-allocate size, so save time with no pushback
-
-//convert a vector of SphericalAngles to an interleaved buffer. InterleavedList type is always in degrees. TODO use operator overloading for this
-InterleavedList sa2il(const std::vector<vraudio::SphericalAngle>& other){
-    InterleavedList interleaved_buffer;
-    for(int i = 0; i<other.size(); i++){
-        interleaved_buffer.push_back(other.at(i).azimuth()*vraudio::kDegreesFromRadians);
-        interleaved_buffer.push_back(other.at(i).elevation()*vraudio::kDegreesFromRadians);
-    }
-    return interleaved_buffer;
-}
-
-
-//cast an interleaved buffer to a vector of SphericalAngles. TODO: remove this
-//std::vector<vraudio::SphericalAngle> il2sa(const InterleavedList other){
-//    std::vector<vraudio::SphericalAngle> angles;
-//    for(int i = 0; i < other.size(); i+=2){
-//        angles.push_back(vraudio::SphericalAngle::FromDegrees(other[i], other[i+1]));
-//    }
-//    return angles;
-//}
-
+// Convert sphericalAngles vector to an interleaved list of speaker angles (°) in axis-angle in the form [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]
 vector<atom> sa2atoms(const std::vector<vraudio::SphericalAngle>& other){
-    vector<atom> a; //TODO: unique ptr for this? Could that fix the copying problem
+    vector<atom> a;
     for(int i = 0; i<other.size(); i++){
+        a.push_back(i+1); //change to human indexing
         a.push_back(other.at(i).azimuth()*vraudio::kDegreesFromRadians);
         a.push_back(other.at(i).elevation()*vraudio::kDegreesFromRadians);
     }
     return a;
 }
 
-//convert an interleaved list to a vector of atoms.  TODO: remove this
-//vector<atom> il2atoms(const InterleavedList other){
-//    vector<atom> a;
-//    for(int i = 0; i<other.size(); i++){
-//        a.push_back(other[i]);
-//    }
-//    return a;
-//}
-
-
 class speakerDecoder : public object<speakerDecoder>, public vector_operator<> {
 private:
-    //everything will be initialised in the member initialisation lists in the constructor
+    //initialised in the member initialisation lists
     const int kAmbisonicOrder;
     const int kNumInlets;
-    const int kNumOutlets;
-    std::vector<vraudio::SphericalAngle> speakerAngles; //TODO: think about using set_azimuth and set_elevation instead of remaking the entire angle
+    const int kNumSpeakers;
+    std::vector<vraudio::SphericalAngle> speaker_angles; //stored in radians, exposed in degrees
     vraudio::AmbisonicCodecImpl<> speaker_decoder;
 
     std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
     std::vector< std::unique_ptr<pitaOutlet> >    m_outlets; //note that this must be called m_outputs!
-//    std::vector< std::unique_ptr< attribute<double> > > attr;
-//    std::vector< attribute<vector<double>>* > m_attr;
+     
     
 public:
     MIN_DESCRIPTION    { "Decodes a soundfield to a speaker array. Use argument to select ambisonic order. Ambisonic order 1 by default." };
@@ -106,150 +66,94 @@ public:
     MIN_AUTHOR         { "Cycling '74" };
     MIN_RELATED        { "index~, buffer~, wave~" };
     
-    /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
+    // constructor that allows for number of outlets to be defined by the ambisonic order argument.
     speakerDecoder(const atoms& args = {})
       : kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
         kNumInlets(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder)),   //determine how many spherical harmonics there are for this order
-        kNumOutlets(args.size()<2 ? kNumInlets : int(args[1])), // if there is no second argument, set kNumOutlets = kNumInlets. TODO: what does this mean for @channel 16
-        speakerAngles(initSpeakerAngles(kNumOutlets)),
-        speaker_decoder(kAmbisonicOrder, speakerAngles)
+        kNumSpeakers(args.size()<2 ? kNumInlets : int(args[1])), // if there is no second argument, set kNumOutlets = kNumInlets
+        speaker_angles(initSpeakerAngles(kNumSpeakers)),
+        speaker_decoder(kAmbisonicOrder, speaker_angles)
 
-    {
+    {   //body of the constructor
         
-        //inlet handling
+        // create inlets
         //most max objects do not complain about extra arguments, so I don't either.
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
         
-        std::string inletHelpMessage("(signal) Channel ");
         for (auto i=0; i < kNumInlets; ++i) {
-            m_inlets.push_back( std::make_unique<inlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            m_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
         
+        // create outlets
         std::string outletHelpMessage, attributeName;
-//        attribute< vector<double> >* speakerPosition_attr;
-        for (auto i=0; i < kNumOutlets; ++i) {
-            //create outlets
-//            outletHelpMessage = "(signal) Channel " + std::to_string(i+1);
-            outletHelpMessage = "(signal) Channel " + std::to_string(i+1) + " (" + std::to_string(int(speakerAngles.at(i).azimuth()*vraudio::kDegreesFromRadians)) + "°, " + std::to_string(int(speakerAngles.at(i).elevation()*vraudio::kDegreesFromRadians)) + "°)";
+        for (auto i=0; i < kNumSpeakers; ++i) {
+            outletHelpMessage = "(signal) Channel " + std::to_string(i+1) + " (" + std::to_string(int(speaker_angles.at(i).azimuth()*vraudio::kDegreesFromRadians)) + "°, " + std::to_string(int(speaker_angles.at(i).elevation()*vraudio::kDegreesFromRadians)) + "°)";
             m_outlets.push_back( std::make_unique<pitaOutlet>(this, outletHelpMessage, "signal") );
             
-            //create an attribute for each output channel's angles
-            //TODO: definitely some pointer work to be done here and throughout
-//            attributeName = "Spkr " + std::to_string(i+1) + " angles";
-//            speakerPosition_attr = new attribute< vector<double> >{ this, attributeName, {0.0, 0.0},
-//                description{"Set a speaker's direction using (azimuth, elevation) in degrees."},
-//                setter{ PITA_MIN_FUNCTION{
-//                    int speakerID = i;
-//                    speakerAngles.at(speakerID).set_azimuth(float(args[0])*vraudio::kRadiansFromDegrees);
-//                    speakerAngles.at(speakerID).set_elevation(float(args[1])*vraudio::kRadiansFromDegrees);
-//                    speaker_decoder.set_angles(speakerAngles); //update the angles in the decoder
-//                    return {};
-//                }},
-//                getter{ PITA_MIN_GETTER_FUNCTION{
-//                    int speakerID = i;
-//                    return {speakerAngles.at(speakerID).azimuth()*vraudio::kDegreesFromRadians,
-//                            speakerAngles.at(speakerID).elevation()*vraudio::kDegreesFromRadians
-//                    };
-//                }}
-//            }; //TODO: would be nice to have this as spherical angle type
-//            cout << attributeName << " created." << endl;
-            
-            //or some call to update the attributes. Cause there are calls to update the inlets I think.
-//            attr.push_back( std::make_unique< attribute< double> >(this, attributeName, 0.0) );
-            
-            //use attribute macro
-//            using c74::max::method;
-//            CLASS_ATTR_DOUBLE(this_class, attributeName.c_str(), 0, 1, kNumOutlets);
-//            CLASS_ATTR_ENUM(this_class, attributeName.c_str(), 0, "choice1 choice2");
-
-//            CLASS_ATTR_LABEL(this_class, attributeName.c_str(), 0, attributeName.c_str());
-            
         }
         
-        cout << initialized() << endl;
-        cout << dummy() << endl;
-        cout << "nOutlets: " << kNumOutlets << endl;
-//        cout << "Size of attribute vector: " << attr.size() << endl;
-        cout << "Size of attributes: " << attributes().size() << endl;
-                
+        //one more outlet for dumping out speaker angle information
+        m_outlets.push_back( std::make_unique<pitaOutlet>(this, "(list) Interleaved list of speaker angles (°) in axis-angle, i.e., [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]", "list") );
     }
     
-    //TODO: delete this
-    void print(const InterleavedList& il){
-        for(int i = 0; i<il.size(); i++){
-            cout << il[i] << " ";
+    // Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
+    message<> getSpeakerAngles {this, "getAngles", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
+        MIN_FUNCTION{
+            m_outlets.back()->send(sa2atoms(speaker_angles));
+            return{};
         }
-        cout << endl;
-    }
+    };
     
-    //TODO: delete this
-    void print(const std::vector<vraudio::SphericalAngle>& angles){
-        for(int i = 0; i < angles.size(); i++){
-            cout << angles.at(i).azimuth()*vraudio::kDegreesFromRadians << " " << angles.at(i).elevation()*vraudio::kDegreesFromRadians << " ";
+    // Bang equivalent of the getSpeakerAngles (above). Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
+    message<> bangSpeakerAngles {this, "bang", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
+        MIN_FUNCTION{
+            m_outlets.back()->send(sa2atoms(speaker_angles));
+            return{};
         }
-        cout << endl;
-    }
+    };
     
     message<> setSpeakerAngles { this, "set", "Set a speaker's location using (azimuth, elevation) in degrees",
         MIN_FUNCTION {
-            cout << "got a message" << endl;
-            if(args.size() == 3){
-                int speakerID = int(args[0])-1; //internal speakerID is 0 indexed.
-                if(speakerID >= 0 && speakerID < kNumOutlets){ //if the user enters a speaker number that is out of range
-                    speakerAngles.at(speakerID).set_azimuth(float(args[1])*vraudio::kRadiansFromDegrees);
-                    speakerAngles.at(speakerID).set_elevation(float(args[2])*vraudio::kRadiansFromDegrees);
-                    m_outlets.at(speakerID)->setDescription("(signal) Channel " + std::to_string(speakerID+1) + " (" + std::to_string(int(args[1])) + "°, " + std::to_string(int(args[2])) + "°)");
-            //      m_attr.at(speakerID) = {float(args[1]), float(args[2])}; //TODO: assign attribute from message
-                    speaker_decoder.set_angles(speakerAngles);
-                } else {
-                cerr << "Invalid output channel. Speaker decoder currently has " << kNumOutlets << "output channels" << endl;
+            int argc = args.size(); //C-style, avoid repetition.
+            if(argc % 3 == 0){ //disregard the entire message if it is poorly formatted. There are too many ways to make a mistake, it's not worth trying to extract some meaning from it.
+                for(int i = 0; i < argc; i+=3){
+                    int speakerID = int(args[i])-1; //internal speakerID is 0 indexed.
+                    if(speakerID >= 0 && speakerID < kNumSpeakers){ //if the user enters a speaker number that is out of range
+                        speaker_angles.at(speakerID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
+                        speaker_angles.at(speakerID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
+                        m_outlets.at(speakerID)->setDescription("(signal) Channel " + std::to_string(speakerID+1) + " (" + std::to_string(int(args[i+1])) + "°, " + std::to_string(int(args[i+2])) + "°)");
+                    } else {
+                    cerr << "Output channel " << speakerID+1 << " is out of range. Speaker decoder currently has " << kNumSpeakers << "output channels." << endl;
+                    }
                 }
+                //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
+                speaker_decoder.set_angles(speaker_angles);
+                m_outlets.back()->send(sa2atoms(speaker_angles));
+            
             } else {
-                //some error message telling them how to use it
-                cerr << "Message usage: send a message with a list in the form [set <speakerID> <azimuth> <elevation>]" << endl;
+                // error message telling them how to use it
+                cerr << "Angles have not been set due to a poorly formatted message. Message usage: interleaved list in the form [set <speaker1ID> <azimuth1> <elevation1> <speaker2ID> <azimuth2> <elevation2>]" << endl;
             }
             return {};
         }
     };
     
-    //a long vector that holds interleaved azimuth elevation values
-    //note that vector<float> is not supported
-    //TODO: attr style
-    attribute< InterleavedList > angles_attr { this, "spkr angles", sa2il(speakerAngles),
-        title{"Speaker Angles: interleaved (azimuth, elevation)"},
-        description{"Speaker Angles: interleaved (azimuth, elevation)"},
-        setter{MIN_FUNCTION{
-//            TODO: error check to make sure that the vector is the correct length
-//            adjust the speakerAngles member. Potentially turn this into a constructor or cast. Careful cause we're not making a new one, we're updating the one we have
-            for(int i = 0; i<kNumOutlets; i++){
-                speakerAngles.at(i) = vraudio::SphericalAngle::FromDegrees(float(args[2*i]), float(args[2*i+1]));
-            }
-            speaker_decoder.set_angles(speakerAngles); //update the speaker angles in the decoder
+    // reset speaker angles to their default values
+    message<> resetSpeakerAngles{this, "reset", "Reset speaker angles to default.",
+        MIN_FUNCTION{
+            setDefaultSpeakerAngles(speaker_angles);
+            m_outlets.back()->send(sa2atoms(speaker_angles));
             return{};
-        }},
-        getter{ MIN_GETTER_FUNCTION{
-            return sa2atoms(speakerAngles);
         }
-            
-        }
-    };
-    
-    attribute< dict > anglesDict_attr {this, "spkr dict", dict(),
-        setter{MIN_FUNCTION{
-            return{}; 
-        }},
-        getter{MIN_GETTER_FUNCTION{
-            return{0.0};
-        }}
     };
             
     void operator()(audio_bundle input, audio_bundle output) {
 
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(kNumInlets, nFrames);   // resonance-style audio buffer for input
-        vraudio::AudioBuffer r_outputAudioBuffer(kNumOutlets, nFrames);   // resonance-style audio buffer for output
+        vraudio::AudioBuffer r_outputAudioBuffer(kNumSpeakers, nFrames);   // resonance-style audio buffer for output
         Min2Res(input, &r_inputAudioBuffer);    // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
 
         speaker_decoder.DecodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer);     //decode the buffer!

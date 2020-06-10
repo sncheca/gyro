@@ -292,5 +292,6 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../resonance_audio/ambisonics/../../resonance_audio/utils/../../resonance_audio/third_party/eigen/Eigen/Dense \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../pita/audio_buffer_conversion.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../resonance_audio/base/audio_buffer.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../pita/pita_port.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../resonance_audio/ambisonics/associated_legendre_polynomials_generator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.speakerDecoder_tilde/../../resonance_audio/base/spherical_angle.h

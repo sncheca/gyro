@@ -37,17 +37,27 @@
 			<description>Set a speaker's location using (azimuth, elevation) in degrees </description>
 		</method>
 
+		<method name='bang'>
+			<digest>Dump interleaved list of speaker angles (°) in axis-angle out of last outlet </digest>
+			<description>Dump interleaved list of speaker angles (°) in axis-angle out of last outlet </description>
+		</method>
+
+		<method name='reset'>
+			<digest>Reset speaker angles to default</digest>
+			<description>Reset speaker angles to default. </description>
+		</method>
+
+		<method name='getAngles'>
+			<digest>Dump interleaved list of speaker angles (°) in axis-angle out of last outlet </digest>
+			<description>Dump interleaved list of speaker angles (°) in axis-angle out of last outlet </description>
+		</method>
+
 	</methodlist>
 
 
 	<!--ATTRIBUTES-->
 
 	<attributelist>
-
-		<attribute name='spkr angles' get='1' set='1' type='float64' size='1' >
-			<digest>Speaker Angles: interleaved (azimuth, elevation) </digest>
-			<description>Speaker Angles: interleaved (azimuth, elevation) </description>
-		</attribute>
 
 	</attributelist>
 
