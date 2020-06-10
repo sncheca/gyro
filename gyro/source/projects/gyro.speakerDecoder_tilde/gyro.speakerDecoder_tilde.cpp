@@ -140,10 +140,11 @@ public:
         }
     };
     
-    // reset speaker angles to their default values
+    // reset speaker angles to their default values 
     message<> resetSpeakerAngles{this, "reset", "Reset speaker angles to default.",
         MIN_FUNCTION{
             setDefaultSpeakerAngles(speaker_angles);
+            speaker_decoder.set_angles(speaker_angles);
             m_outlets.back()->send(sa2atoms(speaker_angles));
             return{};
         }
