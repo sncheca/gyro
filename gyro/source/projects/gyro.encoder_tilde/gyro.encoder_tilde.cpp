@@ -96,7 +96,7 @@ public:
                     int sourceID = int(args[i])-1; //internal speakerID is 0 indexed.
                     if(sourceID >= 0 && sourceID < kNumSources){ //if the user enters a speaker number that is out of range
                         source_angles.at(sourceID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
-                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees); g_inlets.at(i)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
+                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees); g_inlets.at(sourceID)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
                     } else {
                     cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << "input channels." << endl;
                     }
