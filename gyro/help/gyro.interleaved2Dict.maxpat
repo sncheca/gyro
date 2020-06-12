@@ -44,7 +44,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 262.0, 79.0, 208.0, 74.0 ],
+					"patching_rect" : [ 239.0, 81.0, 208.0, 74.0 ],
 					"text" : "the use of the dictionary is really just aesthetic. In the spirit of \"no programming background required\", I'm trying to stay away from requiring the user to deal with dictionaries. "
 				}
 
@@ -80,14 +80,14 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 85.0, 179.0, 118.0, 22.0 ],
+					"patching_rect" : [ 85.0, 179.0, 50.5, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 0,
 						"parameter_enable" : 0,
 						"parameter_mappable" : 0
 					}
 ,
-					"text" : "dict speakerAngles"
+					"text" : "dict"
 				}
 
 			}
