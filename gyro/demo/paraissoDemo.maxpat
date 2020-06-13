@@ -404,7 +404,7 @@
 			}
 , 			{
 				"box" : 				{
-					"bottomvalue" : 60,
+					"bottomvalue" : -60,
 					"id" : "obj-18",
 					"leftvalue" : 60,
 					"maxclass" : "pictslider",
@@ -414,7 +414,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 821.0, 251.0, 200.0, 200.0 ],
 					"rightvalue" : -60,
-					"topvalue" : -60
+					"topvalue" : 60
 				}
 
 			}
@@ -449,7 +449,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 29.0, 694.0, 150.0, 208.0 ],
+					"patching_rect" : [ 29.0, 694.0, 151.0, 208.0 ],
 					"text" : "HUGE thank you to the Cambridge Music Technology Multitrack Download Library. \nhttps://cambridge-mt.com/ms/mtk/\nThis song is \"Paraisso\" by Jade Safirah. Thank you Jade for sharing! \n\nI did some gentle compression, limiting, and balance adjustments in Pro Tools before bringing them here. "
 				}
 
@@ -3022,14 +3022,14 @@
 					"patching_rect" : [ 630.514404296875682, 793.0, 227.0, 36.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
+							"parameter_initial" : [ -50 ],
+							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
 							"parameter_unitstyle" : 4,
 							"parameter_mmin" : -70.0,
 							"parameter_longname" : "live.gain~[1]",
 							"parameter_initial_enable" : 1,
-							"parameter_mmax" : 6.0,
-							"parameter_initial" : [ -50 ],
-							"parameter_shortname" : "live.gain~"
+							"parameter_mmax" : 6.0
 						}
 
 					}
