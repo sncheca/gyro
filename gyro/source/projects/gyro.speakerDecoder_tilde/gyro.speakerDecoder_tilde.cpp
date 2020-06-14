@@ -113,7 +113,7 @@ public:
                         speaker_angles.at(speakerID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
                         m_outlets.at(speakerID)->setDescription(pita::generatePortAngleLabel(speakerID, speaker_angles));
                     } else {
-                    cerr << "Output channel " << speakerID+1 << " is out of range. Speaker decoder currently has " << kNumSpeakers << "output channels." << endl;
+                    cerr << "Output channel " << speakerID+1 << " is out of range. Speaker decoder currently has " << kNumSpeakers << " output channels." << endl;
                     }
                 }
                 //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.

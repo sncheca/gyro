@@ -98,7 +98,7 @@ public:
                         source_angles.at(sourceID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
                         source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees); g_inlets.at(sourceID)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
                     } else {
-                    cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << "input channels." << endl;
+                    cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << " input channels." << endl;
                     }
                 }
                 //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
@@ -118,10 +118,14 @@ public:
         MIN_FUNCTION{
             setDefaultSourceAngles(source_angles);
             ambisonic_encoder.set_angles(source_angles);
+            //reset all the labels too
+            for(int i = 0; i < g_inlets.size(); i++){
+                g_inlets.at(i)->setDescription(pita::generatePortAngleLabel(i, source_angles));
+            }
             g_outlets.back()->send(pita::sa2atoms(source_angles));
             return{};
         }
-    };
+    }; 
 
     void operator()(audio_bundle input, audio_bundle output) {
  
