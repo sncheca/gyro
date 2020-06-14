@@ -119,13 +119,13 @@ public:
             setDefaultSourceAngles(source_angles);
             ambisonic_encoder.set_angles(source_angles);
             //reset all the labels too
-            for(int i = 0; i < g_inlets.size(); i++){
+            for(int i = 0; i < kNumSources; i++){
                 g_inlets.at(i)->setDescription(pita::generatePortAngleLabel(i, source_angles));
             }
             g_outlets.back()->send(pita::sa2atoms(source_angles));
             return{};
         }
-    }; 
+    };
 
     void operator()(audio_bundle input, audio_bundle output) {
  

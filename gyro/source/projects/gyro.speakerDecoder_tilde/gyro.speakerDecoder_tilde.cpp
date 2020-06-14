@@ -46,9 +46,8 @@ private:
     std::vector<vraudio::SphericalAngle> speaker_angles; //stored in radians, exposed in degrees
     vraudio::AmbisonicCodecImpl<> speaker_decoder;
 
-    std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
-    std::vector< std::unique_ptr<pita::p_outlet> >    m_outlets; //note that this must be called m_outputs!
-     
+    std::vector< std::unique_ptr<inlet<>> >    g_inlets;
+    std::vector< std::unique_ptr<pita::p_outlet> >    g_outlets;
     
 public:
     MIN_DESCRIPTION    { "Decodes a soundfield to a speaker array. Use argument to select ambisonic order. Ambisonic order 1 by default." };
@@ -73,23 +72,23 @@ public:
         }
         
         for (auto i=0; i < kNumInlets; ++i) {
-            m_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
         
         // create outlets
         for (auto i=0; i < kNumSpeakers; ++i) {
-            m_outlets.push_back( std::make_unique<pita::p_outlet>(this, pita::generatePortAngleLabel(i, speaker_angles), "signal") );
+            g_outlets.push_back( std::make_unique<pita::p_outlet>(this, pita::generatePortAngleLabel(i, speaker_angles), "signal") );
             
         }
         
         //one more outlet for dumping out speaker angle information
-        m_outlets.push_back( std::make_unique<pita::p_outlet>(this, "(list) Interleaved list of speaker angles (°) in axis-angle, i.e., [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]", "list") );
+        g_outlets.push_back( std::make_unique<pita::p_outlet>(this, "(list) Interleaved list of speaker angles (°) in axis-angle, i.e., [1 <azimuth1> <elevation1> 2 <azimuth2> <elevation2> ...]", "list") );
     }
     
     // Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
     message<> getSpeakerAngles {this, "getAngles", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
         MIN_FUNCTION{
-            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
+            g_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
@@ -97,7 +96,7 @@ public:
     // Bang equivalent of the getSpeakerAngles (above). Dump interleaved list of speaker angles (°) in axis-angle out of last outlet
     message<> bangSpeakerAngles {this, "bang", "Dump interleaved list of speaker angles (°) in axis-angle out of last outlet",
         MIN_FUNCTION{
-            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
+            g_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
@@ -111,14 +110,14 @@ public:
                     if(speakerID >= 0 && speakerID < kNumSpeakers){ //if the user enters a speaker number that is out of range
                         speaker_angles.at(speakerID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
                         speaker_angles.at(speakerID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
-                        m_outlets.at(speakerID)->setDescription(pita::generatePortAngleLabel(speakerID, speaker_angles));
+                        g_outlets.at(speakerID)->setDescription(pita::generatePortAngleLabel(speakerID, speaker_angles));
                     } else {
                     cerr << "Output channel " << speakerID+1 << " is out of range. Speaker decoder currently has " << kNumSpeakers << " output channels." << endl;
                     }
                 }
                 //after updating all the individual speaker angles, update the decoder's angles and dump out the angles.
                 speaker_decoder.set_angles(speaker_angles);
-                m_outlets.back()->send(pita::sa2atoms(speaker_angles));
+                g_outlets.back()->send(pita::sa2atoms(speaker_angles));
             
             } else {
                 // error message telling them how to use it
@@ -133,7 +132,10 @@ public:
         MIN_FUNCTION{
             setDefaultSpeakerAngles(speaker_angles);
             speaker_decoder.set_angles(speaker_angles);
-            m_outlets.back()->send(pita::sa2atoms(speaker_angles));
+            for(int i = 0; i < kNumSpeakers; i++){
+                g_outlets.at(i)->setDescription(pita::generatePortAngleLabel(i, speaker_angles));
+            }
+            g_outlets.back()->send(pita::sa2atoms(speaker_angles));
             return{};
         }
     };
