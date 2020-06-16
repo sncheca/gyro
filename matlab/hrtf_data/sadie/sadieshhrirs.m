@@ -49,7 +49,9 @@ switch ambisonicOrder
 end
 
 % Output path for the SH HRIR WAV.
-savedir = ['sadie_002_symmetric_sh_hrir_o_', num2str(ambisonicOrder), '/'];
+% savedir = ['sadie_002_symmetric_sh_hrir_o_', num2str(ambisonicOrder), '/'];
+% modification for gyro
+savedir = ['../../../gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAv/Subject_002/SH/'];
 
 if (exist(savedir, 'dir') == 0)
     mkdir(savedir);
