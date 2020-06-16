@@ -36,7 +36,7 @@ function audioOut = shbinauralrendersymmetric(audioIn, shHrirs)
 %   audioOut  - Binaural 2-channel output.
 
 % Import required ambisonic functions.
-addpath( '../ambisonics/ambix/');
+addpath( '../../ambisonics/ambix/');
 
 if nargin ~= 2
     error('Number of arguments must be exactly 2.');

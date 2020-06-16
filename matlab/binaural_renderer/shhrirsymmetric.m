@@ -31,8 +31,8 @@ function shHrir = shhrirsymmetric(hrirPath, order, dualBand)
 %             original HRIRs.
 
 % Import required ambisonic functions.
-addpath( '../ambisonics/ambix/');
-addpath( '../ambisonics/shelf_filters/');
+addpath( '../../ambisonics/ambix/');
+addpath( '../../ambisonics/shelf_filters/');
 
 if nargin < 2 || nargin > 3
   error('Number of arguments must be 2 or 3');
