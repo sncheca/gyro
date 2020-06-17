@@ -23,17 +23,17 @@ clearvars
 close all
 clc
 
-MAX_AMBISONIC_ORDER = 5;
-MAX_SUBJECT_ID = 2;
-%subjectID = 2;
+MAX_AMBISONIC_ORDER = 4;
+%MAX_SUBJECT_ID = 2;
+subjectID = 3;
 
-for subjectID = 1:MAX_SUBJECT_ID
+%for subjectID = 1:MAX_SUBJECT_ID
 
     for order = 1:MAX_AMBISONIC_ORDER
         loadsadie(order, subjectID);
         sadieshhrirs(order, subjectID, 1); %By default, pre-filter for dual-band decoding.
     end
     sadieshhrirstest(subjectID);
-end 
+%end 
 
 

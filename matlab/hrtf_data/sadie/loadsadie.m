@@ -50,8 +50,12 @@ switch ambisonicOrder
         load('symmetric_cube.mat');
         savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_cube'];
     case 2 % Faces of a dodecahedron (12)
-        load('symmetric_dodecahedron_faces.mat');
-        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron_faces'];
+        if(subjectID == 1 || subjectID == 2)
+            load('symmetric_dodecahedron_faces.mat');
+        else 
+            load('symmetric_dodecahedron_almost.mat');
+        end
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron'];
     case 3 % Vertices of the Lebedev26 grid (26)
         load('symmetric_lebedev26.mat');
         savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_lebedev26'];
@@ -86,7 +90,7 @@ for fileIndex = 1:length(sadieFiles)
         aziLength:testPhraseEleIndex - 1);
     el = currentTestFile(testPhraseEleIndex + ...
         eleLength:testPhraseDFCIndex - 1);
-    disp(['Azimuth ', az, '; Elevation ', el]);
+    %disp(['Azimuth ', az, '; Elevation ', el]);
     for j = 1:length(angles)
         if (strcmp(az, num2str(angles(j,1))) && ...
                 strcmp(el, num2str(angles(j,2))))

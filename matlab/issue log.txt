@@ -1,0 +1,62 @@
+Hi Marcin,
+
+Thanks for the quick reply. I'll have that over in a few days. In the meantime, I also have another request. I'm trying to update my software that uses Resonance to use the [SADIE-II](https://www.york.ac.uk/sadie-project/database.html) HRTF database, instead of the original (now deprecated) [SADIE-I](https://www.york.ac.uk/sadie-project/database_old.html). This database has many more point measurements, but it no longer has measurements taken at the exact angles that correspond to the angles given in the matrices of the [5 platonic solids included in the `sadie/` directory](https://github.com/resonance-audio/resonance-audio/tree/master/matlab/hrtf_data/sadie). It took me quite a while to figure out that this was the problem. Here's an excerpt from [loadsadie.m](https://github.com/resonance-audio/resonance-audio/blob/master/matlab/hrtf_data/sadie/loadsadie.m):
+
+```
+for fileIndex = 1:length(sadieFiles)
+    currentTestFile = [sadieFilesFolder, sadieFiles(fileIndex).name];
+    testPhraseAzi = 'azi_';
+    aziLength = 4;
+    testPhraseAziIndex = strfind(currentTestFile, testPhraseAzi);
+    testPhraseEle = '_ele_';
+    eleLength = 5;
+    testPhraseEleIndex = strfind(currentTestFile, testPhraseEle);
+    testPhraseDFC = '_DFC';
+    testPhraseDFCIndex = strfind(currentTestFile, testPhraseDFC);
+    az = currentTestFile(testPhraseAziIndex + ...
+        aziLength:testPhraseEleIndex - 1);
+    el = currentTestFile(testPhraseEleIndex + ...
+        eleLength:testPhraseDFCIndex - 1);
+    disp(['testing: Azimuth ', az, '; Elevation ', el]);
+    for j = 1:length(angles)
+        if (strcmp(az, num2str(angles(j,1))) && ...
+                strcmp(el, num2str(angles(j,2))))
+            disp('Found it!');
+            inputAudio = audioread(currentTestFile);
+            % Apply tapering to the HRIRs.
+            WINDOW_LENGTH = size(inputAudio, 1) / 8;
+            window = hann(WINDOW_LENGTH);
+            fadeOut = ...
+                repmat(window(end - WINDOW_LENGTH / 2 + 1:end), 1, 2);
+            inputAudio(end - WINDOW_LENGTH / 2 + 1:end, :) = ...
+                inputAudio(end - WINDOW_LENGTH / 2 + 1:end, :) .* fadeOut;
+            % Distance is set to 1m.
+            d = '1';
+            % If HRIR is in the sagittal plane, save only the left channel
+            % as mono.
+            if (strcmp(az, num2str(0)) || strcmp(az, num2str(180)))
+                audiowrite([savedir,'/E',el,'_A',az,'_D',d,'.wav'], ...
+                    inputAudio(:,1), TARGET_SAMPLE_RATE, ...
+                    'BitsPerSample', 16)
+            else
+                audiowrite([savedir,'/E',el,'_A',az,'_D',d,'.wav'], ...
+                    inputAudio, TARGET_SAMPLE_RATE, 'BitsPerSample', 16)
+            end
+        end
+    end
+end
+```
+
+Can there be a counter in the loop to count how many audio files are written to `savedir` , and then an error thrown if the necessary number is not met? Right now you only find out this is a problem if you call [sadieshhrirs.m](https://github.com/resonance-audio/resonance-audio/blob/master/matlab/hrtf_data/sadie/sadieshhrirs.m) after calling [loadsadie.m](https://github.com/resonance-audio/resonance-audio/blob/master/matlab/hrtf_data/sadie/loadsadie.m), because you'll get the error thrown in `loadhrirsymmetric.m` at line 54:
+```
+if isempty(wavPathsInfo)
+  error('No hrirs found in %s', hrirPath);
+end
+```
+ but it would be great to know earlier. 
+
+Better yet, could `loadsadie.m` be set up to choose the nearest coordinates provided in the database, or, _even better_, create some combination to use the measurements present in a given database to interpolate exactly the right angle? This would make these scripts more versatile so that we can use several HRTF databases, not just SADIE-I. 
+
+Is there any thought to supporting SADIE-II from Resonance internally?
+
+Thanks again for this awesome package!

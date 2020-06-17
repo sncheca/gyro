@@ -42,7 +42,7 @@ for ambisonicOrder = 1:5
         case 1
             hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_cube'];
         case 2
-            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_dodecahedron_faces'];
+            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_dodecahedron'];
         case  3
             hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_lebedev26'];
         case 4

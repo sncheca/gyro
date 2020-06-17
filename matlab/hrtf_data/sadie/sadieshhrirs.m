@@ -37,7 +37,7 @@ switch ambisonicOrder
     case 1
         hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_cube'];
     case 2
-        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron_faces'];
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron']; % changed name because both second order shapes go here
     case 3
         hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_lebedev26'];
     case 4
