@@ -1,6 +1,9 @@
 %{
 Copyright 2018 Google Inc. All Rights Reserved.
 
+Modified by Sofia Checa, June 2020 as part of GYRO: a MaxMSP wrapper for
+Google Resonance.
+
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -14,7 +17,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %}
 
-function [] = loadsadie(ambisonicOrder)
+function [] = loadsadie(ambisonicOrder, subjectID)
 %LOADSADIE Loads, tests and saves SADIE HRIR WAVs from /third_party.
 %  Reads and tests SADIE HRIR WAVs from /third_party and saves them using
 %   the following convention: EXX.XX_AYY.YY_DZZ.ZZwav, where:
@@ -45,19 +48,19 @@ EPSILON = 0.01;
 switch ambisonicOrder
     case 1 % Vertices of a cube (8)
         load('symmetric_cube.mat');
-        savedir = 'sadie_subject_002_symmetric_cube';
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_cube'];
     case 2 % Faces of a dodecahedron (12)
         load('symmetric_dodecahedron_faces.mat');
-        savedir = 'sadie_subject_002_symmetric_dodecahedron_faces';
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron_faces'];
     case 3 % Vertices of the Lebedev26 grid (26)
         load('symmetric_lebedev26.mat');
-        savedir = 'sadie_subject_002_symmetric_lebedev26';
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_lebedev26'];
     case 4 % Vertices of a Pentakis Dodecahedron (32)
         load('symmetric_pentakis_dodecahedron.mat');
-        savedir = 'sadie_subject_002_symmetric_pentakis_dodecahedron';
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_pentakis_dodecahedron'];
     case 5 % Vertices of a Pentakis Icosidodecahedron (42)
         load('symmetric_pentakis_icosidodecahedron.mat');
-        savedir = 'sadie_subject_002_symmetric_pentakis_icosidodecahedron';
+        savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_pentakis_icosidodecahedron'];
     otherwise
         error('Unsupported Ambisonic order');
 end
@@ -66,10 +69,9 @@ if (exist(savedir, 'dir') == 0)
     mkdir(savedir);
 end
 
-sadieFilesFolder = ...
-'../../../gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/DFC/48K_24bit/';
+sadieFilesFolder = [...
+'../../../gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/WAV/Subject_' num2str(subjectID, '%03d') '/DFC/48K_24bit/'];
 sadieFiles = dir([sadieFilesFolder, '*.wav']);
-
 for fileIndex = 1:length(sadieFiles)
     currentTestFile = [sadieFilesFolder, sadieFiles(fileIndex).name];
     testPhraseAzi = 'azi_';
@@ -84,7 +86,7 @@ for fileIndex = 1:length(sadieFiles)
         aziLength:testPhraseEleIndex - 1);
     el = currentTestFile(testPhraseEleIndex + ...
         eleLength:testPhraseDFCIndex - 1);
-    disp(['testing: Azimuth ', az, '; Elevation ', el]);
+    disp(['Azimuth ', az, '; Elevation ', el]);
     for j = 1:length(angles)
         if (strcmp(az, num2str(angles(j,1))) && ...
                 strcmp(el, num2str(angles(j,2))))
@@ -114,8 +116,9 @@ for fileIndex = 1:length(sadieFiles)
 end
 
 % Test loaded HRIRs.
+
 for i = 1:length(angles)
-  sadieOriginalWav = audioread([sadieFilesFolder, '/azi_', ...
+  sadieOriginalWav = audioread([sadieFilesFolder, '/azi_', ... % YOO WTF with this /
     num2str(angles(i, 1)), '_ele_', num2str(angles(i, 2)), '_DFC.wav']);
   sadieGoogleWav = audioread([savedir, '/E', ...
     num2str(angles(i,2)),'_A', num2str(angles(i, 1)), '_D1.wav']);

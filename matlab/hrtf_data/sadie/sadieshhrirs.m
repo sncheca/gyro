@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 %}
 
-function [] = sadieshhrirs(ambisonicOrder, shelfFilter)
+function [] = sadieshhrirs(ambisonicOrder, subjectID, shelfFilter)
 %SADIESHHRIRS Encodes SADIE HRIRs into Spherical Harmonic representation.
 % Generates Spherical Harmonic encoded HRIRs from the relevant directory of
 % regular SADIE HRIRs. Please note: the shhrirsymmetric function is fully
@@ -35,15 +35,15 @@ TARGET_SAMPLE_RATE = 48000;
 
 switch ambisonicOrder
     case 1
-        hrirDir = 'sadie_subject_002_symmetric_cube';
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_cube'];
     case 2
-        hrirDir = 'sadie_subject_002_symmetric_dodecahedron_faces';
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron_faces'];
     case 3
-        hrirDir = 'sadie_subject_002_symmetric_lebedev26';
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_lebedev26'];
     case 4
-        hrirDir = 'sadie_subject_002_symmetric_pentakis_dodecahedron';
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_pentakis_dodecahedron'];
     case 5
-        hrirDir = 'sadie_subject_002_symmetric_pentakis_icosidodecahedron';
+        hrirDir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_pentakis_icosidodecahedron'];
     otherwise
         error('Unsupported Ambisonic order');
 end
@@ -51,7 +51,7 @@ end
 % Output path for the SH HRIR WAV.
 % savedir = ['sadie_002_symmetric_sh_hrir_o_', num2str(ambisonicOrder), '/'];
 % modification for gyro
-savedir = ['../../../gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAv/Subject_002/SH/'];
+savedir = ['../../../gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/WAV/Subject_' num2str(subjectID, '%03d') '/SH/'];
 
 if (exist(savedir, 'dir') == 0)
     mkdir(savedir);

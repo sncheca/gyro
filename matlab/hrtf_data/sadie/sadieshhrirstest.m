@@ -16,7 +16,9 @@ limitations under the License.
 
 % Tests if the encoded SADIE SH HRIRs decode an Ambisonic input correctly.
 
-clearvars
+function [] = sadieshhrirstest(subj)
+
+%clearvars
 close all
 clc
 
@@ -31,21 +33,23 @@ INPUT = [1; zeros(255, 1)];
 SOURCE_AZIMUTH_RAD = pi / 3;
 SOURCE_ELEVATION_RAD =  pi / 4;
 
+SADIE_FILES_FOLDER = '../../../gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/WAV/';
+
 for ambisonicOrder = 1:5
 
     % Paths to directories containing standard symmetric SADIE HRIRs.
     switch ambisonicOrder
         case 1
-            hrirDir = 'sadie_subject_002_symmetric_cube';
+            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_cube'];
         case 2
-            hrirDir = 'sadie_subject_002_symmetric_dodecahedron_faces';
+            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_dodecahedron_faces'];
         case  3
-            hrirDir = 'sadie_subject_002_symmetric_lebedev26';
+            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_lebedev26'];
         case 4
-            hrirDir = 'sadie_subject_002_symmetric_pentakis_dodecahedron';
+            hrirDir = ['sadie_subject_' num2str(subj, '%03d') '_symmetric_pentakis_dodecahedron'];
         case 5
             hrirDir = ...
-                'sadie_subject_002_symmetric_pentakis_icosidodecahedron';
+                ['sadie_subject_' num2str(subj, '%03d') '_symmetric_pentakis_icosidodecahedron'];
         otherwise
             error('Unsupported Ambisonic order');
     end
@@ -55,8 +59,8 @@ for ambisonicOrder = 1:5
 
     % Get the SH-encoded HRIRs for the fast decode.
     [shHrirs, shHrirFs] = ...
-        audioread(['sadie_002_symmetric_sh_hrir_o_', ...
-        num2str(ambisonicOrder), '/sh_hrir_order_', ...
+        audioread([SADIE_FILES_FOLDER, ...
+        'Subject_', num2str(subj, '%03d'), '/SH/sh_hrir_order_', ...
         num2str(ambisonicOrder), '.wav']);
     assert(shHrirFs == SAMPLING_RATE);
 
@@ -91,5 +95,7 @@ for ambisonicOrder = 1:5
     end
 
     disp(['Spherical Harmonic encoding of Ambisonic order ', ...
-        num2str(ambisonicOrder), ' HRIRs was successful!']);
+        num2str(ambisonicOrder), ' HRIRs for Subject ', num2str(subj), ' was successful!']);
+end
+
 end
