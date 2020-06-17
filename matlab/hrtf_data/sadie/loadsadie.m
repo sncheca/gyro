@@ -43,7 +43,7 @@ TARGET_SAMPLE_RATE = 48000;
 
 % Tolerated error maring (resulting from changing bit resolution of the
 % HRIRs).
-EPSILON = 0.01;
+EPSILON = 0.0101; % NOTE: I changed this due to some tolerance issues for human subjects at 5th order
 
 switch ambisonicOrder
     case 1 % Vertices of a cube (8)
@@ -51,8 +51,10 @@ switch ambisonicOrder
         savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_cube'];
     case 2 % Faces of a dodecahedron (12)
         if(subjectID == 1 || subjectID == 2)
+            disp('using original dodecahedron for 2nd order virtual speakers');
             load('symmetric_dodecahedron_faces.mat');
         else 
+            disp('using modified dodecahedron for 2nd order virtual speakers');
             load('symmetric_dodecahedron_almost.mat');
         end
         savedir = ['sadie_subject_' num2str(subjectID, '%03d') '_symmetric_dodecahedron'];
