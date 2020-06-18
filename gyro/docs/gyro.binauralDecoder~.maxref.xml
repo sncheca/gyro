@@ -32,12 +32,22 @@
 
 	<methodlist>
 
+		<method name='subject'>
+			<digest>set the SADIE-I HRTF Database Subject to be used for the binaural decoding</digest>
+			<description>set the SADIE-I HRTF Database Subject to be used for the binaural decoding. </description>
+		</method>
+
 	</methodlist>
 
 
 	<!--ATTRIBUTES-->
 
 	<attributelist>
+
+		<attribute name='HRIR Subject' get='1' set='1' type='long' size='1' >
+			<digest>Select an HRIR Subject to be used for the binaural decoding</digest>
+			<description>Select an HRIR Subject to be used for the binaural decoding. Subject IDs range from 1 to 20. </description>
+		</attribute>
 
 	</attributelist>
 

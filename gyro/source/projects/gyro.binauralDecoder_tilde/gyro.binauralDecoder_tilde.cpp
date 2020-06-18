@@ -90,9 +90,23 @@ public:
             m_inlets.push_back( std::make_unique<inlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
     }
-    
+    //TODO: why is this outside the constructor
     outlet<>  out1    { this, "(signal) Stereo Left", "signal" };
     outlet<>  out2    { this, "(signal) Stereo Right", "signal" };
+    
+    
+    
+    attribute<int, threadsafe::no, limit::clamp> subjectID_attr {this, "HRIR Subject", 2,
+        description{"Select an HRIR Subject to be used for the binaural decoding. Subject IDs range from 1 to 20."},
+        range{1,3}
+    };
+    
+    message<> setSubject {this, "subject", "set the SADIE-I HRTF Database Subject to be used for the binaural decoding.",
+        MIN_FUNCTION{
+            subjectID_attr = args[0];
+            return{};
+        }
+    };
     
     void operator()(audio_bundle input, audio_bundle output) {
 
