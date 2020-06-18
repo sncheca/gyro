@@ -10,7 +10,7 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/base/constants_and_types.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/dsp/resampler.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/utils/wav.h \
-  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/SADIE_hrtf_database/generated/hrtf_assets.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/SADIE_I_hrtf_database/generated/hrtf_assets.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/ambisonics/utils.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/base/misc_math.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/eigen/Eigen/Dense \

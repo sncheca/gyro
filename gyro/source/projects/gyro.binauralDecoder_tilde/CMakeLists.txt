@@ -45,7 +45,7 @@ set( SOURCE_FILES
             ${RESONANCE_INCLUDES}/dsp/resampler.cpp
             ${RESONANCE_INCLUDES}/utils/planar_interleaved_conversion.cpp #only known from .cpp file
                 ${RESONANCE_INCLUDES}/utils/sample_type_conversion.cpp #only known from .cpp file
-            ${RESONANCE_INCLUDES}/third_party/SADIE_hrtf_database/generated/hrtf_assets.cpp
+            ${RESONANCE_INCLUDES}/third_party/SADIE_I_hrtf_database/generated/hrtf_assets.cpp
         ${RESONANCE_INCLUDES}/utils/wav.cpp
             ${RESONANCE_INCLUDES}/utils/wav_reader.cpp
         

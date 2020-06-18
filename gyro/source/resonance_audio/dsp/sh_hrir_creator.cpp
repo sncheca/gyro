@@ -16,7 +16,7 @@ limitations under the License.
 
 #include "dsp/sh_hrir_creator.h"
 
-#include "third_party/SADIE_hrtf_database/generated/hrtf_assets.h"
+#include "third_party/SADIE_I_hrtf_database/generated/hrtf_assets.h"
 #include "ambisonics/utils.h"
 #include "base/logging.h"
 #include "dsp/resampler.h"

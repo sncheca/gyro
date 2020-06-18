@@ -107,6 +107,42 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-13",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 568.0, 199.0, 70.0, 23.0 ],
+									"text" : "set 1 -90 0"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-10",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 416.25, 199.0, 58.0, 23.0 ],
+									"text" : "set 1 0 0"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-5",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 487.0, 199.0, 66.0, 23.0 ],
+									"text" : "set 1 90 0"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-27",
 									"linecount" : 2,
 									"maxclass" : "comment",
@@ -126,54 +162,6 @@
 									"numoutlets" : 0,
 									"patching_rect" : [ 21.0, 16.0, 155.0, 268.0 ],
 									"text" : "NOTE: you must add the directory containing the hrir wav files to the file preferences. Go to Options >> File Preferences, and add \n{...}/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH. For me this is\n/Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH\nThis feature will be changed when I add the HRTF selection feature. "
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-13",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 540.0, 139.0, 29.5, 23.0 ],
-									"text" : "0"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-12",
-									"maxclass" : "number",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 562.0, 179.0, 50.0, 23.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-6",
-									"maxclass" : "number",
-									"numinlets" : 1,
-									"numoutlets" : 2,
-									"outlettype" : [ "", "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 508.0, 179.0, 50.0, 23.0 ]
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-4",
-									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 508.0, 216.0, 58.0, 23.0 ],
-									"text" : "pak 0. 0."
 								}
 
 							}
@@ -205,9 +193,9 @@
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 16,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
+									"numinlets" : 1,
+									"numoutlets" : 17,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
 									"patching_rect" : [ 326.0, 245.0, 176.5, 23.0 ],
 									"text" : "gyro.encoder~ 3"
 								}
@@ -310,14 +298,14 @@
 									"patching_rect" : [ 325.0, 378.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
-											"parameter_initial" : [ -50 ],
-											"parameter_shortname" : "live.gain~"
+											"parameter_initial" : [ -50 ]
 										}
 
 									}
@@ -488,6 +476,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-10", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-9", 0 ],
 									"source" : [ "obj-11", 0 ]
 								}
@@ -495,23 +490,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-4", 1 ],
-									"source" : [ "obj-12", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-12", 0 ],
-									"order" : 0,
-									"source" : [ "obj-13", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-6", 0 ],
-									"order" : 1,
+									"destination" : [ "obj-1", 0 ],
 									"source" : [ "obj-13", 0 ]
 								}
 
@@ -554,15 +533,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"order" : 2,
-									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-13", 0 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -570,7 +541,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-2", 0 ],
-									"order" : 3,
+									"order" : 2,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -578,7 +549,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"order" : 1,
+									"order" : 0,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -599,15 +570,8 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-1", 1 ],
-									"source" : [ "obj-4", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
-									"source" : [ "obj-6", 0 ]
+									"destination" : [ "obj-1", 0 ],
+									"source" : [ "obj-5", 0 ]
 								}
 
 							}

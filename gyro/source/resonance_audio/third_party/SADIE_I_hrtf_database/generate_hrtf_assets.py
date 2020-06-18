@@ -266,7 +266,7 @@ def main():
   # Define class name, file names, output paths, etc.
   classname_underscore = CamelCaseToUnderscore(classname)
   header_filename = '%s.h' % classname_underscore
-  implementation_filename = '%s.cc' % classname_underscore
+  implementation_filename = '%s.cpp' % classname_underscore
   header_output_file_path = os.path.join(output_dir_path, header_filename)
   implementation_output_file_path = os.path.join(output_dir_path,
                                                  implementation_filename)
