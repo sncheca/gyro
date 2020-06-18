@@ -24,7 +24,7 @@ close all
 clc
 
 MAX_AMBISONIC_ORDER = 5;
-MAX_SUBJECT_ID = 4;
+MAX_SUBJECT_ID = 20;
 %subjectID = 3;
 
 for subjectID = 1:MAX_SUBJECT_ID
