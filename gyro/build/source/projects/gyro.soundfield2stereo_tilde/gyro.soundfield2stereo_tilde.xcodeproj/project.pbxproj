@@ -9,9 +9,9 @@
 /* Begin PBXAggregateTarget section */
 		7D5F30EA4A3840A6A6D6CEA7 /* RUN_TESTS */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 1F32A81495C54BC389868C55 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
+			buildConfigurationList = 5F29684C930642F48F146BED /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */;
 			buildPhases = (
-				B9D68E83313A4744BAD9A3E3 /* CMake PostBuild Rules */,
+				8E6BD79DBC924D75B955BF33 /* CMake PostBuild Rules */,
 			);
 			dependencies = (
 			);
@@ -20,22 +20,22 @@
 		};
 		9F87525786D643A8ABDAAF43 /* ALL_BUILD */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = D70A3C60EB194C52BDA777D2 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
+			buildConfigurationList = 6E2F9E60382D4D4A83B11FBA /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */;
 			buildPhases = (
-				A13C8139748C495BBEBDBB0E /* CMake Rules */,
+				EB2153A02CE948118B4475EA /* CMake Rules */,
 			);
 			dependencies = (
-				F3FCAC17D62445F5AA99389D /* PBXTargetDependency */,
-				EA358CDC6498414388F9E9E2 /* PBXTargetDependency */,
+				BEF47BCEC54142668358E0B4 /* PBXTargetDependency */,
+				230C3BE368BE45E1B6C17800 /* PBXTargetDependency */,
 			);
 			name = ALL_BUILD;
 			productName = ALL_BUILD;
 		};
 		9FB7BC66759944178F17439E /* ZERO_CHECK */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 68534122436D4474A9BAFBFF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
+			buildConfigurationList = EB7FBF691E374C4E85734052 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */;
 			buildPhases = (
-				5A1857B0FB1E4E008B861A34 /* CMake Rules */,
+				D0EFFBB6B1B14BBD958D650F /* CMake Rules */,
 			);
 			dependencies = (
 			);
@@ -45,62 +45,62 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		06D54B4B4DC2421FB66374F2 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */ = {isa = PBXBuildFile; fileRef = 9FD05F99D2794C98B3372FDC /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */; };
-		2C469204E06F45109F64EC8A /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */ = {isa = PBXBuildFile; fileRef = E2B3C5205CF846A99BBC680C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */; };
-		556DF58695104DDBB86B985C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 8C8204C47A944919BE01B913 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */; };
-		79BD0345520343C7920A5BC7 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */ = {isa = PBXBuildFile; fileRef = 54DCC982FF9F472DAB839515 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */; };
-		84578812EEC043778153D827 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */ = {isa = PBXBuildFile; fileRef = AB3CD42E7CC0462380058B93 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */; };
-		C56E2470E00A44DD8082BCDB /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */ = {isa = PBXBuildFile; fileRef = 222EB3C00B244ABCAE1A3419 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */; };
-		ED765BB374D7457DB7D80C18 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */ = {isa = PBXBuildFile; fileRef = 41D622C5A1874BD6AC1EBA83 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */; };
+		07E8D3ECBBC94BD586FB6AD0 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXBuildFile; fileRef = 73E0A4BB7FE745E9AFB2FEC3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */; };
+		087668EE8935408EA656975D /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */ = {isa = PBXBuildFile; fileRef = 2FE85638F663413783725271 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */; };
+		5A154031D3654B839F4FF9AC /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */ = {isa = PBXBuildFile; fileRef = D7883737313A4A149C8562E3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */; };
+		69E13968298E4C838DF0B1E3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */ = {isa = PBXBuildFile; fileRef = 411E7EA48B27448184A28BC8 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */; };
+		87C83D5FC4534E2285EE3857 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */ = {isa = PBXBuildFile; fileRef = 29540E0B7D754E2B8680572E /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */; };
+		B4C2CF240D1D4459B13A8AC3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */ = {isa = PBXBuildFile; fileRef = 1A3CD556132245D39FCF2AE9 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */; };
+		D0CB38747F44419BABA80184 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */ = {isa = PBXBuildFile; fileRef = A737F0A0D6714B76B2D41E31 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildStyle section */
-		5B3BDEF174CD4067A49F9D07 /* Debug */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = Debug;
-		};
-		98444D3430914887A97A51FD /* Release */ = {
+		167F575F41E34EE68EA4D321 /* Release */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = Release;
 		};
-		995781A2F4FA4AFE96E3B0EA /* MinSizeRel */ = {
-			isa = PBXBuildStyle;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-			};
-			name = MinSizeRel;
-		};
-		B5BE60490B1E4278B262EFDC /* RelWithDebInfo */ = {
+		2D109F2832FE4DFE8FF6EB15 /* RelWithDebInfo */ = {
 			isa = PBXBuildStyle;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
 			};
 			name = RelWithDebInfo;
 		};
+		3528C66107354EC4A4B66429 /* MinSizeRel */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = MinSizeRel;
+		};
+		E02B416F46744940B0501093 /* Debug */ = {
+			isa = PBXBuildStyle;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
 /* End PBXBuildStyle section */
 
 /* Begin PBXContainerItemProxy section */
-		63B26E1B07BA4DF88E77DE62 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 76852F97B0D541E28F99190E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9FB7BC66759944178F17439E;
-			remoteInfo = ZERO_CHECK;
-		};
-		92ECC93D51FD49CB93BF10F1 /* PBXContainerItemProxy */ = {
+		96686C5096694BC5A3B9EADC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 76852F97B0D541E28F99190E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 143A78F16B1941C2874A6EE3;
 			remoteInfo = gyro.soundfield2stereo_tilde;
 		};
-		F7E6B1371D8245AEABB0C081 /* PBXContainerItemProxy */ = {
+		E58DC0976AF94BCE826729E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76852F97B0D541E28F99190E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9FB7BC66759944178F17439E;
+			remoteInfo = ZERO_CHECK;
+		};
+		F1FB1EE46ED3434B844F8052 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 76852F97B0D541E28F99190E /* Project object */;
 			proxyType = 1;
@@ -110,71 +110,71 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		21CFC8CF1E0F4CB28B5397C9 /* gyro.soundfield2stereo_tilde */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; path = "gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~"; sourceTree = BUILT_PRODUCTS_DIR; };
-		222EB3C00B244ABCAE1A3419 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = simd_utils.cpp; path = ../../resonance_audio/base/simd_utils.cpp; sourceTree = SOURCE_ROOT; };
-		41D622C5A1874BD6AC1EBA83 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gain.cpp; path = ../../resonance_audio/dsp/gain.cpp; sourceTree = SOURCE_ROOT; };
-		54DCC982FF9F472DAB839515 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = stereo_from_soundfield_converter.cpp; path = ../../resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp; sourceTree = SOURCE_ROOT; };
-		84BF44E7ED6C40B9A4D4885C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		8C8204C47A944919BE01B913 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
-		9FD05F99D2794C98B3372FDC /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = audio_buffer.cpp; path = ../../resonance_audio/base/audio_buffer.cpp; sourceTree = SOURCE_ROOT; };
-		AB3CD42E7CC0462380058B93 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gyro.soundfield2stereo_tilde.cpp; path = gyro.soundfield2stereo_tilde.cpp; sourceTree = SOURCE_ROOT; };
-		E2B3C5205CF846A99BBC680C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = channel_view.cpp; path = ../../resonance_audio/base/channel_view.cpp; sourceTree = SOURCE_ROOT; };
+		1A3CD556132245D39FCF2AE9 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = channel_view.cpp; path = ../../resonance_audio/base/channel_view.cpp; sourceTree = SOURCE_ROOT; };
+		29540E0B7D754E2B8680572E /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gain.cpp; path = ../../resonance_audio/dsp/gain.cpp; sourceTree = SOURCE_ROOT; };
+		2FE85638F663413783725271 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = gyro.soundfield2stereo_tilde.cpp; path = gyro.soundfield2stereo_tilde.cpp; sourceTree = SOURCE_ROOT; };
+		411E7EA48B27448184A28BC8 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = audio_buffer.cpp; path = ../../resonance_audio/base/audio_buffer.cpp; sourceTree = SOURCE_ROOT; };
+		73E0A4BB7FE745E9AFB2FEC3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
+		A737F0A0D6714B76B2D41E31 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = stereo_from_soundfield_converter.cpp; path = ../../resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp; sourceTree = SOURCE_ROOT; };
+		D7883737313A4A149C8562E3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = simd_utils.cpp; path = ../../resonance_audio/base/simd_utils.cpp; sourceTree = SOURCE_ROOT; };
+		E55AAC0BF7FD48559F301B10 /* gyro.soundfield2stereo_tilde */ = {isa = PBXFileReference; explicitFileType = "wrapper.plug-in"; path = "gyro.soundfield2stereo~.mxo/Contents/MacOS/gyro.soundfield2stereo~"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD46FAD16D21440EBF3E13F6 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */ = {isa = PBXFileReference; explicitFileType = sourcecode.text; fileEncoding = 4; name = CMakeLists.txt; path = CMakeLists.txt; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		4179C87D4FCD41C08091D82C /* ALL_BUILD */ = {
+		06865D97A6CD4DE0B57E1B26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7ED94590BB9A41BC819772AA /* CMake Rules */,
-				84BF44E7ED6C40B9A4D4885C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */,
+				E55AAC0BF7FD48559F301B10 /* gyro.soundfield2stereo_tilde */,
 			);
-			name = ALL_BUILD;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		428F9B42D2D645448976D45D = {
+		40B40AFF801C40AC9E19FA3F /* Source Files */ = {
 			isa = PBXGroup;
 			children = (
-				8F359A21AAC24012AECD793E /* gyro.soundfield2stereo_tilde */,
-				4179C87D4FCD41C08091D82C /* ALL_BUILD */,
-				E45614137CF144158E31B1E8 /* Products */,
+				2FE85638F663413783725271 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */,
+				A737F0A0D6714B76B2D41E31 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */,
+				411E7EA48B27448184A28BC8 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */,
+				1A3CD556132245D39FCF2AE9 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */,
+				D7883737313A4A149C8562E3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */,
+				29540E0B7D754E2B8680572E /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */,
+			);
+			name = "Source Files";
+			sourceTree = "<group>";
+		};
+		82F8C4C1BAD942A8B6F5D848 = {
+			isa = PBXGroup;
+			children = (
+				EAA583D5EF204C98BCD5DD36 /* gyro.soundfield2stereo_tilde */,
+				F03CDD31095B480AA62389C9 /* ALL_BUILD */,
+				06865D97A6CD4DE0B57E1B26 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		7ED94590BB9A41BC819772AA /* CMake Rules */ = {
+		CAE9C276A36A482B9C599876 /* CMake Rules */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = "CMake Rules";
 			sourceTree = "<group>";
 		};
-		8F359A21AAC24012AECD793E /* gyro.soundfield2stereo_tilde */ = {
+		EAA583D5EF204C98BCD5DD36 /* gyro.soundfield2stereo_tilde */ = {
 			isa = PBXGroup;
 			children = (
-				EDD2AE945B344ABF82CA4FE4 /* Source Files */,
-				8C8204C47A944919BE01B913 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */,
+				40B40AFF801C40AC9E19FA3F /* Source Files */,
+				73E0A4BB7FE745E9AFB2FEC3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */,
 			);
 			name = gyro.soundfield2stereo_tilde;
 			sourceTree = "<group>";
 		};
-		E45614137CF144158E31B1E8 /* Products */ = {
+		F03CDD31095B480AA62389C9 /* ALL_BUILD */ = {
 			isa = PBXGroup;
 			children = (
-				21CFC8CF1E0F4CB28B5397C9 /* gyro.soundfield2stereo_tilde */,
+				CAE9C276A36A482B9C599876 /* CMake Rules */,
+				FD46FAD16D21440EBF3E13F6 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/CMakeLists.txt */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EDD2AE945B344ABF82CA4FE4 /* Source Files */ = {
-			isa = PBXGroup;
-			children = (
-				AB3CD42E7CC0462380058B93 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */,
-				54DCC982FF9F472DAB839515 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */,
-				9FD05F99D2794C98B3372FDC /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */,
-				E2B3C5205CF846A99BBC680C /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */,
-				222EB3C00B244ABCAE1A3419 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */,
-				41D622C5A1874BD6AC1EBA83 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */,
-			);
-			name = "Source Files";
+			name = ALL_BUILD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,19 +182,19 @@
 /* Begin PBXNativeTarget section */
 		143A78F16B1941C2874A6EE3 /* gyro.soundfield2stereo_tilde */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 955DA8B2C8C04B2F94939C21 /* Build configuration list for PBXNativeTarget "gyro.soundfield2stereo_tilde" */;
+			buildConfigurationList = EF4279D4BC6A4BB1A4AD280F /* Build configuration list for PBXNativeTarget "gyro.soundfield2stereo_tilde" */;
 			buildPhases = (
-				C03DCDCEA6FF402E882AE1FA /* Sources */,
-				8DF3940BC7E44B47B696E17D /* CMake PostBuild Rules */,
+				E00EB8FCFD5146B1842198AB /* Sources */,
+				2EC4B2EDCDD342A58580B72C /* CMake PostBuild Rules */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4FC3E0DFEFD74697B1CD8D77 /* PBXTargetDependency */,
+				88EDF2B01046436EA3748286 /* PBXTargetDependency */,
 			);
 			name = gyro.soundfield2stereo_tilde;
 			productName = gyro.soundfield2stereo_tilde;
-			productReference = 21CFC8CF1E0F4CB28B5397C9 /* gyro.soundfield2stereo_tilde */;
+			productReference = E55AAC0BF7FD48559F301B10 /* gyro.soundfield2stereo_tilde */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -206,18 +206,18 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1120;
 			};
-			buildConfigurationList = 4148FFA9E7E945A694497F89 /* Build configuration list for PBXProject "gyro.soundfield2stereo_tilde" */;
+			buildConfigurationList = DDF803FA05F6498EA5FFE908 /* Build configuration list for PBXProject "gyro.soundfield2stereo_tilde" */;
 			buildSettings = {
 			};
 			buildStyles = (
-				5B3BDEF174CD4067A49F9D07 /* Debug */,
-				98444D3430914887A97A51FD /* Release */,
-				995781A2F4FA4AFE96E3B0EA /* MinSizeRel */,
-				B5BE60490B1E4278B262EFDC /* RelWithDebInfo */,
+				E02B416F46744940B0501093 /* Debug */,
+				167F575F41E34EE68EA4D321 /* Release */,
+				3528C66107354EC4A4B66429 /* MinSizeRel */,
+				2D109F2832FE4DFE8FF6EB15 /* RelWithDebInfo */,
 			);
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
-			mainGroup = 428F9B42D2D645448976D45D;
+			mainGroup = 82F8C4C1BAD942A8B6F5D848;
 			projectDirPath = ../../../../source/projects/gyro.soundfield2stereo_tilde;
 			projectRoot = "";
 			targets = (
@@ -230,48 +230,7 @@
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		249D303DB9BD44E0A9A0FE0A = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		5A1857B0FB1E4E008B861A34 /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		75B75DEFF5394A50A533DD88 = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# shell script goes here
-exit 0";
-			showEnvVarsInLog = 0;
-		};
-		8DF3940BC7E44B47B696E17D /* CMake PostBuild Rules */ = {
+		2EC4B2EDCDD342A58580B72C /* CMake PostBuild Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,18 +241,7 @@ exit 0";
 			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/gyro.soundfield2stereo_tilde_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		A13C8139748C495BBEBDBB0E /* CMake Rules */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			name = "CMake Rules";
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
-			showEnvVarsInLog = 0;
-		};
-		B9D68E83313A4744BAD9A3E3 /* CMake PostBuild Rules */ = {
+		8E6BD79DBC924D75B955BF33 /* CMake PostBuild Rules */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -304,7 +252,59 @@ exit 0";
 			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/RUN_TESTS_postBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
 			showEnvVarsInLog = 0;
 		};
-		E0B5B850480E47B7862E1859 = {
+		9C3F60899B17404D941B0CED = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		C38815A4C6DE44A29BF56052 = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# shell script goes here
+exit 0";
+			showEnvVarsInLog = 0;
+		};
+		D0EFFBB6B1B14BBD958D650F /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/ZERO_CHECK_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		EB2153A02CE948118B4475EA /* CMake Rules */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "CMake Rules";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "make -C /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde -f /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/CMakeScripts/ALL_BUILD_cmakeRulesBuildPhase.make$CONFIGURATION OBJDIR=$(basename \"$OBJECT_FILE_DIR_normal\") all";
+			showEnvVarsInLog = 0;
+		};
+		F4CD2F62FF674DB8960424E2 = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -322,44 +322,43 @@ exit 0";
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C03DCDCEA6FF402E882AE1FA /* Sources */ = {
+		E00EB8FCFD5146B1842198AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84578812EEC043778153D827 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */,
-				79BD0345520343C7920A5BC7 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */,
-				06D54B4B4DC2421FB66374F2 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */,
-				2C469204E06F45109F64EC8A /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */,
-				C56E2470E00A44DD8082BCDB /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */,
-				ED765BB374D7457DB7D80C18 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */,
+				087668EE8935408EA656975D /* /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.soundfield2stereo_tilde/gyro.soundfield2stereo_tilde.cpp */,
+				D0CB38747F44419BABA80184 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/ambisonics/stereo_from_soundfield_converter.cpp */,
+				69E13968298E4C838DF0B1E3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/audio_buffer.cpp */,
+				B4C2CF240D1D4459B13A8AC3 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/channel_view.cpp */,
+				5A154031D3654B839F4FF9AC /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/base/simd_utils.cpp */,
+				87C83D5FC4534E2285EE3857 /* /Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/dsp/gain.cpp */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		4FC3E0DFEFD74697B1CD8D77 /* PBXTargetDependency */ = {
+		230C3BE368BE45E1B6C17800 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FB7BC66759944178F17439E /* ZERO_CHECK */;
-			targetProxy = F7E6B1371D8245AEABB0C081 /* PBXContainerItemProxy */;
+			targetProxy = E58DC0976AF94BCE826729E6 /* PBXContainerItemProxy */;
 		};
-		EA358CDC6498414388F9E9E2 /* PBXTargetDependency */ = {
+		88EDF2B01046436EA3748286 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9FB7BC66759944178F17439E /* ZERO_CHECK */;
-			targetProxy = 63B26E1B07BA4DF88E77DE62 /* PBXContainerItemProxy */;
+			targetProxy = F1FB1EE46ED3434B844F8052 /* PBXContainerItemProxy */;
 		};
-		F3FCAC17D62445F5AA99389D /* PBXTargetDependency */ = {
+		BEF47BCEC54142668358E0B4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 143A78F16B1941C2874A6EE3 /* gyro.soundfield2stereo_tilde */;
-			targetProxy = 92ECC93D51FD49CB93BF10F1 /* PBXContainerItemProxy */;
+			targetProxy = 96686C5096694BC5A3B9EADC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		16F11BE36A474C61BA48A743 /* RelWithDebInfo */ = {
+		07AD1F61719A44649DC6F1BB /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = x86_64;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -367,18 +366,27 @@ exit 0";
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
+				PRODUCT_NAME = ZERO_CHECK;
 				SECTORDER_FLAGS = "";
 				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = RelWithDebInfo;
+			name = MinSizeRel;
 		};
-		1A14012E70BD45129780B09C /* RelWithDebInfo */ = {
+		091E2F8018644D16938C3983 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
+			};
+			name = MinSizeRel;
+		};
+		2036F8E87D3B43DC9E39F79F /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -410,7 +418,27 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		1C4F7E0E7BB44E1E9F9C3D99 /* MinSizeRel */ = {
+		2B46E147CA564BCCAD08ABEB /* RelWithDebInfo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = RelWithDebInfo;
+		};
+		32BA4369A4F24329908882DA /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -430,9 +458,81 @@ exit 0";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
+			name = RelWithDebInfo;
+		};
+		47DC9D720B3A4F9FBD9C0AF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = RUN_TESTS;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		4E6485A771294AC88738865F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		5ABD85B86BEA452E967239F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
+			};
+			name = Debug;
+		};
+		74AB2E37A31943A68BCFD759 /* MinSizeRel */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ALL_BUILD;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
 			name = MinSizeRel;
 		};
-		28C57CDA659249DBB43EB0C4 /* MinSizeRel */ = {
+		7577FEEB005340EC9B46A014 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -464,27 +564,7 @@ exit 0";
 			};
 			name = MinSizeRel;
 		};
-		3E8BB5D13E274A11BDC5EBE3 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
-			};
-			name = RelWithDebInfo;
-		};
-		49B84B3D68C74EDEB3E92282 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
-			};
-			name = Release;
-		};
-		4F6BA65452BE45C0B4C27819 /* MinSizeRel */ = {
+		795C1FEEF39548F7BE959726 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -502,9 +582,9 @@ exit 0";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = MinSizeRel;
+			name = Debug;
 		};
-		548629C78FF2423E984D08EE /* Release */ = {
+		9A42FB6DF60F45A4BD1DD27D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -536,29 +616,7 @@ exit 0";
 			};
 			name = Release;
 		};
-		59ED93DBE4FE43DEB285FF2C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				ONLY_ACTIVE_ARCH = NO;
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = RUN_TESTS;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		767491D0DB1747FEAEDE7585 /* MinSizeRel */ = {
+		A11D9A62B28047F5B85C92C2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -576,9 +634,9 @@ exit 0";
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = MinSizeRel;
+			name = Debug;
 		};
-		83E87E7F3AB74FA1B6E52F44 /* RelWithDebInfo */ = {
+		B0F6DED1294F4AEF93C9F53E /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
@@ -598,7 +656,37 @@ exit 0";
 			};
 			name = RelWithDebInfo;
 		};
-		8F90F7A5FFF74C9CAAEBC02B /* Debug */ = {
+		B27055E074FB4A6D952E5574 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INSTALL_PATH = "";
+				OTHER_LDFLAGS = " ";
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = ZERO_CHECK;
+				SECTORDER_FLAGS = "";
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+			};
+			name = Release;
+		};
+		BB35A322265A43FBA0334DE6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
+			};
+			name = Release;
+		};
+		DAE54D9336DA44A38DAEF12C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -630,9 +718,10 @@ exit 0";
 			};
 			name = Debug;
 		};
-		BA80A897376D41BCBDD2A293 /* Debug */ = {
+		DCC96D959D004279B34B6E01 /* MinSizeRel */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = x86_64;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -640,57 +729,28 @@ exit 0";
 				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INSTALL_PATH = "";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = " ";
 				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
+				PRODUCT_NAME = RUN_TESTS;
 				SECTORDER_FLAGS = "";
 				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
 				USE_HEADERMAP = NO;
 				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
 			};
-			name = Debug;
+			name = MinSizeRel;
 		};
-		C061D8CE067D479FA638E175 /* Release */ = {
+		F5079F9943AD481D9A00A3C1 /* RelWithDebInfo */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
+				ARCHS = x86_64;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
+				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
 			};
-			name = Release;
+			name = RelWithDebInfo;
 		};
-		D070979FA6EE4C7DB040CDE7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Debug;
-		};
-		D1D9BBC3FD374BC89489A131 /* Debug */ = {
+		FDA6237DA2C14AEC9AF62A42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = x86_64;
@@ -712,120 +772,60 @@ exit 0";
 			};
 			name = Debug;
 		};
-		E3B9FECF3CF544938327022E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ALL_BUILD;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = Release;
-		};
-		E4D204A58036478AA0BE1C90 /* RelWithDebInfo */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COMBINE_HIDPI_IMAGES = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("'CMAKE_INTDIR=\"$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)\"'");
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				INSTALL_PATH = "";
-				OTHER_LDFLAGS = " ";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ZERO_CHECK;
-				SECTORDER_FLAGS = "";
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde;
-				USE_HEADERMAP = NO;
-				WARNING_CFLAGS = ("-Wmost","-Wno-four-char-constants","-Wno-unknown-pragmas","$(inherited)");
-			};
-			name = RelWithDebInfo;
-		};
-		E7C727563992466D81FBD269 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
-			};
-			name = Debug;
-		};
-		EB888A3C430E435D9BCF65F8 /* MinSizeRel */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = x86_64;
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				SDKROOT = /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk;
-				SYMROOT = /Users/sofia/Documents/GitHub/gyro/gyro/build/source/projects/gyro.soundfield2stereo_tilde/build;
-			};
-			name = MinSizeRel;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1F32A81495C54BC389868C55 /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
+		5F29684C930642F48F146BED /* Build configuration list for PBXAggregateTarget "RUN_TESTS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D1D9BBC3FD374BC89489A131 /* Debug */,
-				59ED93DBE4FE43DEB285FF2C /* Release */,
-				1C4F7E0E7BB44E1E9F9C3D99 /* MinSizeRel */,
-				16F11BE36A474C61BA48A743 /* RelWithDebInfo */,
+				FDA6237DA2C14AEC9AF62A42 /* Debug */,
+				47DC9D720B3A4F9FBD9C0AF0 /* Release */,
+				DCC96D959D004279B34B6E01 /* MinSizeRel */,
+				32BA4369A4F24329908882DA /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		4148FFA9E7E945A694497F89 /* Build configuration list for PBXProject "gyro.soundfield2stereo_tilde" */ = {
+		6E2F9E60382D4D4A83B11FBA /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E7C727563992466D81FBD269 /* Debug */,
-				49B84B3D68C74EDEB3E92282 /* Release */,
-				EB888A3C430E435D9BCF65F8 /* MinSizeRel */,
-				3E8BB5D13E274A11BDC5EBE3 /* RelWithDebInfo */,
+				795C1FEEF39548F7BE959726 /* Debug */,
+				4E6485A771294AC88738865F /* Release */,
+				74AB2E37A31943A68BCFD759 /* MinSizeRel */,
+				B0F6DED1294F4AEF93C9F53E /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		68534122436D4474A9BAFBFF /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
+		DDF803FA05F6498EA5FFE908 /* Build configuration list for PBXProject "gyro.soundfield2stereo_tilde" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BA80A897376D41BCBDD2A293 /* Debug */,
-				C061D8CE067D479FA638E175 /* Release */,
-				767491D0DB1747FEAEDE7585 /* MinSizeRel */,
-				E4D204A58036478AA0BE1C90 /* RelWithDebInfo */,
+				5ABD85B86BEA452E967239F1 /* Debug */,
+				BB35A322265A43FBA0334DE6 /* Release */,
+				091E2F8018644D16938C3983 /* MinSizeRel */,
+				F5079F9943AD481D9A00A3C1 /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		955DA8B2C8C04B2F94939C21 /* Build configuration list for PBXNativeTarget "gyro.soundfield2stereo_tilde" */ = {
+		EB7FBF691E374C4E85734052 /* Build configuration list for PBXAggregateTarget "ZERO_CHECK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8F90F7A5FFF74C9CAAEBC02B /* Debug */,
-				548629C78FF2423E984D08EE /* Release */,
-				28C57CDA659249DBB43EB0C4 /* MinSizeRel */,
-				1A14012E70BD45129780B09C /* RelWithDebInfo */,
+				A11D9A62B28047F5B85C92C2 /* Debug */,
+				B27055E074FB4A6D952E5574 /* Release */,
+				07AD1F61719A44649DC6F1BB /* MinSizeRel */,
+				2B46E147CA564BCCAD08ABEB /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		D70A3C60EB194C52BDA777D2 /* Build configuration list for PBXAggregateTarget "ALL_BUILD" */ = {
+		EF4279D4BC6A4BB1A4AD280F /* Build configuration list for PBXNativeTarget "gyro.soundfield2stereo_tilde" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D070979FA6EE4C7DB040CDE7 /* Debug */,
-				E3B9FECF3CF544938327022E /* Release */,
-				4F6BA65452BE45C0B4C27819 /* MinSizeRel */,
-				83E87E7F3AB74FA1B6E52F44 /* RelWithDebInfo */,
+				DAE54D9336DA44A38DAEF12C /* Debug */,
+				9A42FB6DF60F45A4BD1DD27D /* Release */,
+				7577FEEB005340EC9B46A014 /* MinSizeRel */,
+				2036F8E87D3B43DC9E39F79F /* RelWithDebInfo */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
