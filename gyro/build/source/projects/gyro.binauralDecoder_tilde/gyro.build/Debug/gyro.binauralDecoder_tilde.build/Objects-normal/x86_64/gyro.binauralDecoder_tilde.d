@@ -283,6 +283,7 @@ dependencies: \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/eigen/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/eigen/Eigen/src/Eigenvalues/./RealQZ.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/third_party/eigen/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/ambisonics/utils.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../pita/audio_buffer_conversion.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/dsp/sh_hrir_creator.h \
   /Users/sofia/Documents/GitHub/gyro/gyro/source/projects/gyro.binauralDecoder_tilde/../../resonance_audio/dsp/resampler.h \
