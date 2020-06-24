@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 93.0, -829.0, 868.0, 707.0 ],
+		"rect" : [ 93.0, -829.0, 1251.0, 707.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 93.0, -777.0, 868.0, 655.0 ],
+						"rect" : [ 93.0, -777.0, 1251.0, 655.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -107,11 +107,96 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-44",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 505.75, 153.5, 29.5, 23.0 ],
+									"text" : "-90"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-43",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 474.25, 153.5, 29.5, 23.0 ],
+									"text" : "90"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-35",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 291.75, 134.0, 139.0, 23.0 ],
+									"text" : "open shakerMono.wav"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-23",
+									"maxclass" : "toggle",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "int" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 230.0, 248.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-8",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 251.0, 204.0, 44.0, 23.0 ],
+									"text" : "loop 1"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-2",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 451.5, 370.5, 303.0, 54.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1), number of point sources (int) (optional, default number is 1)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-29",
+									"linecount" : 25,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 611.0, 9.0, 556.0, 384.0 ],
+									"text" : "Every face is different! Therefore, every person will have a different HRTF preference. \n\nTips on finding the right HRTF:\n\n1. Sit in a room with walls at 90 degrees. Keep your head at right angles while doing this. This will help you visualise angles.\n2. Choose an HRTF to try.\n3. Move a mono sound source slowly around your head in the transverse plane. White noise [noise~] is the best option, but is kind of annoying, so a shaker, tambourine, or speech also works well for this because the brain is really good at localising high frequencies. Pick a few angles (+/- 90 is a good place to start) and close your eyes. Try to place the sound source at the desired angle using your EARS only. Then open your eyes and see what angle the source is actually at. The closer the angle is to your perceived angle, the better the fit. Be sure to approach the desired angle from both sides. \n4. Repeat Step 3 for the sagittal and coronal plane. Be sure to examine the full circle around you. \n5. I suggest also listening for a flat frequency response and a relatively consistent level. Of course, sources behind you will be a little quieter than those in front and will sound a bit low-passed, but there should not be strange pockets of space that are surprisingly loud or quiet, or that sound like they have strange filters over them. \n\nYou can read about my subjective impressions of these HRTFs at gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/Sofia's subjective HRTF impressions.md, which won't help you pick your own but will give you a sense of what to listen for. \n"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-36",
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 73.0, 136.0, 150.0, 21.0 ],
+									"patching_rect" : [ 73.0, 166.0, 150.0, 21.0 ],
 									"text" : "Select an HRIR Subject!"
 								}
 
@@ -135,7 +220,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 550.0, 127.5, 29.5, 23.0 ],
+									"patching_rect" : [ 544.0, 153.5, 29.5, 23.0 ],
 									"text" : "0"
 								}
 
@@ -147,7 +232,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 492.0, 127.5, 29.5, 23.0 ],
+									"patching_rect" : [ 441.0, 153.5, 29.5, 23.0 ],
 									"text" : "0"
 								}
 
@@ -160,7 +245,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 550.0, 154.5, 50.0, 23.0 ]
+									"patching_rect" : [ 544.0, 180.5, 50.0, 23.0 ]
 								}
 
 							}
@@ -172,7 +257,7 @@
 									"numoutlets" : 2,
 									"outlettype" : [ "", "bang" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 492.0, 154.5, 50.0, 23.0 ]
+									"patching_rect" : [ 441.0, 180.5, 50.0, 23.0 ]
 								}
 
 							}
@@ -183,7 +268,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 511.0, 184.5, 58.0, 23.0 ],
+									"patching_rect" : [ 460.0, 210.5, 58.0, 23.0 ],
 									"text" : "pak 0. 0."
 								}
 
@@ -195,7 +280,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 511.0, 211.5, 88.0, 23.0 ],
+									"patching_rect" : [ 460.0, 237.5, 88.0, 23.0 ],
 									"text" : "prepend set 1"
 								}
 
@@ -690,7 +775,7 @@
  ]
 									}
 ,
-									"patching_rect" : [ 82.0, 159.0, 132.0, 128.0 ],
+									"patching_rect" : [ 82.0, 189.0, 132.0, 128.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -702,7 +787,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 157.0, 409.5, 61.0, 23.0 ],
+									"patching_rect" : [ 157.0, 439.5, 61.0, 23.0 ],
 									"text" : "subject 3"
 								}
 
@@ -714,7 +799,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 157.0, 381.5, 68.0, 23.0 ],
+									"patching_rect" : [ 157.0, 411.5, 68.0, 23.0 ],
 									"text" : "subject 16"
 								}
 
@@ -726,7 +811,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 157.0, 442.0, 68.0, 23.0 ],
+									"patching_rect" : [ 157.0, 472.0, 68.0, 23.0 ],
 									"text" : "subject 21"
 								}
 
@@ -738,7 +823,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 157.0, 354.5, 61.0, 23.0 ],
+									"patching_rect" : [ 157.0, 384.5, 61.0, 23.0 ],
 									"text" : "subject 1"
 								}
 
@@ -751,7 +836,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 82.0, 304.0, 150.0, 23.0 ]
+									"patching_rect" : [ 82.0, 334.0, 150.0, 23.0 ]
 								}
 
 							}
@@ -762,7 +847,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 515.0, 250.0, 70.0, 23.0 ],
+									"patching_rect" : [ 515.0, 280.0, 70.0, 23.0 ],
 									"text" : "set 1 -90 0"
 								}
 
@@ -774,7 +859,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 363.25, 250.0, 58.0, 23.0 ],
+									"patching_rect" : [ 363.25, 280.0, 58.0, 23.0 ],
 									"text" : "set 1 0 0"
 								}
 
@@ -786,7 +871,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 434.0, 250.0, 66.0, 23.0 ],
+									"patching_rect" : [ 434.0, 280.0, 66.0, 23.0 ],
 									"text" : "set 1 90 0"
 								}
 
@@ -799,7 +884,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 451.5, 332.5, 301.0, 40.0 ],
+									"patching_rect" : [ 451.5, 437.5, 301.0, 40.0 ],
 									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
 								}
 
@@ -811,20 +896,8 @@
 									"numinlets" : 16,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 273.0, 341.0, 176.5, 23.0 ],
+									"patching_rect" : [ 273.0, 446.0, 176.5, 23.0 ],
 									"text" : "gyro.binauralDecoder~ 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-8",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 417.0, 174.0, 44.0, 23.0 ],
-									"text" : "loop 1"
 								}
 
 							}
@@ -835,20 +908,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 17,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 273.0, 296.0, 176.5, 23.0 ],
+									"patching_rect" : [ 273.0, 386.0, 176.5, 23.0 ],
 									"text" : "gyro.encoder~ 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 243.0, 126.0, 29.5, 23.0 ],
-									"text" : "2"
 								}
 
 							}
@@ -859,7 +920,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 282.0, 94.0, 62.0, 23.0 ],
+									"patching_rect" : [ 274.0, 94.0, 62.0, 23.0 ],
 									"text" : "loadbang"
 								}
 
@@ -871,7 +932,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 174.0, 52.0, 23.0 ],
+									"patching_rect" : [ 355.0, 204.0, 52.0, 23.0 ],
 									"text" : "resume"
 								}
 
@@ -883,7 +944,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 303.0, 174.0, 44.0, 23.0 ],
+									"patching_rect" : [ 303.0, 204.0, 44.0, 23.0 ],
 									"text" : "pause"
 								}
 
@@ -895,8 +956,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 282.0, 126.0, 165.0, 23.0 ],
-									"text" : "preload 2 shakerMono.wav"
+									"patching_rect" : [ 274.0, 166.0, 155.0, 23.0 ],
+									"text" : "open 06m-pandeiro1.wav"
 								}
 
 							}
@@ -907,13 +968,13 @@
 									"numinlets" : 2,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "bang" ],
-									"patching_rect" : [ 274.0, 218.0, 61.0, 23.0 ],
+									"patching_rect" : [ 274.0, 248.0, 61.0, 23.0 ],
 									"saved_object_attributes" : 									{
 										"basictuning" : 440,
 										"followglobaltempo" : 0,
 										"formantcorrection" : 0,
 										"mode" : "basic",
-										"originallength" : [ 0.0, "ticks" ],
+										"originallength" : [ 3669.115646258503148, "ticks" ],
 										"originaltempo" : 120.0,
 										"pitchcorrection" : 0,
 										"quality" : "basic",
@@ -934,17 +995,17 @@
 									"orientation" : 1,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 272.0, 429.0, 178.0, 36.0 ],
+									"patching_rect" : [ 272.0, 489.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_type" : 0,
-											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
-											"parameter_shortname" : "live.gain~"
+											"parameter_shortname" : "live.gain~",
+											"parameter_type" : 0,
+											"parameter_unitstyle" : 4
 										}
 
 									}
@@ -967,7 +1028,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 363.25, 521.0, 20.0, 20.0 ],
+									"patching_rect" : [ 363.25, 581.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -983,7 +1044,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 328.0, 490.5, 108.0, 25.0 ],
+									"patching_rect" : [ 328.0, 550.5, 108.0, 25.0 ],
 									"text" : "turn on audio"
 								}
 
@@ -995,7 +1056,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 272.0, 481.0, 44.0, 44.0 ],
+									"patching_rect" : [ 272.0, 541.0, 44.0, 44.0 ],
 									"prototypename" : "helpfile"
 								}
 
@@ -1185,13 +1246,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"source" : [ "obj-2", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-20", 0 ]
 								}
@@ -1213,6 +1267,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-23", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-22", 0 ],
 									"source" : [ "obj-24", 0 ]
 								}
@@ -1221,15 +1282,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-11", 0 ],
-									"order" : 1,
-									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"order" : 2,
+									"order" : 0,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -1237,7 +1290,7 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-8", 0 ],
-									"order" : 0,
+									"order" : 1,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -1279,6 +1332,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-9", 0 ],
+									"source" : [ "obj-35", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-3", 0 ],
 									"source" : [ "obj-4", 0 ]
 								}
@@ -1288,6 +1348,20 @@
 								"patchline" : 								{
 									"destination" : [ "obj-4", 0 ],
 									"source" : [ "obj-40", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-24", 0 ],
+									"source" : [ "obj-43", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-24", 0 ],
+									"source" : [ "obj-44", 0 ]
 								}
 
 							}
@@ -1368,7 +1442,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 868.0, 655.0 ],
+						"rect" : [ 0.0, 26.0, 1251.0, 655.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
