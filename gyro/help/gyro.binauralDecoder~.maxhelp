@@ -107,6 +107,18 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-25",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 267.0, 216.0, 150.0, 25.0 ],
+									"text" : "play / stop"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-44",
 									"maxclass" : "message",
 									"numinlets" : 2,
@@ -136,7 +148,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 291.75, 134.0, 139.0, 23.0 ],
+									"patching_rect" : [ 291.75, 104.0, 139.0, 23.0 ],
 									"text" : "open shakerMono.wav"
 								}
 
@@ -149,7 +161,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 230.0, 248.0, 24.0, 24.0 ]
+									"patching_rect" : [ 236.0, 216.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -160,7 +172,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 251.0, 204.0, 44.0, 23.0 ],
+									"patching_rect" : [ 251.0, 174.0, 44.0, 23.0 ],
 									"text" : "loop 1"
 								}
 
@@ -173,7 +185,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 451.5, 370.5, 303.0, 54.0 ],
+									"patching_rect" : [ 451.5, 385.5, 303.0, 54.0 ],
 									"text" : "arguments: ambisonic-order (int) (optional, default order is 1), number of point sources (int) (optional, default number is 1)"
 								}
 
@@ -186,7 +198,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 611.0, 9.0, 556.0, 384.0 ],
-									"text" : "Every face is different! Therefore, every person will have a different HRTF preference. \n\nTips on finding the right HRTF:\n\n1. Sit in a room with walls at 90 degrees. Keep your head at right angles while doing this. This will help you visualise angles.\n2. Choose an HRTF to try.\n3. Move a mono sound source slowly around your head in the transverse plane. White noise [noise~] is the best option, but is kind of annoying, so a shaker, tambourine, or speech also works well for this because the brain is really good at localising high frequencies. Pick a few angles (+/- 90 is a good place to start) and close your eyes. Try to place the sound source at the desired angle using your EARS only. Then open your eyes and see what angle the source is actually at. The closer the angle is to your perceived angle, the better the fit. Be sure to approach the desired angle from both sides. \n4. Repeat Step 3 for the sagittal and coronal plane. Be sure to examine the full circle around you. \n5. I suggest also listening for a flat frequency response and a relatively consistent level. Of course, sources behind you will be a little quieter than those in front and will sound a bit low-passed, but there should not be strange pockets of space that are surprisingly loud or quiet, or that sound like they have strange filters over them. \n\nYou can read about my subjective impressions of these HRTFs at gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/Sofia's subjective HRTF impressions.md, which won't help you pick your own but will give you a sense of what to listen for. \n"
+									"text" : "Every face is different! Therefore, every person will have a different HRTF preference. \n\nTips on finding the right HRTF:\n\n1. Sit in a room with walls at 90 degrees. Keep your head at right angles while doing this. This will help you visualise angles.\n2. Choose an HRTF to try.\n3. Move a mono sound source slowly around your head in the transverse plane. White noise [noise~] is the best option, but is kind of annoying, so a shaker, tambourine, or speech also works well for this because the brain is really good at localising high frequencies. Pick a few angles (+/- 90 is a good place to start) and close your eyes. Try to place the sound source at the desired angle using your EARS only. Then open your eyes and see what angle the source is actually at. The closer the angle is to your perceived angle, the better the fit. Be sure to approach the desired angle from both sides. \n4. Repeat Step 3 for the sagittal and coronal plane. Be sure to examine the full circle around you. \n5. I suggest also listening for a flat frequency response and a relatively consistent level over space. Of course, sources behind you will be a little quieter than those in front and will sound a bit low-passed, but there should not be strange pockets of space that are surprisingly loud or quiet, or that sound like they have strange filters over them. \n\nYou can read about my subjective impressions of these HRTFs at gyro/source/resonance_audio/third_party/SADIE_I_hrtf_database/Sofia's subjective HRTF impressions.md, which won't help you pick your own but will give you a sense of what to listen for. \n"
 								}
 
 							}
@@ -884,7 +896,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 451.5, 437.5, 301.0, 40.0 ],
+									"patching_rect" : [ 451.5, 452.5, 301.0, 40.0 ],
 									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
 								}
 
@@ -896,7 +908,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 273.0, 446.0, 176.5, 23.0 ],
+									"patching_rect" : [ 273.0, 461.0, 176.5, 23.0 ],
 									"text" : "gyro.binauralDecoder~ 3"
 								}
 
@@ -908,7 +920,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 17,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
-									"patching_rect" : [ 273.0, 386.0, 176.5, 23.0 ],
+									"patching_rect" : [ 273.0, 401.0, 176.5, 23.0 ],
 									"text" : "gyro.encoder~ 3"
 								}
 
@@ -920,7 +932,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 274.0, 94.0, 62.0, 23.0 ],
+									"patching_rect" : [ 274.0, 64.0, 62.0, 23.0 ],
 									"text" : "loadbang"
 								}
 
@@ -932,7 +944,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 355.0, 204.0, 52.0, 23.0 ],
+									"patching_rect" : [ 355.0, 174.0, 52.0, 23.0 ],
 									"text" : "resume"
 								}
 
@@ -944,7 +956,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 303.0, 204.0, 44.0, 23.0 ],
+									"patching_rect" : [ 303.0, 174.0, 44.0, 23.0 ],
 									"text" : "pause"
 								}
 
@@ -956,7 +968,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 274.0, 166.0, 155.0, 23.0 ],
+									"patching_rect" : [ 274.0, 136.0, 155.0, 23.0 ],
 									"text" : "open 06m-pandeiro1.wav"
 								}
 
@@ -995,43 +1007,23 @@
 									"orientation" : 1,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 272.0, 489.0, 178.0, 36.0 ],
+									"patching_rect" : [ 272.0, 504.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_type" : 0,
+											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
 											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
-											"parameter_shortname" : "live.gain~",
-											"parameter_type" : 0,
-											"parameter_unitstyle" : 4
+											"parameter_shortname" : "live.gain~"
 										}
 
 									}
 ,
 									"showname" : 0,
 									"varname" : "live.gain~[1]"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
-									"fontname" : "Arial Bold",
-									"hint" : "",
-									"id" : "obj-25",
-									"ignoreclick" : 1,
-									"legacytextcolor" : 1,
-									"maxclass" : "textbutton",
-									"numinlets" : 1,
-									"numoutlets" : 3,
-									"outlettype" : [ "", "", "int" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 363.25, 581.0, 20.0, 20.0 ],
-									"rounded" : 60.0,
-									"text" : "1",
-									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
 								}
 
 							}
@@ -1044,7 +1036,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 328.0, 550.5, 108.0, 25.0 ],
+									"patching_rect" : [ 328.0, 565.5, 108.0, 25.0 ],
 									"text" : "turn on audio"
 								}
 
@@ -1056,7 +1048,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 272.0, 541.0, 44.0, 44.0 ],
+									"patching_rect" : [ 272.0, 556.0, 44.0, 44.0 ],
 									"prototypename" : "helpfile"
 								}
 
@@ -1281,7 +1273,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-11", 0 ],
+									"destination" : [ "obj-35", 0 ],
 									"order" : 0,
 									"source" : [ "obj-28", 0 ]
 								}

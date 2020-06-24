@@ -1,6 +1,6 @@
 ## Sofia's subjective HRTF impressions
 
-Every face is different, so everyone's HRTF preference will be different. These impressions serve only to give an idea of what to listen for when you pick out an HRTF, but it is unlikely that your impressions will align with mine. For reference, I am a white, cisgender female. 
+Every face is different, so everyone's HRTF preference will be different. These impressions serve only to give an idea of what to listen for when you pick out an HRTF, but it is unlikely that your impressions will align with mine. For reference, I am a white, cisgender female. My best fitting HRTF is 014, with runner ups 005 and 001. On the whole, I was bothered because some HRTFs fit better in different planes. 
 
 ### Subject 001: Kemar Dummy Head
 * +/- 60ish sounds like +/- 90 already
@@ -78,19 +78,46 @@ Every face is different, so everyone's HRTF preference will be different. These 
 * pretty good accuracy in transverse plane 
 * bit of HF flare in the back
 * upward elevation localisation is ok (does sound like change in location not just a filter) but pretty subtle. Downward elevation less convincing
+* coronal plane is fine, although below -70 degrees elevation is starts to feel in front instead of below
 
 ### Subject 013: human
+* pretty good in transverse plane 
+* elevation strange above 70, sounds like it goes behind me due to HF attenuation
+* elevation also strange below -70, sounds like it goes to front. This is noticeable in orbits in both sagittal and coronal plane. 
+* On the way from (-90, 0) to (-90, 90), sounds like it goes down a little then up again
+
 
 ### Subject 014: human
+* pretty good in transverse plane
+* elevation is ok in sagittal plane and good in coronal plane
 
 ### Subject 015: human
+* pretty good in transverse plane
+* not as clear as 014
+* lot of attenuation in the back
+* upward elevation is ok, downward less so
+* in coronal plane, going down sounds like going up
 
 ### Subject 016: human
+* pretty good in transverse plane
+* elevation is good down but less good up (in sagittal plane)
+* elevation is good up in coronal plane up downward in coronal plane sounds like it's going up
 
 ### Subject 017: human
+* pretty good in transverse plane
+* elevation not to convinving in the sagittal plane; just very subtle difference
+* in coronal plane, when I go from (90, 0) to (90, 90), sounds like it's also moving forward, and going form (90, 0) to (90, -90) sounds like also moving back (behind)
 
 ### Subject 018: human
+* having some trouble with transverse plane. front of transverse plane sounds kind of behind me
+* upward elevation is fine, negative elevation in the coronal plane sounds like it's going up
 
 ### Subject 019: human
+* transverse plane is fine
+* up elevation good up to about 60 and then sounds off. Down is fine.
+* in coronal plane, down sounds up a bit, but less than some of the others that have this problem. 
 
 ### Subject 020: human
+* pretty good in transverse plane. Bit of a flare in level at +- 90d. Back sounds good, good spatial resolution
+* elevation sounds pretty good in sagittal plane
+* in coronal plane negative elevation sounds up
