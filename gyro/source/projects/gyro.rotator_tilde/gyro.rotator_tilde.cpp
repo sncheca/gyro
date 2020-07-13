@@ -71,8 +71,8 @@ private:
     vraudio::WorldRotation world_rotation; //keep this as a member to avoid repeated calculations when no new spatial data.
     vraudio::HoaRotator hoa_rotator;
 
-    std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
-    std::vector< std::unique_ptr<outlet<>> >   m_outlets; //must be called m_outputs
+    std::vector< std::unique_ptr<inlet<>> >    g_inlets; //note that this must be called m_inputs!
+    std::vector< std::unique_ptr<outlet<>> >   g_outlets; //must be called m_outputs
 
 public:
     MIN_DESCRIPTION    { "Rotate a soundfield. Use argument to select ambisonic order. Ambisonic order is 1 by default." };
@@ -95,8 +95,8 @@ public:
         }
         std::string inletHelpMessage("(signal) Channel ");
         for (auto i=0; i < kNumOutlets; ++i) {
-            m_inlets.push_back( std::make_unique<inlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
-            m_outlets.push_back( std::make_unique<outlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") );
+            g_inlets.push_back( std::make_unique<inlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            g_outlets.push_back( std::make_unique<outlet<>>(this, inletHelpMessage + std::to_string(i+1), "signal") );
 
         }
     }

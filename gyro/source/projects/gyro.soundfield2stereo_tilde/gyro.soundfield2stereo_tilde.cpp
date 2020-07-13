@@ -17,7 +17,7 @@ class soundfield2stereo : public object<soundfield2stereo>, public vector_operat
 private:
     const int kAmbisonicOrder;
     const int kNumIns;
-    std::vector< std::unique_ptr<inlet<>> >    m_inlets; //note that this must be called m_inputs!
+    std::vector< std::unique_ptr<inlet<>> >    g_inlets; //note that this must be called m_inputs!
 public:
     MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
     MIN_TAGS        { "audio, sampling" };
@@ -37,7 +37,7 @@ public:
         for (auto i=0; i < inlet_count; ++i) {
             //TODO the channel number should be in the assist message. String nonsense.
             auto an_inlet = std::make_unique<inlet<>>(this, "(signal) Channel", "signal");
-            m_inlets.push_back( std::move(an_inlet) );
+            g_inlets.push_back( std::move(an_inlet) );
         }
     }
     outlet<>  out1    { this, "(signal) Stereo Left", "signal" };

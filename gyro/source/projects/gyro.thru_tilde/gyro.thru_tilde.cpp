@@ -3,7 +3,7 @@
 ///	@copyright	Copyright 2018 The Min-DevKit Authors. All rights reserved.
 ///	@license	Use of this source code is governed by the MIT License found in the License.md file.
 
-//in this file, audio comes in, is converted twice, and goes out exactly the same as it came in
+// This object is not used anywhere, but it is helpful to look at if you are trying to understand the code behind gyro. This object illustrates how I get audio in and out of an object, converting it from MSP-style audio buffers to resonance-style audio buffers, and back again.
 
 #include "c74_min.h"
 #include "base/audio_buffer.h"
@@ -34,7 +34,7 @@ public:
         ///for now just copy the input buffer to the output buffer. Eventually this will become ambisonic processing
         r_outputAudioBuffer = r_inputAudioBuffer; //utilize copy assignment defined by AudioBuffer class
         
-        Res2Min(r_outputAudioBuffer, &output);                    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        Res2Min(r_outputAudioBuffer, &output);    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
     }
 };

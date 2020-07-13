@@ -17,18 +17,6 @@ PostBuild.gyro.encoder_tilde.Debug:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
 
 
-PostBuild.gyro.hello-world.Debug:
-/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world:
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world
-
-
-PostBuild.gyro.hello-world_test.Debug:
-PostBuild.mock_kernel.Debug: /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test:\
-	/Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
-
-
 PostBuild.gyro.rotator_tilde.Debug:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
@@ -62,18 +50,6 @@ PostBuild.gyro.binauralDecoder_tilde.Release:
 PostBuild.gyro.encoder_tilde.Release:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
-
-
-PostBuild.gyro.hello-world.Release:
-/Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world:
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world
-
-
-PostBuild.gyro.hello-world_test.Release:
-PostBuild.mock_kernel.Release: /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test:\
-	/Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/gyro.hello-world_test
 
 
 PostBuild.gyro.rotator_tilde.Release:
@@ -111,18 +87,6 @@ PostBuild.gyro.encoder_tilde.MinSizeRel:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
 
 
-PostBuild.gyro.hello-world.MinSizeRel:
-/Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world:
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world
-
-
-PostBuild.gyro.hello-world_test.MinSizeRel:
-PostBuild.mock_kernel.MinSizeRel: /Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/gyro.hello-world_test
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/gyro.hello-world_test:\
-	/Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/libmock_kernel.dylib
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/gyro.hello-world_test
-
-
 PostBuild.gyro.rotator_tilde.MinSizeRel:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/MinSizeRel/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
@@ -158,18 +122,6 @@ PostBuild.gyro.encoder_tilde.RelWithDebInfo:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.encoder~.mxo/Contents/MacOS/gyro.encoder~
 
 
-PostBuild.gyro.hello-world.RelWithDebInfo:
-/Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world:
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.hello-world.mxo/Contents/MacOS/gyro.hello-world
-
-
-PostBuild.gyro.hello-world_test.RelWithDebInfo:
-PostBuild.mock_kernel.RelWithDebInfo: /Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/gyro.hello-world_test
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/gyro.hello-world_test:\
-	/Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/libmock_kernel.dylib
-	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/gyro.hello-world_test
-
-
 PostBuild.gyro.rotator_tilde.RelWithDebInfo:
 /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~:
 	/bin/rm -f /Users/sofia/Documents/GitHub/gyro/gyro/externals/RelWithDebInfo/gyro.rotator~.mxo/Contents/MacOS/gyro.rotator~
@@ -198,6 +150,3 @@ PostBuild.mock_kernel.RelWithDebInfo:
 
 
 # For each target create a dummy ruleso the target does not have to exist
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/MinSizeRel/libmock_kernel.dylib:
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/RelWithDebInfo/libmock_kernel.dylib:
-/Users/sofia/Documents/GitHub/gyro/gyro/tests/libmock_kernel.dylib:
