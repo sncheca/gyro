@@ -116,12 +116,12 @@ public:
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(kNumIns, nFrames);      // resonance-style audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(2, nFrames);           // resonance-style audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer);                            // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        pita::Min2Res(input, &r_inputAudioBuffer);                            // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
 
         //convert from 1-indexing to 0-indexing
         binaural_decoders.at(subjectID_attr - 1)->Process(r_inputAudioBuffer, &r_outputAudioBuffer);     //decode the buffer!
 
-        Res2Min(r_outputAudioBuffer, &output);                          // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        pita::Res2Min(r_outputAudioBuffer, &output);                          // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
 
     }
 };

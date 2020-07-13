@@ -253,13 +253,13 @@ public:
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(kNumSphericalHarmonics, nFrames);      // resonance-style audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(kNumSphericalHarmonics, nFrames);     // resonance-style audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer);   // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        pita::Min2Res(input, &r_inputAudioBuffer);   // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
         //in my opinion, this is one of Resonance's worse designs...I think the rotator should do this internally.
         if (hoa_rotator.Process(world_rotation, r_inputAudioBuffer, &r_outputAudioBuffer)){ //rotate the buffer!
-            Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+            pita::Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
         } else {
-            Res2Min(r_inputAudioBuffer, &output); //if the difference is too small to do a rotation, just send it out the same.
+            pita::Res2Min(r_inputAudioBuffer, &output); //if the difference is too small to do a rotation, just send it out the same.
         }
 
 

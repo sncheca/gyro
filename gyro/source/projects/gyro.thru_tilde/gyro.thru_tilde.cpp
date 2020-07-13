@@ -29,12 +29,12 @@ public:
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(2, nFrames);      // resonance-style stereo audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(2, nFrames);     // resonance-style stereo audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer);                      // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        pita::Min2Res(input, &r_inputAudioBuffer);                      // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
         ///for now just copy the input buffer to the output buffer. Eventually this will become ambisonic processing
         r_outputAudioBuffer = r_inputAudioBuffer; //utilize copy assignment defined by AudioBuffer class
         
-        Res2Min(r_outputAudioBuffer, &output);    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        pita::Res2Min(r_outputAudioBuffer, &output);    // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
     }
 };

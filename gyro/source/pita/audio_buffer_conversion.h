@@ -17,6 +17,8 @@ The easiest way to interface between the two existing ecosystems is to simply co
 
 using namespace c74::min;
 
+namespace pita {
+
 //convert audio_bundle object (Min) to AudioBuffer object (Resonance)
 void Min2Res(audio_bundle& bundleIn, vraudio::AudioBuffer* bufferOut){
     DCHECK(bufferOut);
@@ -58,6 +60,8 @@ void Res2Min(const vraudio::AudioBuffer& bufferIn, audio_bundle* bundleOut){
     }
     return;
 }
+
+} //namespace pita
 
 #endif  // PITA_AUDIO_BUFFER_CONVERSION_H_
 

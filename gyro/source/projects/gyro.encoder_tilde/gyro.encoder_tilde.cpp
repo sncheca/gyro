@@ -132,11 +132,11 @@ public:
         auto nFrames = input.frame_count();
         vraudio::AudioBuffer r_inputAudioBuffer(kNumSources, nFrames);  // resonance-style mono audio buffer for input
         vraudio::AudioBuffer r_outputAudioBuffer(kNumOutputChannels, nFrames);     // resonance-style audio buffer for output
-        Min2Res(input, &r_inputAudioBuffer); // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
+        pita::Min2Res(input, &r_inputAudioBuffer); // transfer audio data from min-style audio_bundle to resonance-style audioBuffer
         
         ambisonic_encoder.EncodeBuffer(r_inputAudioBuffer, &r_outputAudioBuffer); //encode the buffer!
         
-        Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
+        pita::Res2Min(r_outputAudioBuffer, &output);  // transfer audio data from resonance-style audioBuffer to min-style audio_bundle
        
     }
 };
