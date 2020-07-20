@@ -1,3 +1,4 @@
-Note that the `third_party/` directory was originally inside the top level `resonance_audio/` directory, but not this lower level one. I may move it again... but just to keep track. 
+This is a modified version of the [`resonance_audio`](https://github.com/resonance-audio/resonance-audio/tree/master/resonance_audio) directory within [`resonance-audio-master`](https://github.com/resonance-audio/resonance-audio). I've changed the file extensions in the `ambisonics/` directory from `*.cc` to `*.cpp`.  
 
-I may also move this when I incorporate more HRTF options. 
+
+Note that the `third_party/` directory was originally inside the top level `resonance-audio-master/` directory, but not this lower level one. 

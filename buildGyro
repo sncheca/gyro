@@ -12,10 +12,10 @@ fi
 
 cd $dirName
 pwd
-#cmake -G Xcode ..
+cmake -G Xcode ..
 
 if [ "$1" == "-e" ]; then
     echo "building externals..."
-    #cmake --build .
+    cmake --build .
 fi
     

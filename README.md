@@ -12,7 +12,9 @@ Like `min-devkit`, `gyro` depends on
 * `min-api`: a folder within the devkit containing all of the support files you will need to compile an external object written in modern C++.
 *  `min-lib` contains building blocks, helper classes, and unit generators that may be useful in authoring C++ code for audio, video, and data processing.
 
-In addition, `gyro` depends on [Google Resonance](https://resonance-audio.github.io/resonance-audio/), which is Google's open source ambisonics and spatial audio project. Resonance is available in many forms already, such as Unity, FMOD, DAW Plugin, etc, but for some reason, there wasn't a Max version, which is why I made `gyro`. `Gyro` uses the C++ source code that can be found [here](https://github.com/resonance-audio/resonance-audio). Dependencies within Resonance are included and explained in (TODO: a directory)
+These two `min` depencies are submodules. You can read more about submodules in [Notes on Git and Submodule management.md](Notes on Git and Submodule management.md)
+
+In addition, `gyro` depends on [Google Resonance](https://resonance-audio.github.io/resonance-audio/), which is Google's open source ambisonics and spatial audio project. Resonance is available in many forms already, such as Unity, FMOD, DAW Plugin, etc, but for some reason, there wasn't a Max version, which is why I made `gyro`. `Gyro` uses the C++ source code that can be found [here](https://github.com/resonance-audio/resonance-audio). 
 
 ## Prerequisites
 The prerequisites are identical to those for the `min-devkit`, copy-pasted below. 
