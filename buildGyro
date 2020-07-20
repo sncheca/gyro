@@ -1,0 +1,21 @@
+
+dirName="build/"
+
+# if the build directory does not already exist, then create it.
+if [ ! -d $dirName ]
+then
+    mkdir $dirName
+    echo "Created $dirName directory."
+else
+    echo "directory already exists."
+fi
+
+cd $dirName
+pwd
+#cmake -G Xcode ..
+
+if [ "$1" == "-e" ]; then
+    echo "building externals..."
+    #cmake --build .
+fi
+    

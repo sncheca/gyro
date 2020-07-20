@@ -1,6 +1,22 @@
 # gyro
 A MaxMSP wrapper for Google Resonance. A treat for your ears. Gyro because, well, it's a wrap that supports spinning functions. 
 
+## Structure
+
+## Prerequisites
+
+## Building
+1. Clone `gyro` from Github (TODO: insert link) (TODO: or download from inside of Max using the Package Manager). If you clone `gyro` to a destination other than Max's Packages folder, then you will need to make an alias to it in your Packages folder. The Packages folder can be found inside of your Max 8 folder which is inside of your user's Documents folder.
+2. In the Terminal or Console app of your choice, change directories (cd) into the `gyro` directory you cloned/installed in step 1. Alternatively, just navigate to that folder in finder. 
+3. If you want to build EVERYTHING (Xcode session plus Max externals) in one step, then run  
+`./buildGyro -e`  
+This will create a `build/` directory if it does not already exist and populate it with your Xcode project. Then it will create an `externals/` directory if it does not already exist and populate it with the `gyro` Max externals, or if the `externals/` directory already exists, it will simply update the `gyro` Max externals.  
+
+	Alternatively, you can build _only_ the Xcode session by double-clicking on the `buildGyro` executable in finder _or_ by running 
+`./buildGyro` from the `gyro` directory.  
+Then, you can build the externals by opening the Xcode project from the newly generated "build" folder and using the GUI.
+
+
 ## Libraries and SDKs included
 
 1. This wrapper utilizes the Cycling74's min-devkit, which can be found here: link to min-devkit: https://github.com/Cycling74/min-devkit
