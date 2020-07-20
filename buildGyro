@@ -1,3 +1,8 @@
+#!/bin/bash
+
+#force the script to run from this directory if double click
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
 
 dirName="build/"
 
@@ -7,7 +12,7 @@ then
     mkdir $dirName
     echo "Created $dirName directory."
 else
-    echo "directory already exists."
+    echo "Directory already exists."
 fi
 
 cd $dirName
