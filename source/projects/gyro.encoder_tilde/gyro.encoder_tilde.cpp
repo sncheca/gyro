@@ -64,7 +64,7 @@ public:
         }
         
         for (auto i=0; i < kNumOutputChannels; ++i) {
-            g_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") );
+            g_outlets.push_back( std::make_unique<outlet<>>(this, "(signal) Soundfield Channel " + std::to_string(i+1), "signal") );
         }
         
         //one more outlet for dumping out speaker angle information

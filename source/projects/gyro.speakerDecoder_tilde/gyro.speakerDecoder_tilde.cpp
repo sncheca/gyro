@@ -73,7 +73,7 @@ public:
         }
         
         for (auto i=0; i < kNumInlets; ++i) {
-            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Soundfield Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
         
         // create outlets

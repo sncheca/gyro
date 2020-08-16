@@ -38,13 +38,12 @@ public:
         if(!args.empty() && (int(args[0]) > 5 || int(args[0]) < 1)){
             error("This package currently only supports ambisonic orders 1 through 5.");
         }
-        auto inlet_count = kNumIns;
 
-        for (auto i=0; i < inlet_count; ++i) {
-            //TODO the channel number should be in the assist message. String nonsense.
-            auto an_inlet = std::make_unique<inlet<>>(this, "(signal) Channel", "signal");
-            g_inlets.push_back( std::move(an_inlet) );
+        //inlet handling
+        for (auto i=0; i < kNumIns; ++i) {
+            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Soundfield Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
+        
     }
     outlet<>  out1    { this, "(signal) Stereo Left", "signal" };
     outlet<>  out2    { this, "(signal) Stereo Right", "signal" };

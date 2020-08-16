@@ -90,7 +90,7 @@ public:
         
         //inlet handling
         for (auto i=0; i < kNumIns; ++i) {
-            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
+            g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Soundfield Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
         
         //populate the vector of binaural decoders
