@@ -10,6 +10,7 @@
 
 #include "c74_min.h"
 #include "ambisonics/stereo_from_soundfield_converter.h"
+#include "ambisonics/utils.h"
 #include "audio_buffer_conversion.h"
 
 #include "dsp/gain.h"
@@ -20,20 +21,22 @@ class soundfield2stereo : public object<soundfield2stereo>, public vector_operat
 private:
     const int kAmbisonicOrder;
     const int kNumIns;
-    std::vector< std::unique_ptr<inlet<>> >    g_inlets; //note that this must be called m_inputs!
+    std::vector< std::unique_ptr<inlet<>> >    g_inlets;
+    
 public:
-    MIN_DESCRIPTION    { "Encode a mono point source sound to ambisonic sound field. Make this more precise" };
-    MIN_TAGS        { "audio, sampling" };
-    MIN_AUTHOR        { "Cycling '74" };
-    MIN_RELATED        { "index~, buffer~, wave~" };
+    MIN_DESCRIPTION    { "Decode an ambisonic soundfield to stereo" };
+    MIN_TAGS        { "gyro, binaural, ambisonics, audio" };
+    MIN_AUTHOR        { "Sofia Checa" };
+    MIN_RELATED        { "gyro.encoder~, gyro.binauralDecoder~, gyro.speakerDecoder~, gyro.rotator~, gyro.thru~" };
 
 
-    /// constructor that allows for number of outlets to be defined by the ambisonic order argument.
-    soundfield2stereo(const atoms& args = {}):kAmbisonicOrder(args[0]), kNumIns((kAmbisonicOrder+1)*(kAmbisonicOrder+1)) { //TODO turn this into a function. see hoa_rotator.cc for GetNumNthOrder
-        if (args.empty()){
-            error("Argument required. Please include the ambisonic order.");
-        } else if(int(args[0]) > 3 || int(args[0]) < 1){
-            error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
+    // constructor that allows for number of outlets to be defined by the ambisonic order argument.
+    soundfield2stereo(const atoms& args = {}):
+        kAmbisonicOrder(args.empty() ? 1: int(args[0])),    //set the default ambisonic order to 1 if there are no arguments
+        kNumIns(vraudio::GetNumPeriphonicComponents(kAmbisonicOrder))
+    {
+        if(!args.empty() && (int(args[0]) > 5 || int(args[0]) < 1)){
+            error("This package currently only supports ambisonic orders 1 through 5.");
         }
         auto inlet_count = kNumIns;
 

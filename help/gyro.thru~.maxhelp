@@ -107,6 +107,18 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-4",
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 408.0, 201.0, 150.0, 25.0 ],
+									"text" : "arguments: none"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"id" : "obj-3",
 									"maxclass" : "newobj",
 									"numinlets" : 2,
@@ -119,24 +131,12 @@
 							}
 , 							{
 								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 296.0, 75.0, 29.5, 23.0 ],
-									"text" : "2"
-								}
-
-							}
-, 							{
-								"box" : 								{
 									"id" : "obj-28",
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 335.0, 43.0, 62.0, 23.0 ],
+									"patching_rect" : [ 327.0, 52.0, 62.0, 23.0 ],
 									"text" : "loadbang"
 								}
 
@@ -172,8 +172,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 335.0, 75.0, 201.0, 23.0 ],
-									"text" : "preload 2 dasSpiegelExcerpt.wav"
+									"patching_rect" : [ 327.0, 84.0, 139.0, 23.0 ],
+									"text" : "open shakerMono.wav"
 								}
 
 							}
@@ -190,7 +190,7 @@
 										"followglobaltempo" : 0,
 										"formantcorrection" : 0,
 										"mode" : "basic",
-										"originallength" : [ 83819.711564625846222, "ticks" ],
+										"originallength" : [ 3669.115646258502693, "ticks" ],
 										"originaltempo" : 119.999999999999986,
 										"pitchcorrection" : 0,
 										"quality" : "basic",
@@ -198,18 +198,6 @@
 									}
 ,
 									"text" : "sfplay~ 2"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-24",
-									"linecount" : 2,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 425.0, 201.0, 289.0, 36.0 ],
-									"text" : "an object that, miraculously, does nothing, despite that it is converting buffers internally"
 								}
 
 							}
@@ -256,7 +244,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 444.0, 346.0, 20.0, 20.0 ],
+									"patching_rect" : [ 269.0, 337.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -315,13 +303,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-7", 0 ],
 									"source" : [ "obj-19", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"source" : [ "obj-2", 0 ]
 								}
 
 							}

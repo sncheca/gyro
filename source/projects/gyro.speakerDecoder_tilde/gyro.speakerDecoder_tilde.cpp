@@ -51,10 +51,10 @@ private:
     std::vector< std::unique_ptr<pita::p_outlet> >    g_outlets;
     
 public:
-    MIN_DESCRIPTION    { "Decodes a soundfield to a speaker array. Use argument to select ambisonic order. Ambisonic order 1 by default." };
+    MIN_DESCRIPTION    { "Decode a soundfield to a speaker array. Use argument to select ambisonic order. Ambisonic order 1 by default." };
     MIN_TAGS           { "gyro, decoder, ambisonics, audio" };
-    MIN_AUTHOR         { "Cycling '74" };
-    MIN_RELATED        { "index~, buffer~, wave~" };
+    MIN_AUTHOR         { "Sofia Checa" };
+    MIN_RELATED        { "gyro.encoder~, gyro.binauralDecoder~, gyro.rotator~, gyro.soundfield2Stereo~, gyro.thru~" };
     
     // constructor that allows for number of outlets to be defined by the ambisonic order argument.
     speakerDecoder(const atoms& args = {})

@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 44.0, 131.0, 1261.0, 670.0 ],
+						"rect" : [ 44.0, 105.0, 1261.0, 696.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -106,6 +106,33 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-5",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 489.0, 372.0, 182.0, 69.0 ],
+									"presentation_linecount" : 2,
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-4",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 496.0, 296.5, 303.0, 54.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1), number of point sources (int) (optional, default number is 1)"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"bubble" : 1,
 									"id" : "obj-35",
@@ -240,7 +267,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"offset" : [ -105.0, -438.0 ],
-									"patching_rect" : [ 682.333333333333371, 337.0, 514.000000000000114, 257.0 ],
+									"patching_rect" : [ 682.333333333333371, 367.0, 514.000000000000114, 257.0 ],
 									"viewvisibility" : 1
 								}
 
@@ -314,7 +341,7 @@
 									"maxclass" : "dict.view",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 541.0, 367.0, 100.0, 100.0 ]
+									"patching_rect" : [ 516.0, 488.0, 100.0, 100.0 ]
 								}
 
 							}
@@ -325,7 +352,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "dictionary" ],
-									"patching_rect" : [ 541.0, 337.0, 131.0, 23.0 ],
+									"patching_rect" : [ 516.0, 458.0, 131.0, 23.0 ],
 									"text" : "gyro.interleaved2Dict"
 								}
 
@@ -445,7 +472,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 307.0, 367.0, 176.5, 23.0 ],
+									"patching_rect" : [ 307.0, 397.0, 176.5, 23.0 ],
 									"text" : "gyro.binauralDecoder~ 3"
 								}
 
@@ -544,17 +571,17 @@
 									"orientation" : 1,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 306.5, 399.0, 177.0, 36.0 ],
+									"patching_rect" : [ 306.5, 429.0, 177.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 4
+											"parameter_unitstyle" : 4,
+											"parameter_mmin" : -70.0,
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1
 										}
 
 									}
@@ -573,7 +600,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 367.0, 465.5, 108.0, 25.0 ],
+									"patching_rect" : [ 367.0, 495.5, 108.0, 25.0 ],
 									"text" : "turn on audio"
 								}
 
@@ -585,7 +612,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 306.5, 449.0, 58.0, 58.0 ],
+									"patching_rect" : [ 306.5, 479.0, 58.0, 58.0 ],
 									"prototypename" : "helpfile"
 								}
 
@@ -991,7 +1018,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1261.0, 670.0 ],
+						"rect" : [ 0.0, 26.0, 1261.0, 696.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,

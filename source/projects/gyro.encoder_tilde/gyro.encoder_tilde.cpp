@@ -43,10 +43,9 @@ private:
     
 public:
     MIN_DESCRIPTION    { "Encode point sources with desginated directions to ambisonic sound field." };
-    MIN_TAGS        { "audio, decoder, ambisonics" };
-    MIN_AUTHOR        { "Cycling '74" };
-    MIN_RELATED        { "index~, buffer~, wave~" };
-
+    MIN_TAGS        { "gyro, encoder, ambisonics, audio" };
+    MIN_AUTHOR        { "Sofia Checa" };
+    MIN_RELATED        { " gyro.binauralDecoder~, gyro.speakerDecoder~, gyro.rotator~, gyro.soundfield2Stereo~, gyro.thru~" };
 
     // constructor that allows for number of outlets to be defined by the ambisonic order argument.
     encoder(const atoms& args = {})

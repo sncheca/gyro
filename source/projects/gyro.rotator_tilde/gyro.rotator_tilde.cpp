@@ -76,9 +76,9 @@ private:
 
 public:
     MIN_DESCRIPTION    { "Rotate a soundfield. Use argument to select ambisonic order. Ambisonic order is 1 by default." };
-    MIN_TAGS           { "gyro, encoder, binauralDecoder, ambisonics, audio, headtracking" };
-    MIN_AUTHOR         { "Cycling '74" };
-    MIN_RELATED        { "index~, buffer~, wave~" };
+    MIN_TAGS           { "gyro, binaural, ambisonics, audio, headtracking" };
+    MIN_AUTHOR         { "Sofia Checa" };
+    MIN_RELATED        { "gyro.encoder~, gyro.binauralDecoder~, gyro.speakerDecoder~, gyro.soundfield2Stereo~, gyro.thru~" };
 
     //constructor that allows for number of outlets to be defined by the ambisonic order argument.
     rotator(const atoms& args = {})

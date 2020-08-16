@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -129.0, -976.0, 1202.0, 863.0 ],
+		"rect" : [ 34.0, 79.0, 1202.0, 863.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -77,7 +77,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ -129.0, -924.0, 1202.0, 811.0 ],
+						"rect" : [ 34.0, 105.0, 1202.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,
@@ -106,6 +106,32 @@
 						"subpatcher_template" : "",
 						"showontab" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-15",
+									"linecount" : 2,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 508.0, 401.5, 301.0, 40.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"bubble" : 1,
+									"id" : "obj-14",
+									"linecount" : 3,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 515.0, 334.5, 303.0, 54.0 ],
+									"text" : "arguments: ambisonic-order (int) (optional, default order is 1), number of point sources (int) (optional, default number is 1)"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-49",
 									"maxclass" : "message",
@@ -185,7 +211,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 151.0, 314.0, 150.0, 23.0 ]
+									"patching_rect" : [ 151.0, 359.0, 150.0, 23.0 ]
 								}
 
 							}
@@ -258,7 +284,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 639.0, 335.0, 417.0, 23.0 ]
+									"patching_rect" : [ 638.0, 301.0, 417.0, 23.0 ]
 								}
 
 							}
@@ -340,7 +366,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 16,
 									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 326.0, 350.0, 176.5, 23.0 ],
+									"patching_rect" : [ 326.0, 410.0, 176.5, 23.0 ],
 									"text" : "gyro.rotator~ 3"
 								}
 
@@ -353,20 +379,8 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 508.0, 386.5, 301.0, 40.0 ],
+									"patching_rect" : [ 508.0, 461.5, 301.0, 40.0 ],
 									"text" : "arguments: ambisonic-order (int) (optional, default order is 1)"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-15",
-									"linecount" : 20,
-									"maxclass" : "comment",
-									"numinlets" : 1,
-									"numoutlets" : 0,
-									"patching_rect" : [ 16.0, 22.0, 155.0, 297.0 ],
-									"text" : "NOTE: to use the binaural decoder, you must add the directory containing the hrir wav files to the file preferences. Go to Options >> File Preferences, and add \n{...}/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH. For me this is\n/Users/sofia/Documents/GitHub/gyro/gyro/source/resonance_audio/third_party/SADIE_hrtf_database/WAV/Subject_002/SH\nThis feature will be changed when I add the HRTF selection feature. "
 								}
 
 							}
@@ -425,7 +439,7 @@
 									"numinlets" : 16,
 									"numoutlets" : 2,
 									"outlettype" : [ "signal", "signal" ],
-									"patching_rect" : [ 326.0, 395.0, 176.5, 23.0 ],
+									"patching_rect" : [ 326.0, 470.0, 176.5, 23.0 ],
 									"text" : "gyro.binauralDecoder~ 3"
 								}
 
@@ -437,7 +451,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 470.0, 183.0, 44.0, 23.0 ],
+									"patching_rect" : [ 458.5, 183.0, 44.0, 23.0 ],
 									"text" : "loop 1"
 								}
 
@@ -446,23 +460,11 @@
 								"box" : 								{
 									"id" : "obj-1",
 									"maxclass" : "newobj",
-									"numinlets" : 2,
-									"numoutlets" : 16,
-									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal" ],
-									"patching_rect" : [ 326.0, 305.0, 176.5, 23.0 ],
+									"numinlets" : 1,
+									"numoutlets" : 17,
+									"outlettype" : [ "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "signal", "list" ],
+									"patching_rect" : [ 326.0, 350.0, 187.0, 23.0 ],
 									"text" : "gyro.encoder~ 3"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-2",
-									"maxclass" : "message",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 296.0, 135.0, 29.5, 23.0 ],
-									"text" : "2"
 								}
 
 							}
@@ -473,7 +475,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 1,
 									"outlettype" : [ "bang" ],
-									"patching_rect" : [ 335.0, 103.0, 62.0, 23.0 ],
+									"patching_rect" : [ 327.0, 120.0, 62.0, 23.0 ],
 									"text" : "loadbang"
 								}
 
@@ -485,7 +487,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 408.0, 183.0, 52.0, 23.0 ],
+									"patching_rect" : [ 396.5, 183.0, 52.0, 23.0 ],
 									"text" : "resume"
 								}
 
@@ -497,7 +499,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 356.0, 183.0, 44.0, 23.0 ],
+									"patching_rect" : [ 344.5, 183.0, 44.0, 23.0 ],
 									"text" : "pause"
 								}
 
@@ -509,8 +511,8 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 335.0, 135.0, 165.0, 23.0 ],
-									"text" : "preload 2 shakerMono.wav"
+									"patching_rect" : [ 327.0, 152.0, 139.0, 23.0 ],
+									"text" : "open shakerMono.wav"
 								}
 
 							}
@@ -527,7 +529,7 @@
 										"followglobaltempo" : 0,
 										"formantcorrection" : 0,
 										"mode" : "basic",
-										"originallength" : [ 0.0, "ticks" ],
+										"originallength" : [ 3669.115646258503148, "ticks" ],
 										"originaltempo" : 120.0,
 										"pitchcorrection" : 0,
 										"quality" : "basic",
@@ -548,17 +550,17 @@
 									"orientation" : 1,
 									"outlettype" : [ "signal", "signal", "", "float", "list" ],
 									"parameter_enable" : 1,
-									"patching_rect" : [ 325.0, 438.0, 178.0, 36.0 ],
+									"patching_rect" : [ 325.0, 513.0, 178.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_mmax" : 6.0,
+											"parameter_initial" : [ -50 ],
+											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
 											"parameter_mmin" : -70.0,
 											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1,
-											"parameter_mmax" : 6.0,
-											"parameter_initial" : [ -50 ],
-											"parameter_shortname" : "live.gain~"
+											"parameter_initial_enable" : 1
 										}
 
 									}
@@ -581,7 +583,7 @@
 									"numoutlets" : 3,
 									"outlettype" : [ "", "", "int" ],
 									"parameter_enable" : 0,
-									"patching_rect" : [ 416.25, 530.0, 20.0, 20.0 ],
+									"patching_rect" : [ 416.25, 605.0, 20.0, 20.0 ],
 									"rounded" : 60.0,
 									"text" : "1",
 									"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
@@ -597,7 +599,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 381.0, 499.5, 108.0, 25.0 ],
+									"patching_rect" : [ 381.0, 574.5, 108.0, 25.0 ],
 									"text" : "turn on audio"
 								}
 
@@ -609,7 +611,7 @@
 									"maxclass" : "ezdac~",
 									"numinlets" : 2,
 									"numoutlets" : 0,
-									"patching_rect" : [ 325.0, 490.0, 44.0, 44.0 ],
+									"patching_rect" : [ 325.0, 565.0, 44.0, 44.0 ],
 									"prototypename" : "helpfile"
 								}
 
@@ -787,13 +789,6 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-9", 0 ],
-									"source" : [ "obj-2", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-22", 2 ],
 									"source" : [ "obj-20", 0 ]
 								}
@@ -839,14 +834,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-13", 0 ],
 									"order" : 0,
-									"source" : [ "obj-28", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-2", 0 ],
-									"order" : 3,
 									"source" : [ "obj-28", 0 ]
 								}
 
@@ -945,13 +932,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-22", 1 ],
 									"source" : [ "obj-37", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-1", 1 ],
-									"source" : [ "obj-4", 0 ]
 								}
 
 							}
@@ -1179,7 +1159,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 0.0, 26.0, 1202.0, 811.0 ],
+						"rect" : [ 0.0, 26.0, 1202.0, 837.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 13.0,

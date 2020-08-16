@@ -18,10 +18,10 @@ using namespace c74::min;
 
 class thru : public object<thru>, public vector_operator<> {
 public:
-    MIN_DESCRIPTION	{ "Pass input audio through unchanged." };
-    MIN_TAGS		{ "audio, sampling" };
-    MIN_AUTHOR		{ "Cycling '74" };
-    MIN_RELATED		{ "index~, buffer~, wave~" };
+    MIN_DESCRIPTION	{ "Pass stereo input audio through unchanged." };
+    MIN_TAGS		{ "gyro, ambisonics, audio" };
+    MIN_AUTHOR		{ "Sofia Checa" };
+    MIN_RELATED		{ "gyro.encoder~, gyro.binauralDecoder~, gyro.speakerDecoder~, gyro.rotator~, gyro.soundfield2Stereo~" };
 
     inlet<>  in1	{ this, "(signal) Channel 1", "signal" };
     inlet<>  in2    { this, "(signal) Channel 2", "signal" };
