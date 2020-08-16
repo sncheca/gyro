@@ -108,8 +108,8 @@ public:
                 for(int i = 0; i < argc; i+=3){
                     int speakerID = int(args[i])-1; //internal speakerID is 0 indexed.
                     if(speakerID >= 0 && speakerID < kNumSpeakers){ //if the user enters a speaker number that is out of range
-                        speaker_angles.at(speakerID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
-                        speaker_angles.at(speakerID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees);
+                        vraudio::SphericalAngle unsimplifiedSphericalAngle = vraudio::SphericalAngle::FromDegrees(float(args[i+1]), float(args[i+2]));
+                        speaker_angles.at(speakerID) = vraudio::SphericalAngle::FromWorldPosition(unsimplifiedSphericalAngle.GetWorldPositionOnUnitSphere());
                         g_outlets.at(speakerID)->setDescription(pita::generatePortAngleLabel(speakerID, speaker_angles));
                     } else {
                     cerr << "Output channel " << speakerID+1 << " is out of range. Speaker decoder currently has " << kNumSpeakers << " output channels." << endl;
