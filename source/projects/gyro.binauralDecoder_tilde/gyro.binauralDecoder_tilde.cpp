@@ -1,9 +1,10 @@
 /// @file
-///    @ingroup     minexamples
-///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///    @ingroup     gyro
+///    @copyright    Copyright 2020 Sofia Checa
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-//Copyright 2020 Sofia Checa, Yale CCAM // Yale Blended Reality // Yale Department of Music
+// Copyright 2020 Sofia Checa
+// This work was funded by Yale Department of Music // Yale CCAM // Yale Blended Reality
 
 //binaurally render a soundfield, using HRTFs from the SADIE-I HRTF database: https://www.york.ac.uk/sadie-project/database_old.html
 

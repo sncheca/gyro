@@ -1,9 +1,12 @@
 /// @file
-///    @ingroup     minexamples
-///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///    @ingroup     gyro
+///    @copyright    Copyright 2020 Sofia Checa
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-//convert a soundfield into stereo. This won't sound as good as binaural, but it's good for quick checking and ABing.
+// Copyright 2020 Sofia Checa
+// This work was funded by Yale Department of Music // Yale CCAM // Yale Blended Reality
+
+//convert a soundfield into stereo. This will sound much worse than binaural, but it's good for ABing and quick checking.
 
 #include "c74_min.h"
 #include "ambisonics/stereo_from_soundfield_converter.h"

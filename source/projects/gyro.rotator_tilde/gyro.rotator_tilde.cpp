@@ -1,13 +1,13 @@
 /// @file
-///    @ingroup     minexamples
-///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///    @ingroup     gyro
+///    @copyright    Copyright 2020 Sofia Checa
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
 
-///Copyright Sofia Checa 2020.
-///This work was jointly funded by the Yale CCAM, the Yale Blended Reality Grant, and the Yale Department of Music.
+// Copyright 2020 Sofia Checa
+// This work was funded by Yale Department of Music // Yale CCAM // Yale Blended Reality
 
 //rotate a soundfield, using HRTFs.
-// Use case: rotate the ENTIRE soundfield (ie, not to be used just to rotate one source... I mean you can if you want but this is more intended for use in conjunction with headtracking or other cases where the entire soundfield must be rotated.
+// Use case: rotate the ENTIRE soundfield (ie, not to be used just to rotate one source... I mean you can if you want but this is more intended for use in conjunction with headtracking or other cases where the entire soundfield or group of sources must be rotated.
 
 #include "c74_min.h"
 #include "ambisonics/hoa_rotator.h"

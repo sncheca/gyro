@@ -1,7 +1,10 @@
 /// @file
 ///    @ingroup     gyro
-///    @copyright    Copyright 2020 Sofia Checa: Yale CCAM // Yale Blended Reality // Yale Department of Music
+///    @copyright    Copyright 2020 Sofia Checa
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
+
+// Copyright 2020 Sofia Checa
+// This work was funded by Yale Department of Music // Yale CCAM // Yale Blended Reality
 
 //decode a soundfield to a speaker array
 
