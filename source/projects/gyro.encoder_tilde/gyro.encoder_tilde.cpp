@@ -15,7 +15,7 @@
 #include "pita_port.h"
 
 #include "ambisonics/associated_legendre_polynomials_generator.h"
-#include "base/spherical_angle.h" //yes needed
+#include "base/spherical_angle.h"
 
 using namespace c74::min;
 
@@ -91,12 +91,14 @@ public:
     message<> setSourceAngles { this, "set", "Set a source's location using (azimuth, elevation) in degrees",
         MIN_FUNCTION {
             int argc = args.size(); //C-style, avoid repetition.
-            if(argc % 3 == 0){ //disregard the entire message if it is poorly formatted. There are too many ways to make a mistake, it's not worth trying to extract some meaning from it.
+            if(argc % 3 == 0){
+                //disregard the entire message if it is poorly formatted. There are too many ways to make a mistake, it's not worth trying to extract some meaning from it.
                 for(int i = 0; i < argc; i+=3){
                     int sourceID = int(args[i])-1; //internal speakerID is 0 indexed.
                     if(sourceID >= 0 && sourceID < kNumSources){ //if the user enters a speaker number that is out of range
-                        source_angles.at(sourceID).set_azimuth(float(args[i+1])*vraudio::kRadiansFromDegrees);
-                        source_angles.at(sourceID).set_elevation(float(args[i+2])*vraudio::kRadiansFromDegrees); g_inlets.at(sourceID)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
+                        vraudio::SphericalAngle unsimplifiedSphericalAngle = vraudio::SphericalAngle::FromDegrees(float(args[i+1]), float(args[i+2]));
+                        source_angles.at(sourceID) = vraudio::SphericalAngle::FromWorldPosition(unsimplifiedSphericalAngle.GetWorldPositionOnUnitSphere());
+                        g_inlets.at(sourceID)->setDescription(pita::generatePortAngleLabel(sourceID, source_angles));
                     } else {
                     cerr << "Input channel " << sourceID+1 << " is out of range. Ambisonic encoder currently has " << kNumSources << " input channels." << endl;
                     }
