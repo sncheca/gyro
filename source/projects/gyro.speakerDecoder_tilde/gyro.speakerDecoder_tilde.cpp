@@ -1,9 +1,7 @@
 /// @file
-///    @ingroup     minexamples
-///    @copyright    Copyright 2018 The Min-DevKit Authors. All rights reserved.
+///    @ingroup     gyro
+///    @copyright    Copyright 2020 Sofia Checa: Yale CCAM // Yale Blended Reality // Yale Department of Music
 ///    @license    Use of this source code is governed by the MIT License found in the License.md file.
-
-//Copyright 2020 Sofia Checa, Yale CCAM // Yale Blended Reality // Yale Department of Music
 
 //decode a soundfield to a speaker array
 
