@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -179.0, -987.0, 1820.0, 933.0 ],
+		"rect" : [ 39.0, 79.0, 1340.0, 743.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,13 +39,77 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-61",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "float", "" ],
+					"patching_rect" : [ 58.0, 571.0, 35.0, 22.0 ],
+					"text" : "timer"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
+					"fontname" : "Arial Bold",
+					"hint" : "",
+					"id" : "obj-59",
+					"ignoreclick" : 1,
+					"legacytextcolor" : 1,
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 20.0, 326.5, 20.0, 20.0 ],
+					"rounded" : 60.0,
+					"text" : "2",
+					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
+					"fontname" : "Arial Bold",
+					"hint" : "",
+					"id" : "obj-51",
+					"ignoreclick" : 1,
+					"legacytextcolor" : 1,
+					"maxclass" : "textbutton",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "", "", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 604.0, 854.5, 20.0, 20.0 ],
+					"rounded" : 60.0,
+					"text" : "1",
+					"textcolor" : [ 0.34902, 0.34902, 0.34902, 1.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-32",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 390.25, 742.0, 189.0, 33.0 ],
+					"text" : "use this part if you want to record your interactive performance"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-42",
 					"maxclass" : "toggle",
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 420.25, 782.0, 24.0, 24.0 ]
+					"patching_rect" : [ 390.25, 782.0, 24.0, 24.0 ]
 				}
 
 			}
@@ -56,7 +120,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 449.515624999999773, 782.0, 165.0, 22.0 ],
+					"patching_rect" : [ 419.515624999999773, 782.0, 165.0, 22.0 ],
 					"text" : "open gyroParaisso.wav wave"
 				}
 
@@ -68,7 +132,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 432.0, 849.0, 69.0, 22.0 ],
+					"patching_rect" : [ 402.0, 849.0, 69.0, 22.0 ],
 					"text" : "sfrecord~ 2"
 				}
 
@@ -448,7 +512,7 @@
 					"numoutlets" : 2,
 					"outlettype" : [ "int", "int" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 821.0, 251.0, 200.0, 200.0 ],
+					"patching_rect" : [ 816.0, 249.5, 200.0, 200.0 ],
 					"rightvalue" : -60,
 					"topvalue" : 60
 				}
@@ -1379,7 +1443,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 284.0, 491.0, 53.0, 22.0 ],
+					"patching_rect" : [ 224.0, 491.0, 53.0, 22.0 ],
 					"text" : "r display"
 				}
 
@@ -1468,7 +1532,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -1552,7 +1616,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -1648,7 +1712,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -1720,7 +1784,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -1804,7 +1868,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -1948,7 +2012,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2057,7 +2121,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2118,7 +2182,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2191,7 +2255,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2252,7 +2316,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2324,7 +2388,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2385,7 +2449,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2458,7 +2522,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2530,7 +2594,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2602,7 +2666,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2674,7 +2738,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2723,7 +2787,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2795,7 +2859,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2867,7 +2931,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -2916,7 +2980,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -3012,7 +3076,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -3029,7 +3093,7 @@
 					"maxclass" : "dict.view",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 284.0, 546.0, 111.0, 367.0 ]
+					"patching_rect" : [ 224.0, 546.0, 111.0, 367.0 ]
 				}
 
 			}
@@ -3040,7 +3104,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "dictionary" ],
-					"patching_rect" : [ 284.0, 519.0, 131.0, 22.0 ],
+					"patching_rect" : [ 224.0, 519.0, 131.0, 22.0 ],
 					"text" : "gyro.interleaved2Dict"
 				}
 
@@ -3151,7 +3215,7 @@
 						"followglobaltempo" : 0,
 						"formantcorrection" : 0,
 						"mode" : "basic",
-						"originallength" : [ 257930.971428571443539, "ticks" ],
+						"originallength" : [ 255352.838095238112146, "ticks" ],
 						"originaltempo" : 120.0,
 						"pitchcorrection" : 0,
 						"quality" : "basic",
@@ -4578,7 +4642,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "gyro.interleaved2Dict.maxpat",
-				"bootpath" : "~/Documents/GitHub/gyro/gyro/help",
+				"bootpath" : "~/Documents/GitHub/gyro/help",
 				"patcherrelativepath" : "../help",
 				"type" : "JSON",
 				"implicit" : 1
