@@ -107,6 +107,18 @@
 						"showontab" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
+									"id" : "obj-90",
+									"linecount" : 4,
+									"maxclass" : "comment",
+									"numinlets" : 1,
+									"numoutlets" : 0,
+									"patching_rect" : [ 946.333333333333371, 28.0, 220.0, 65.0 ],
+									"text" : "HUGE thank you to the Cambridge Music Technology Multitrack Download Library. \nhttps://cambridge-mt.com/ms/mtk/"
+								}
+
+							}
+, 							{
+								"box" : 								{
 									"bgcolor" : [ 1.0, 0.788235, 0.470588, 1.0 ],
 									"fontname" : "Arial Bold",
 									"hint" : "",
@@ -135,7 +147,6 @@
 									"numinlets" : 1,
 									"numoutlets" : 0,
 									"patching_rect" : [ 483.0, 446.0, 133.0, 25.0 ],
-									"presentation_linecount" : 2,
 									"text" : "adjust master gain"
 								}
 
@@ -668,14 +679,14 @@
 									"patching_rect" : [ 306.5, 450.0, 177.0, 36.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_longname" : "live.gain~[1]",
+											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6.0,
 											"parameter_initial" : [ -50 ],
 											"parameter_shortname" : "live.gain~",
 											"parameter_type" : 0,
 											"parameter_unitstyle" : 4,
-											"parameter_mmin" : -70.0,
-											"parameter_longname" : "live.gain~[1]",
-											"parameter_initial_enable" : 1
+											"parameter_mmin" : -70.0
 										}
 
 									}
