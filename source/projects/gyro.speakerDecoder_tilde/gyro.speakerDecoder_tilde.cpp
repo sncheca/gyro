@@ -67,8 +67,8 @@ public:
     {   //body of the constructor
         
         //most max objects do not complain about extra arguments, so I don't either.
-        if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
-            error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
+        if(!args.empty() && (int(args[0]) > 5 || int(args[0]) < 1)){
+            error("This package currently only supports ambisonic orders 1 through 5.");
         }
         
         /*
