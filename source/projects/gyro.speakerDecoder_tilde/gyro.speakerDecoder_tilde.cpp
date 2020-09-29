@@ -66,12 +66,19 @@ public:
 
     {   //body of the constructor
         
-        // create inlets
         //most max objects do not complain about extra arguments, so I don't either.
         if(!args.empty() && (int(args[0]) > 3 || int(args[0]) < 1)){
             error("This package currently supports only 1st, 2nd, and 3rd order ambisonics.");
         }
         
+        /*
+         the number of speakers must be greater than or equal to the number of harmonics. If the number of speakers is less, then the soundfield is folded down, resulting in pockets of space that get very loud. I wouldn't consider this behaviour to be undefined, but it is certainly unpredictable. I can imagine that an inexperienced user could be in for an unpleasant (and costly) surprise. For that reason, I limit the speakerDecoder object so that it can only be created with this requirement satisfied. If a user wants to use fewer speakers with a higher order, then she just won't connect all the outlets.
+         */
+        if(kNumSpeakers < kNumInlets){
+            error("The number of speakers must be greater than or equal to " + std::to_string(kNumInlets) + " (number of spherical harmonics).");
+        }
+        
+        // create inlets
         for (auto i=0; i < kNumInlets; ++i) {
             g_inlets.push_back( std::make_unique<inlet<>>(this, "(signal) Soundfield Channel " + std::to_string(i+1), "signal") ); //human labelling for channels is 1-indexed
         }
