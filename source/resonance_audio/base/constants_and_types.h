@@ -41,7 +41,9 @@ const size_t kMemoryAlignmentBytes = 64;
 // HRIR data points used in the binaural renderer; b) size of the lookup table
 // controlling the angular spread of a sound source in the Ambisonic Lookup
 // Table class.
-static const int kMaxSupportedAmbisonicOrder = 3;
+
+// NOTE: (gyro) Max Supported Ambisonic Order for vraudio is 3. I changed this value after generating hrir assets for 4th and 5th order. 
+static const int kMaxSupportedAmbisonicOrder = 5;
 
 // Maximum allowed size of internal buffers.
 const size_t kMaxSupportedNumFrames = 16384;

@@ -83,7 +83,14 @@ public:
 
     {
         
-        //most max objects do not complain about extra arguments, so I don't either.
+       /* Quoted from "constants_and_types.h": "Maximum Ambisonic order currently supported in vr audio is 3, equivalent to High
+        Quality sound object rendering mode. This number is limited by a) number of
+        HRIR data points used in the binaural renderer; b) size of the lookup table
+        controlling the angular spread of a sound source in the Ambisonic Lookup
+        Table class."
+
+        Maximum Ambisonic order currently supported in vr audio is 5. I changed this value after generating hrir assets for 4th and 5th order binaural decoders. Gyro does not use the Ambisonic lookup table provided by Resonance.
+        */
         if(!args.empty() && (int(args[0]) > 5 || int(args[0]) < 1)){
             error("This package currently only supports ambisonic orders 1 through 5.");
         }
