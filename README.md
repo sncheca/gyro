@@ -4,6 +4,8 @@
 
 A MaxMSP wrapper for Google Resonance. A treat for your ears. Gyro because, well, it's a wrap that supports spinning functions. 
 
+If you would like to download pre-built Max externals, please go to the [gyro-Max-externals](https://github.com/sncheca/gyro-Max-externals/releases/tag/v0.1.0) repository.
+
 ## Structure and Dependencies
 `gyro` is based on the `min-devkit`, which can be found [here](https://github.com/Cycling74/min-devkit). If you are interested in the code behind `gyro` I highly recommend also cloning the `min-devkit` and exploring that as well. However, `gyro` does not have any dependencies on the min-devkit. 
 
@@ -31,7 +33,7 @@ You will also need to install a recent version of CMake (version 3.10 or higher)
 Note that as of August 2020, `gyro` is not officially supported for Windows. (TODO!)
 
 ## Building
-1. Clone `gyro` from Github (TODO: insert link) (TODO: or download from inside of Max using the Package Manager). If you clone `gyro` to a destination other than Max's Packages folder, then you will need to make an alias to it in your Packages folder. The Packages folder can be found inside of your Max 8 folder which is inside of your user's Documents folder.
+1. Clone `gyro` from Github at https://github.com/sncheca/gyro (TODO: or download from inside of Max using the Package Manager). If you clone `gyro` to a destination other than Max's Packages folder, then you will need to make an alias to it in your Packages folder. The Packages folder can be found inside of your Max 8 folder which is inside of your user's Documents folder.
 2. In the Terminal or Console app of your choice, change directories (cd) into the `gyro` directory you cloned/installed in step 1. 
 3. If you want to build EVERYTHING (Xcode session plus Max externals) in one step, then run  
 `./buildGyro -e`  
