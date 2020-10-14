@@ -20,7 +20,7 @@ In addition, `gyro` depends on [Google Resonance](https://resonance-audio.github
 
 ## Prerequisites
 
-The other prerequisites are identical to those for the `min-devkit`, copy-pasted below. 
+The prerequisites are identical to those for the `min-devkit`, copy-pasted below. 
 
 To build the externals in this package you will need some form of compiler support on your system.
 
