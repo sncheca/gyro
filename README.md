@@ -47,7 +47,7 @@ In order for Max to find the patches, they must be in the `Max 8/Packages` folde
 I prefer to just create an alias to the `gyro` repo and move this alias into the `Max 8/Packages` folder. You can create an alias by right clicking on the directory in finder and clicking "Make Alias".
 
 ## Demo
-The demo file is too large to host on Github without paying for extra data for `git-lfs`. You can download the raw 30-channel multitrack file from [here](https://yalmust.yale.edu/gyro).
+The demo file `demo/mc-raw-paraisso.wav` is too large to host on Github without paying for extra data for `git-lfs`. You can download the raw 30-channel multitrack file from [here](https://yalmust.yale.edu/gyro).
 
 # For those building new code inspired by `gyro`, here are some tips:
 
