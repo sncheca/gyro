@@ -19,7 +19,6 @@ These two `min` depencies are submodules. You can read more about submodules in 
 In addition, `gyro` depends on [Google Resonance](https://resonance-audio.github.io/resonance-audio/), which is Google's open source ambisonics and spatial audio project. Resonance is available in many forms already, such as Unity, FMOD, DAW Plugin, etc, but for some reason, there wasn't a Max version, which is why I made `gyro`. `Gyro` uses the C++ source code that can be found [here](https://github.com/resonance-audio/resonance-audio). 
 
 ## Prerequisites
-You must have `git-lfs` in order to download the demo file. To install git-lfs, open terminal and run `brew install git-lfs`. Read more about git-lfs [here](https://docs.github.com/en/github/managing-large-files/versioning-large-files).
 
 The other prerequisites are identical to those for the `min-devkit`, copy-pasted below. 
 
@@ -46,6 +45,9 @@ Then, you can build the externals by opening the Xcode project from the newly ge
 ## Using
 In order for Max to find the patches, they must be in the `Max 8/Packages` folder.
 I prefer to just create an alias to the `gyro` repo and move this alias into the `Max 8/Packages` folder. You can create an alias by right clicking on the directory in finder and clicking "Make Alias".
+
+## Demo
+The demo file is too large to host on Github without paying for extra data for `git-lfs`. You can download the raw 30-channel multitrack file from [here](https://yalmust.yale.edu/gyro).
 
 # For those building new code inspired by `gyro`, here are some tips:
 
